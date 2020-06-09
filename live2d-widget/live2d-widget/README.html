@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Raspberry Pi" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Live2D Widget 特性 Feature在网页中添加 Live2D 看板娘。兼容 PJAX，支持无刷新加载。Add Live2D widget to web page. Compatible with PJAX. 警告：本项目使用了大量 ES6 语法，且依赖于 WebGL。不支持 IE 11 等老旧浏览器。WARNING: This project does not support leg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Artangnis&#39;s Blog">
+<meta property="og:url" content="http://www.artangnis.top/live2d-widget/live2d-widget/README.html">
+<meta property="og:site_name" content="Artangnis&#39;s Blog">
+<meta property="og:description" content="Live2D Widget 特性 Feature在网页中添加 Live2D 看板娘。兼容 PJAX，支持无刷新加载。Add Live2D widget to web page. Compatible with PJAX. 警告：本项目使用了大量 ES6 语法，且依赖于 WebGL。不支持 IE 11 等老旧浏览器。WARNING: This project does not support leg">
+<meta property="og:image" content="https://forthebadge.com/images/badges/built-with-love.svg">
+<meta property="og:image" content="https://forthebadge.com/images/badges/uses-html.svg">
+<meta property="og:image" content="https://forthebadge.com/images/badges/made-with-javascript.svg">
+<meta property="og:image" content="https://forthebadge.com/images/badges/contains-cat-gifs.svg">
+<meta property="og:image" content="https://forthebadge.com/images/badges/powered-by-electricity.svg">
+<meta property="og:image" content="https://forthebadge.com/images/badges/makes-people-smile.svg">
+<meta property="og:image" content="http://www.artangnis.top/live2d-widget/live2d-widget/assets/screenshot-1.png">
+<meta property="og:image" content="http://www.artangnis.top/live2d-widget/live2d-widget/assets/screenshot-2.png">
+<meta property="og:image" content="http://www.artangnis.top/live2d-widget/live2d-widget/assets/screenshot-3.png">
+<meta property="og:image" content="http://www.artangnis.top/live2d-widget/live2d-widget/assets/browserstack.svg">
+<meta property="article:published_time" content="2020-03-20T16:47:44.398Z">
+<meta property="article:modified_time" content="2020-03-18T06:07:30.123Z">
+<meta property="article:author" content="阿汤尼斯">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://forthebadge.com/images/badges/built-with-love.svg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.artangnis.top/live2d-widget/live2d-widget/README.html"/>
+
+
+
+
+
+  <title> | Artangnis's Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?409228f35d302e1d40ffd493b87acc81";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/gh/artangnis/live2d-widget@latest/autoload.js"></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<script src="/live2d-widget/autoload.js"></script>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Artangnis's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline"></h1>
+
+
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+        
+        
+          <h1 id="Live2D-Widget"><a href="#Live2D-Widget" class="headerlink" title="Live2D Widget"></a>Live2D Widget</h1><p><img src="https://forthebadge.com/images/badges/built-with-love.svg" alt=""><br><img src="https://forthebadge.com/images/badges/uses-html.svg" alt=""><br><img src="https://forthebadge.com/images/badges/made-with-javascript.svg" alt=""><br><img src="https://forthebadge.com/images/badges/contains-cat-gifs.svg" alt=""><br><img src="https://forthebadge.com/images/badges/powered-by-electricity.svg" alt=""><br><img src="https://forthebadge.com/images/badges/makes-people-smile.svg" alt=""></p>
+<h2 id="特性-Feature"><a href="#特性-Feature" class="headerlink" title="特性 Feature"></a>特性 Feature</h2><p>在网页中添加 Live2D 看板娘。兼容 PJAX，支持无刷新加载。<br>Add Live2D widget to web page. Compatible with PJAX.</p>
+<p><strong>警告：本项目使用了大量 ES6 语法，且依赖于 WebGL。不支持 IE 11 等老旧浏览器。</strong><br><strong>WARNING: This project does not support legacy browsers such as IE 11.</strong></p>
+<h2 id="示例-Demo"><a href="#示例-Demo" class="headerlink" title="示例 Demo"></a>示例 Demo</h2><p>在<a href="https://zhangshuqiao.org" target="_blank" rel="noopener">米米的博客</a>的左下角可查看效果。</p>
+<p><img src="assets/screenshot-1.png" alt=""><br><img src="assets/screenshot-2.png" alt=""><br><img src="assets/screenshot-3.png" alt=""></p>
+<p>这个仓库中也提供了两个 Demo，即</p>
+<ul>
+<li><a href="https://mi.js.org/live2d-widget/demo/demo1.html" target="_blank" rel="noopener">demo1.html</a> ，展现基础效果</li>
+<li><a href="https://mi.js.org/live2d-widget/demo/demo2.html" target="_blank" rel="noopener">demo2.html</a> ，仿 NPM 的登陆界面</li>
+</ul>
+<h2 id="依赖-Dependencies"><a href="#依赖-Dependencies" class="headerlink" title="依赖 Dependencies"></a>依赖 Dependencies</h2><p>本插件需要 Font Awesome 4.7.0 支持，请确保相关样式表已在页面中加载，例如在 <code>&lt;head&gt;</code> 中加入：<br>Font Awesome 4.7.0 is required for this plugin. You can add this to <code>&lt;head&gt;</code>:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"</span>&gt;</span></span><br></pre></td></tr></table></figure><br>否则无法正常显示。（如果网页中已经加载了 Font Awesome，就不要重复加载了）</p>
+<h2 id="使用-Usage"><a href="#使用-Usage" class="headerlink" title="使用 Usage"></a>使用 Usage</h2><p>将这一行代码加入 <code>&lt;head&gt;</code> 或 <code>&lt;body&gt;</code>，即可展现出效果：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><br>如果网站启用了 PJAX，由于看板娘不必每页刷新，因此要注意将相关脚本放到 PJAX 刷新区域之外。</p>
+<p>换句话说，如果你是小白，或者只需要最基础的功能，就只用把这一行代码，连同前面加载 Font Awesome 的一行代码，一起放到 html 的 <code>&lt;head&gt;</code> 中即可。<br>对于用各种模版引擎（例如 Nunjucks，Jinja 或者 PHP）生成的页面，也要自行修改，方法类似，只是可能略为麻烦。以 Hexo 为例，需要在主题相关的 ejs 或 njk 模版中正确配置路径，才可以加载。</p>
+<p><strong>但是！我们强烈推荐自己进行配置，否则很多功能是不完整的，并且可能产生问题！</strong><br>如果你有兴趣自己折腾的话，请看下面的详细说明。</p>
+<h3 id="Using-CDN"><a href="#Using-CDN" class="headerlink" title="Using CDN"></a>Using CDN</h3><p>要自定义有关内容，可以把这个仓库 Fork 一份，然后进行修改。这时，使用方法对应地变为<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/gh/username/live2d-widget@latest/autoload.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><br>将 <code>username</code> 替换为你的 GitHub 用户名即可。</p>
+<h3 id="Self-host"><a href="#Self-host" class="headerlink" title="Self-host"></a>Self-host</h3><p>你也可以直接把这些文件放到服务器上，而不是通过 CDN 加载。</p>
+<ul>
+<li>如果你能够通过 <code>ssh</code> 访问你的主机，请把整个仓库克隆到服务器上。执行：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/your/webroot</span><br><span class="line"><span class="comment"># Clone this repository</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/stevenjoezhang/live2d-widget.git</span><br></pre></td></tr></table></figure></li>
+<li>如果你的主机无法用 <code>ssh</code> 连接（例如一般的虚拟主机），请选择 <code>Download ZIP</code>，然后通过 <code>ftp</code> 等方式上传到主机上，再解压到网站的目录下。</li>
+<li>如果你是通过 Hexo 等工具部署的静态博客，请在本地开命令行进入博客目录，例如 <code>source</code> 下与 <code>_posts</code> 同级的目录，然后再执行前述的 <code>git clone</code> 命令。重新部署博客时，相关文件就会自动上传到对应的路径下。</li>
+</ul>
+<p>这样，整个项目就可以通过你的服务器 IP 或者域名从公网访问了。不妨试试能否正常地通过浏览器打开 <code>autoload.js</code> 和 <code>live2d.min.js</code> 等文件，并确认这些文件的内容是正确的，没有出现乱码。<br>一切正常的话，接下来修改一些配置就行了。（需要通过服务器上的文本编辑器修改；你也可以先在本地完成这一步骤，再上传到服务器上）<br>修改 <code>autoload.js</code> 中的常量 <code>live2d_path</code> 为 <code>live2d-widget</code> 这一文件夹在公网上的路径。比如说，如果你能够通过<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;www.example.com&#x2F;path&#x2F;to&#x2F;live2d-widget&#x2F;live2d.min.js</span><br></pre></td></tr></table></figure><br>访问到 <code>live2d.min.js</code>，那么就把 <code>live2d_path</code> 的值修改为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;www.example.com&#x2F;path&#x2F;to&#x2F;live2d-widget&#x2F;</span><br></pre></td></tr></table></figure><br>路径末尾的 <code>/</code> 一定要加上。具体可以参考 <code>autoload.js</code> 内的注释。<br>完成后，在你要添加看板娘的界面加入<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://www.example.com/path/to/live2d-widget/autoload.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><br>就可以加载了。</p>
+<h2 id="目录结构-Files"><a href="#目录结构-Files" class="headerlink" title="目录结构 Files"></a>目录结构 Files</h2><ul>
+<li><code>waifu-tips.json</code> 中包含了触发条件（<code>selector</code>，选择器）和触发时显示的文字（<code>text</code>）；</li>
+<li><code>waifu.css</code> 是看板娘的样式表。</li>
+</ul>
+<p>源文件是对 Hexo 的 NexT 主题有效的，为了适用于你自己的网页，可能需要自行修改，或增加新内容。<br><strong>警告：作者不对包括但不限于 <code>waifu-tips.json</code> 和 <code>waifu-tips.js</code> 文件中的内容负责，请自行确保它们是合适的。</strong></p>
+<p>如果有任何疑问，欢迎提 Issue。如果有任何修改建议，欢迎提 Pull Request。</p>
+<h2 id="鸣谢-Credits"><a href="#鸣谢-Credits" class="headerlink" title="鸣谢 Credits"></a>鸣谢 Credits</h2><p><a href="https://www.browserstack.com" target="_blank" rel="noopener"><img src="assets/browserstack.svg" alt=""></a></p>
+<p>感谢 BrowserStack 容许我们在真实的浏览器中测试此项目。<br>Thanks to BrowserStack for allowing us to test this project in real browsers.</p>
+<p>代码自这篇博文魔改而来：<br><a href="https://www.fghrsh.net/post/123.html" target="_blank" rel="noopener">https://www.fghrsh.net/post/123.html</a></p>
+<p>点击看板娘的纸飞机按钮时，会出现一个彩蛋，这来自于 <a href="http://www.websiteasteroids.com" target="_blank" rel="noopener">WebsiteAsteroids</a>。</p>
+<h2 id="更多-More"><a href="#更多-More" class="headerlink" title="更多 More"></a>更多 More</h2><p>更多内容可以参考：<br><a href="https://imjad.cn/archives/lab/add-dynamic-poster-girl-with-live2d-to-your-blog-02" target="_blank" rel="noopener">https://imjad.cn/archives/lab/add-dynamic-poster-girl-with-live2d-to-your-blog-02</a><br><a href="https://github.com/xiazeyu/live2d-widget.js" target="_blank" rel="noopener">https://github.com/xiazeyu/live2d-widget.js</a><br><a href="https://github.com/summerscar/live2dDemo" target="_blank" rel="noopener">https://github.com/summerscar/live2dDemo</a></p>
+<p>还可以自行搭建后端 API，并增加模型（需要修改的内容比较多，此处不再赘述）：<br><a href="https://github.com/fghrsh/live2d_api" target="_blank" rel="noopener">https://github.com/fghrsh/live2d_api</a><br><a href="https://github.com/xiazeyu/live2d-widget-models" target="_blank" rel="noopener">https://github.com/xiazeyu/live2d-widget-models</a><br><a href="https://github.com/xiaoski/live2d_models_collection" target="_blank" rel="noopener">https://github.com/xiaoski/live2d_models_collection</a></p>
+<p>除此之外，还有桌面版本：<br><a href="https://github.com/amorist/platelet" target="_blank" rel="noopener">https://github.com/amorist/platelet</a><br><a href="https://github.com/akiroz/Live2D-Widget" target="_blank" rel="noopener">https://github.com/akiroz/Live2D-Widget</a></p>
+<h2 id="许可证-License"><a href="#许可证-License" class="headerlink" title="许可证 License"></a>许可证 License</h2><p>Released under the GNU General Public License v3<br><a href="http://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">http://www.gnu.org/licenses/gpl-3.0.html</a></p>
+<p>本仓库中涉及的所有 Live2D 模型、图片、动作数据等版权均属于其原作者，仅供研究学习，不得用于商业用途。</p>
+<p>Live2D 官方网站：<br><a href="https://www.live2d.com/en/" target="_blank" rel="noopener">https://www.live2d.com/en/</a><br><a href="https://live2d.github.io" target="_blank" rel="noopener">https://live2d.github.io</a></p>
+<p>Live2D Cubism Core は Live2D Proprietary Software License で提供しています。<br><a href="https://www.live2d.com/eula/live2d-proprietary-software-license-agreement_en.html" target="_blank" rel="noopener">https://www.live2d.com/eula/live2d-proprietary-software-license-agreement_en.html</a><br>Live2D Cubism Components は Live2D Open Software License で提供しています。<br><a href="http://www.live2d.com/eula/live2d-open-software-license-agreement_en.html" target="_blank" rel="noopener">http://www.live2d.com/eula/live2d-open-software-license-agreement_en.html</a></p>
+<blockquote>
+<p>The terms and conditions do prohibit modification, but obfuscating in <code>live2d.min.js</code> would not be considered illegal modification.</p>
+</blockquote>
+<p><a href="https://community.live2d.com/discussion/140/webgl-developer-licence-and-javascript-question" target="_blank" rel="noopener">https://community.live2d.com/discussion/140/webgl-developer-licence-and-javascript-question</a></p>
+<h2 id="更新-Update"><a href="#更新-Update" class="headerlink" title="更新 Update"></a>更新 Update</h2><p>2018年10月31日，由 fghrsh 提供的原 API 停用，请更新至新地址。参考文章：<br><a href="https://www.fghrsh.net/post/170.html" target="_blank" rel="noopener">https://www.fghrsh.net/post/170.html</a></p>
+<p>2020年1月1日起，本项目不再依赖于 jQuery。</p>
+
+        
+      </div>
+      
+      
+      
+    </div>
+    
+    
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/teriri.png"
+                alt="阿汤尼斯" />
+            
+              <p class="site-author-name" itemprop="name">阿汤尼斯</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/artangnis" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Live2D-Widget"><span class="nav-text">Live2D Widget</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特性-Feature"><span class="nav-text">特性 Feature</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例-Demo"><span class="nav-text">示例 Demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖-Dependencies"><span class="nav-text">依赖 Dependencies</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-Usage"><span class="nav-text">使用 Usage</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-CDN"><span class="nav-text">Using CDN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Self-host"><span class="nav-text">Self-host</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目录结构-Files"><span class="nav-text">目录结构 Files</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#鸣谢-Credits"><span class="nav-text">鸣谢 Credits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多-More"><span class="nav-text">更多 More</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#许可证-License"><span class="nav-text">许可证 License</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新-Update"><span class="nav-text">更新 Update</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Artangnis(阿汤尼斯)</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i>
+<span id="busuanzi_container_site_uv">
+  本站总访客数:<span id="busuanzi_value_site_uv"></span>&nbsp;&nbsp;| 
+</span>
+<span id="busuanzi_container_site_pv">
+    &nbsp;本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+</div>
+</div>
+
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("03/12/2019 12:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
