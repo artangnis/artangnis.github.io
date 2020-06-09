@@ -354,19 +354,13 @@
 <h3 id="（4）配置SSH文件"><a href="#（4）配置SSH文件" class="headerlink" title="（4）配置SSH文件"></a>（4）配置SSH文件</h3><p>在<code>boot</code>盘中手动创建一个空白记事本<code>.txt</code>文件，命名为<code>ssh</code>，删掉<code>.txt</code>扩展名。</p>
 <h3 id="（5）配置Wi-Fi文件"><a href="#（5）配置Wi-Fi文件" class="headerlink" title="（5）配置Wi-Fi文件"></a>（5）配置Wi-Fi文件</h3><p>用同样的方法新建一个空白文件<code>wpa_supplicant.conf</code>（注意要删掉扩展名<code>.txt</code>），并用Notepad++打开<code>wpa_supplicant.conf</code>,输入以下配置，可以用多个<code>network{}</code>来配置多个Wi-Fi：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">country&#x3D;GB</span><br><span class="line">ctrl_interface&#x3D;DIR&#x3D;&#x2F;var&#x2F;run&#x2F;wpa_supplicant GROUP&#x3D;netdev</span><br><span class="line">update_config&#x3D;1</span><br><span class="line">network&#x3D;&#123;</span><br><span class="line">	ssid&#x3D;&quot;输入WiFi的名字，不删除引号,不能有中文&quot;</span><br><span class="line">	psk&#x3D;&quot;输入WiFi密码，不删除引号&quot;</span><br><span class="line">	priority&#x3D;输入数字，数字越大优先级越高</span><br><span class="line">&#125;</span><br><span class="line">network&#x3D;&#123;</span><br><span class="line">	ssid&#x3D;&quot;输入WiFi的名字，不删除引号,不能有中文&quot;</span><br><span class="line">	psk&#x3D;&quot;输入WiFi密码，不删除引号&quot;</span><br><span class="line">	priority&#x3D;输入数字，数字越大优先级越高</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 <h2 id="二、树莓派开机启动"><a href="#二、树莓派开机启动" class="headerlink" title="二、树莓派开机启动"></a>二、树莓派开机启动</h2><p>弹出读卡器，拔出SD卡并插到树莓派的SD卡槽中，用HDMI线将显示屏与树莓派相连，最后用树莓派电源线或安卓数据线给树莓派通电。树莓派上的红灯常亮，表示通电；绿灯间歇性亮，表示读写SD卡。如果绿灯闪烁，屏幕上显示出树莓派的logo，说明操作系统正常。</p>
 <h2 id="三、树莓派换源（清华大学开源软件镜像站）"><a href="#三、树莓派换源（清华大学开源软件镜像站）" class="headerlink" title="三、树莓派换源（清华大学开源软件镜像站）"></a>三、树莓派换源（清华大学开源软件镜像站）</h2><h3 id="将Raspbain包管理器apt-get换源"><a href="#将Raspbain包管理器apt-get换源" class="headerlink" title="将Raspbain包管理器apt-get换源"></a>将<code>Raspbain</code>包管理器<code>apt-get</code>换源</h3><p>在树莓派的命令行界面输入：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano &#x2F;etc&#x2F;apt&#x2F;sources.list</span><br></pre></td></tr></table></figure>
-
 <p>使用键盘方向键控制，在第一行开头加一个<code>#</code>，把以下代码拷贝到最后一行之后：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;raspbian&#x2F;raspbian&#x2F; stretch main contrib non-free rpi</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;raspbian&#x2F;raspbian&#x2F; stretch main contrib non-free rpi</span><br></pre></td></tr></table></figure>
-
 <p>修改完毕后，先按键盘上的<code>ctrl</code>+<code>o</code>，再按回车保存，再按<code>ctrl</code>+<code>x</code>退出Nano编辑器回到命令行界面，之后输入以下命令更新到清华大学镜像源最新的软件列表：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
-
 <p>这个命令，会访问源列表里的每个网址，并读取软件列表，然后保存在树莓派本地。</p>
 <blockquote>
 <p>以上步骤实现了Raspbian的包管理器<code>apt-get</code>换源到清华大学软件镜像站，并更新了软件列表，今后在树莓派命令行中执行<code>sudo apt-get install</code>+<code>软件名</code>时便会自动从清华大学开源软件镜像站高速下载软件。</p>
@@ -376,17 +370,13 @@
 </blockquote>
 <p>只需树莓派命令行中输入下面这一行命令，即可永久设置pip下载源为国内源</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip config set global.index-url https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple</span><br></pre></td></tr></table></figure>
-
 <h4 id="方法二：通过配置脚本换源"><a href="#方法二：通过配置脚本换源" class="headerlink" title="方法二：通过配置脚本换源"></a>方法二：通过配置脚本换源</h4><p>在树莓派的命令行中<strong>依次输入</strong>运行以下三个命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir ~&#x2F;.pip</span><br><span class="line">cd .pip</span><br><span class="line">sudo nano pip.conf</span><br></pre></td></tr></table></figure>
-
 <p>在打开的文件中输入以下内容：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">timeout &#x3D; 10</span><br><span class="line">index-url &#x3D;  http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;pypi&#x2F;simple&#x2F;</span><br><span class="line">extra-index-url&#x3D; http:&#x2F;&#x2F;pypi.douban.com&#x2F;simple&#x2F;</span><br><span class="line">[install]</span><br><span class="line">trusted-host&#x3D;</span><br><span class="line">    mirrors.aliyun.com</span><br><span class="line">    pypi.douban.com</span><br></pre></td></tr></table></figure>
-
 <p>先按键盘上的<code>ctrl</code>+<code>o</code>，再按回车保存，再按<code>ctrl</code>+<code>x</code>退出Nano编辑器回到命令行界面。</p>
 <h2 id="四、树莓派内部配置"><a href="#四、树莓派内部配置" class="headerlink" title="四、树莓派内部配置"></a>四、树莓派内部配置</h2><p>打开树莓派命令行界面输入命令，输入以下代码进入树莓派配置界面：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo raspi-config</span><br></pre></td></tr></table></figure>
-
 <p>利用<strong>方向键</strong>切换光标位置。</p>
 <h3 id="第一行：Change-User-Password修改密码"><a href="#第一行：Change-User-Password修改密码" class="headerlink" title="第一行：Change User Password修改密码"></a>第一行：<code>Change User Password</code>修改密码</h3><p>按照里面的要求修改成自己的密码即可。默认用户名为<code>pi</code>，密码为<code>raspberry</code>。</p>
 <p>这个密码会用于<strong>远程SSH登陆</strong>、<strong>VNC远程桌面</strong>及<strong>管理员root权限</strong>。</p>
@@ -418,10 +408,8 @@
 </li>
 <li><p>如果树莓派连接到了显示屏上，可以打开树莓派命令行窗口，输入<code>ifconfig</code>；</p>
 </li>
-<li><p>如果没有显示屏，用手机连到与树莓派同一个网络的Wi-Fi下，打开苹果手机APP<code>dataplicity</code>应用上扫描出树莓派的IP地址；</p>
-</li>
-<li><p>如果没有显示屏，用电脑连到与树莓派同一个网络的Wi-Fi或者有线网络下，在电脑上打开<code>Advanced IP Scanner</code>，扫描出树莓派的IP地址。</p>
-</li>
+<li>如果没有显示屏，用手机连到与树莓派同一个网络的Wi-Fi下，打开苹果手机APP<code>dataplicity</code>应用上扫描出树莓派的IP地址；</li>
+<li>如果没有显示屏，用电脑连到与树莓派同一个网络的Wi-Fi或者有线网络下，在电脑上打开<code>Advanced IP Scanner</code>，扫描出树莓派的IP地址。</li>
 </ol>
 <h2 id="六、远程登录树莓派"><a href="#六、远程登录树莓派" class="headerlink" title="六、远程登录树莓派"></a>六、远程登录树莓派</h2><p>通过之前的方法获取了树莓派的IP地址后就可以开始远程登录树莓派了，远程登录树莓派适合在没有屏幕或者有屏幕但不方便操作的情况下使用。</p>
 <h3 id="方法一：putty"><a href="#方法一：putty" class="headerlink" title="方法一：putty"></a>方法一：putty</h3><p><code>putty</code>是用来在电脑上远程输入树莓派root命令的，其功能和电脑的command窗口很像，但无法像VNC那样可以显示图形界面。</p>
@@ -430,19 +418,16 @@
 <p>确认<code>VNC</code>功能开启后，打开<code>VNC Viewer</code>，选择顶部菜单栏<code>File</code>中的<code>New connection</code>建立新的连接，输入树莓派的IP地址并自定义新连接的名字，确认回车后，在出现的画面中点击Continue，然后就会出现一个需要输入ID和密码的界面，输入之后就能远程登录树莓派了。</p>
 <h2 id="七、中文字体及输入法的下载和安装"><a href="#七、中文字体及输入法的下载和安装" class="headerlink" title="七、中文字体及输入法的下载和安装"></a>七、中文字体及输入法的下载和安装</h2><p>打开树莓派命令行，输入以下命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install fonts-wqy-zenhei</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>这行命令里的<code>sudo</code>表示使用管理员root权限，<code>apt-get</code>表示使用apt-get包管理器来下载，<code>install</code>表示下载安装，<code>fonts-wqy-zenhei</code>表示软件名字，所有的<code>sudo apt-get install</code>+<code>软件名</code>都表示这样的意思。</p>
 </blockquote>
 <p>接下来，安装中文输入法fcitx及Google拼音输入法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install fcitx fcitx-googlepinyin fcitx-module-cloudpinyin fcitx-sunpinyin</span><br></pre></td></tr></table></figure>
-
 <p>在跳出的对话框中输入<code>y</code>和回车<code>↩</code>，确定下载安装，需要90MB存储空间。</p>
 <p>安装成功之后，会在下一次重启时生效。</p>
 <p>此后可以使用<code>ctrl</code>+<code>空格</code>切换为中文输入法。</p>
 <h2 id="八、升级所有安装的软件"><a href="#八、升级所有安装的软件" class="headerlink" title="八、升级所有安装的软件"></a>八、升级所有安装的软件</h2><p>运行下面这行命令，会把本地已安装的软件，与刚下载的软件列表里对应软件进行对比，如果发现已安装的软件版本太低，就会提示你更新，执行这行命令可能需要很长时间。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>我们刚刚还运行了<code>sudo apt-get update</code>命令，现在运行<code>sudo apt-get upgrade</code>命令，有什么不同呢？</p>
 <p>答：<code>update</code>仅仅是从下载源获取并更新可下载软件列表，相当于更新索引地图，而<code>upgrade</code>是更新软件本身，所以后者要花费多得多的时间。</p>

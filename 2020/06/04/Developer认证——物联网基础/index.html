@@ -348,30 +348,34 @@
 <p>物联网是新一代信息技术的重要组成部分，也是“信息化”时代的重要发展阶段。物联网通过智能感知、识别技术与普适计算等通信感知技术，广泛应用于网络的融合中，也因此被称为继计算机、互联网之后世界信息产业发展的第三次浪潮。</p>
 <p>通过二维码识读设备、射频识别（RFID）装置、红外感应装置、全球定位系统和激光扫描器等信息传感设备，按约定的协议，把<strong>任何物品与互联网相连接</strong>，进行信息交换和通信，以实现智能化识别、定位、跟踪、监控和管理的一种网络。                                                                                                  ——国际电信联盟（ITU）</p>
 <p>物联网就是<strong>物物相连</strong>的互联网，这其中有两层意思：其一，物联网的核心和基础仍然是互联网，是在互联网的基础上的延伸和扩展的网络；其二，其用户端延伸和扩展到了任何物品与物品之间，进行信息交换和通信，也就是物物相息。                                                                                                                  ——百度百科</p>
-<h3 id="主流物联网接入技术应用场景划分"><a href="#主流物联网接入技术应用场景划分" class="headerlink" title="主流物联网接入技术应用场景划分"></a>主流物联网接入技术应用场景划分</h3><table>
+<h3 id="主流物联网接入技术应用场景划分"><a href="#主流物联网接入技术应用场景划分" class="headerlink" title="主流物联网接入技术应用场景划分"></a>主流物联网接入技术应用场景划分</h3><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">接入技术</th>
-<th align="center">特点</th>
-<th align="center">业务应用</th>
+<th style="text-align:center">接入技术</th>
+<th style="text-align:center">特点</th>
+<th style="text-align:center">业务应用</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">4G/5G/LTE-V</td>
-<td align="center">传输速率&gt;10Mbps，功耗较高</td>
-<td align="center">车联网、视频监控、智能机器等</td>
+<tbody>
+<tr>
+<td style="text-align:center">4G/5G/LTE-V</td>
+<td style="text-align:center">传输速率&gt;10Mbps，功耗较高</td>
+<td style="text-align:center">车联网、视频监控、智能机器等</td>
 </tr>
 <tr>
-<td align="center">eMTC/GPRS</td>
-<td align="center">传输速率&lt;1Mbps，成本较低，功耗较低</td>
-<td align="center">穿戴、车辆调度、电子广告、无线ATM等</td>
+<td style="text-align:center">eMTC/GPRS</td>
+<td style="text-align:center">传输速率&lt;1Mbps，成本较低，功耗较低</td>
+<td style="text-align:center">穿戴、车辆调度、电子广告、无线ATM等</td>
 </tr>
 <tr>
-<td align="center">NB-IoT</td>
-<td align="center">传输速率&lt;100Kbps，成本低，功耗低，覆盖广</td>
-<td align="center">远程抄表、公共事业、农林渔牧、数据采集等</td>
+<td style="text-align:center">NB-IoT</td>
+<td style="text-align:center">传输速率&lt;100Kbps，成本低，功耗低，覆盖广</td>
+<td style="text-align:center">远程抄表、公共事业、农林渔牧、数据采集等</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="物联网层次架构"><a href="#物联网层次架构" class="headerlink" title="物联网层次架构"></a>物联网层次架构</h3><p>物联网的层次架构可以分为<strong>端</strong>（信息收集和信号处理）、<strong>边</strong>（IoT 边缘）、<strong>管</strong>（接入和传输网络）、<strong>云</strong>（解决数据如何存储、检索、使用、业务规划、安全、维护、费用等）、<strong>行业应用</strong>（数据呈现及客户交互）；也可分为感知层、网络层、平台层和应用层。</p>
 <h3 id="物联网产业发展面临的主要挑战"><a href="#物联网产业发展面临的主要挑战" class="headerlink" title="物联网产业发展面临的主要挑战"></a>物联网产业发展面临的主要挑战</h3><ol>
 <li>新业务上线周期长（应用碎片化，开发周期长，产品上市慢）</li>
@@ -540,7 +544,7 @@
 <li>南向设备（UE）收到信令，执行完毕，返回信令执行结果，IoT平台收到上述执行结果，通过编解码插件的解析，获取信令执行的结果，修改对应的信令状态，并将南向设备（UE）收到的信息上报到应用服务器（APP Server）上。</li>
 </ul>
 </li>
-<li><p>*<em>Decode接口和Encode接口 *</em></p>
+<li><p><strong>Decode接口和Encode接口 </strong></p>
 <p>Decode接口的入参binaryData为设备发过来的CoAP报文的Payload部分，设备的上行报文可以分为设备数据上报、设备对平台命令的应答两种情况，在这两种情况下解码输出的字段不同；Encode接口的入参是Json格式数据，是平台下发的消息或应答，平台的下行报文可以分为平台命令下发、平台对设备上报数据的相应两种情况。</p>
 </li>
 </ol>
@@ -632,104 +636,112 @@
 <li>CoAP基于REST，服务器的资源地址和互联网一样也有类似URI的格式，客户端同样有POST，GET，PUT，DELETE方法来访问server，但是想对HTTP简化实现降低复杂度（代码更小，封包更小）。</li>
 </ol>
 <h3 id="RESTful架构"><a href="#RESTful架构" class="headerlink" title="RESTful架构"></a>RESTful架构</h3><p>REST是一种设计风格而不是标准，如果一个架构符合REST原则，我们就称它为RESTful架构，REST就是表现层状态转化，其中表现层其实指的是资源的表现层，即资源在网络中某种形式进行状态转移。</p>
-<h3 id="CoAP协议报文结构"><a href="#CoAP协议报文结构" class="headerlink" title="CoAP协议报文结构"></a>CoAP协议报文结构</h3><table>
+<h3 id="CoAP协议报文结构"><a href="#CoAP协议报文结构" class="headerlink" title="CoAP协议报文结构"></a>CoAP协议报文结构</h3><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">字段</th>
-<th align="center">位</th>
-<th align="center">名称</th>
-<th align="center">描述</th>
+<th style="text-align:center">字段</th>
+<th style="text-align:center">位</th>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">描述</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">Ver</td>
-<td align="center">2bits</td>
-<td align="center">版本编号</td>
-<td align="center">指示CoAP协议的版本号，类似于HTTP1.0和HTTP1.1，版本编号占2位。</td>
+<tbody>
+<tr>
+<td style="text-align:center">Ver</td>
+<td style="text-align:center">2bits</td>
+<td style="text-align:center">版本编号</td>
+<td style="text-align:center">指示CoAP协议的版本号，类似于HTTP1.0和HTTP1.1，版本编号占2位。</td>
 </tr>
 <tr>
-<td align="center">T</td>
-<td align="center">2bits</td>
-<td align="center">报文类型</td>
-<td align="center">CoAP协议定义了4种不同形式的报文，包括CON，NON，ACK，RST。</td>
+<td style="text-align:center">T</td>
+<td style="text-align:center">2bits</td>
+<td style="text-align:center">报文类型</td>
+<td style="text-align:center">CoAP协议定义了4种不同形式的报文，包括CON，NON，ACK，RST。</td>
 </tr>
 <tr>
-<td align="center">TKL</td>
-<td align="center">4bits</td>
-<td align="center">Token length</td>
-<td align="center">Token长度。</td>
+<td style="text-align:center">TKL</td>
+<td style="text-align:center">4bits</td>
+<td style="text-align:center">Token length</td>
+<td style="text-align:center">Token长度。</td>
 </tr>
 <tr>
-<td align="center">Code</td>
-<td align="center">8bits</td>
-<td align="center">表现形式</td>
-<td align="center">Code在CoAP请求报文和相应报文中具有不同的表现形式。</td>
+<td style="text-align:center">Code</td>
+<td style="text-align:center">8bits</td>
+<td style="text-align:center">表现形式</td>
+<td style="text-align:center">Code在CoAP请求报文和相应报文中具有不同的表现形式。</td>
 </tr>
 <tr>
-<td align="center">Message ID</td>
-<td align="center">16bits</td>
-<td align="center">报文编号</td>
-<td align="center">用于重复消息检测、匹配消息类型等。每个CoAP报文都有一个ID，在一次会话中ID总是保持不变，但是在这个会话结束之后，该ID会被回收利用。</td>
+<td style="text-align:center">Message ID</td>
+<td style="text-align:center">16bits</td>
+<td style="text-align:center">报文编号</td>
+<td style="text-align:center">用于重复消息检测、匹配消息类型等。每个CoAP报文都有一个ID，在一次会话中ID总是保持不变，但是在这个会话结束之后，该ID会被回收利用。</td>
 </tr>
 <tr>
-<td align="center">Token</td>
-<td align="center"></td>
-<td align="center">标识具体内容</td>
-<td align="center">ID的另一种表现，通过TKL制定Token长度。</td>
+<td style="text-align:center">Token</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">标识具体内容</td>
+<td style="text-align:center">ID的另一种表现，通过TKL制定Token长度。</td>
 </tr>
 <tr>
-<td align="center">Options</td>
-<td align="center"></td>
-<td align="center">报文选项</td>
-<td align="center">通过报文选项可设定CoAP主机，CoAP URI，CoAP请求参数和负载媒体类型等。</td>
+<td style="text-align:center">Options</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">报文选项</td>
+<td style="text-align:center">通过报文选项可设定CoAP主机，CoAP URI，CoAP请求参数和负载媒体类型等。</td>
 </tr>
 <tr>
-<td align="center">1111 1111</td>
-<td align="center">8bits</td>
-<td align="center">分隔符</td>
-<td align="center">CoAP报文和具体负载之间的分隔符，固定一个字节。</td>
+<td style="text-align:center">1111 1111</td>
+<td style="text-align:center">8bits</td>
+<td style="text-align:center">分隔符</td>
+<td style="text-align:center">CoAP报文和具体负载之间的分隔符，固定一个字节。</td>
 </tr>
 <tr>
-<td align="center">Payload</td>
-<td align="center"></td>
-<td align="center">交互数据</td>
-<td align="center">真正有用的被交互的数据。</td>
+<td style="text-align:center">Payload</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">交互数据</td>
+<td style="text-align:center">真正有用的被交互的数据。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="CoAP协议逻辑分层"><a href="#CoAP协议逻辑分层" class="headerlink" title="CoAP协议逻辑分层"></a>CoAP协议逻辑分层</h3><p>CoAP协议逻辑上分两层：<strong>资源请求/响应层</strong>（Request/Response）和<strong>消息层</strong>（Messages）。Messages层只负责控制端到端的报文交互；Request/Response层负责传输资源操作的请求和响应。</p>
 <h3 id="CoAP-Messages模型"><a href="#CoAP-Messages模型" class="headerlink" title="CoAP Messages模型"></a>CoAP Messages模型</h3><ol>
 <li>Reliability Mode（可靠消息传播）：主要通过确认及重传机制来实现的，客户端发送消息后，需要等待服务器收到通知，如果在规定时间内，没有收到需要重新发送数据。可靠传输是基于CON消息传输的，服务器端收到CON类型的消息后，需要返回ACK消息，客户端在指定时间ACK_TIMEOUT内收到ACK消息后，才代表这个消息已发送到服务器端。</li>
 <li>Non-Reliability Mode（非可靠消息传播）：客户端只管发送消息，不管服务器端有没有收到，因此可能存在丢包。非可靠消息传播是基于NON消息传输的，服务器端收到NON类型消息后，不用回复ACK消息。</li>
 </ol>
-<h3 id="CoAP-Messages分类"><a href="#CoAP-Messages分类" class="headerlink" title="CoAP Messages分类"></a>CoAP Messages分类</h3><table>
+<h3 id="CoAP-Messages分类"><a href="#CoAP-Messages分类" class="headerlink" title="CoAP Messages分类"></a>CoAP Messages分类</h3><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">字段类型</th>
-<th align="center">作用</th>
-<th align="center">描述</th>
+<th style="text-align:center">字段类型</th>
+<th style="text-align:center">作用</th>
+<th style="text-align:center">描述</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">CON消息</td>
-<td align="center">需要确认的消息</td>
-<td align="center">Receipt方必须对消息回复ACK消息或者Reset。</td>
+<tbody>
+<tr>
+<td style="text-align:center">CON消息</td>
+<td style="text-align:center">需要确认的消息</td>
+<td style="text-align:center">Receipt方必须对消息回复ACK消息或者Reset。</td>
 </tr>
 <tr>
-<td align="center">NON消息</td>
-<td align="center">不需要确认的消息</td>
-<td align="center">Receipt方可能回复Reset。</td>
+<td style="text-align:center">NON消息</td>
+<td style="text-align:center">不需要确认的消息</td>
+<td style="text-align:center">Receipt方可能回复Reset。</td>
 </tr>
 <tr>
-<td align="center">ACK消息</td>
-<td align="center">用于向客户端确认CON消息已收到</td>
-<td align="center">可以携带同步可靠响应模式Piggybacked Response。</td>
+<td style="text-align:center">ACK消息</td>
+<td style="text-align:center">用于向客户端确认CON消息已收到</td>
+<td style="text-align:center">可以携带同步可靠响应模式Piggybacked Response。</td>
 </tr>
 <tr>
-<td align="center">RST消息</td>
-<td align="center">用于回复收到的无法处理的消息</td>
-<td align="center">可通过一个Empty Message触发一个Reset，用于Endpoint的保活检测。</td>
+<td style="text-align:center">RST消息</td>
+<td style="text-align:center">用于回复收到的无法处理的消息</td>
+<td style="text-align:center">可通过一个Empty Message触发一个Reset，用于Endpoint的保活检测。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>协议定义的Message的种类，由报文中的2bits的【T】字段确认具体类型；</p>
 <p>Empty Message是一个既不是Request也不是Response的Message。</p>
 <h3 id="CoAP-Message的可靠传输"><a href="#CoAP-Message的可靠传输" class="headerlink" title="CoAP Message的可靠传输"></a>CoAP Message的可靠传输</h3><ol>
@@ -775,10 +787,8 @@
 </li>
 <li><p>客户端在无报文发送时，按KeepAlive周期定时发送2字节的PINGREQ心跳报文，代理服务器收到PINGREQ心跳报文后，回复2字节的PINGRESP报文。</p>
 </li>
-<li><p>代理服务器在1.5个心跳周期内，既没有收到客户端发布订阅报文，也没有收到PINGREQ心跳报文时，主动心跳超时断开客户端TCP连接并且发送遗嘱消息（前提是客户端已经指定了遗嘱）。</p>
-</li>
-<li><p>客户端可以在任何时间发送PINGREQ来确认网络连接是有效的，PINGREQ不包含任何消息体（payload）。</p>
-</li>
+<li>代理服务器在1.5个心跳周期内，既没有收到客户端发布订阅报文，也没有收到PINGREQ心跳报文时，主动心跳超时断开客户端TCP连接并且发送遗嘱消息（前提是客户端已经指定了遗嘱）。</li>
+<li>客户端可以在任何时间发送PINGREQ来确认网络连接是有效的，PINGREQ不包含任何消息体（payload）。</li>
 </ol>
 <h2 id="八、NB-IoT模组常用AT指令"><a href="#八、NB-IoT模组常用AT指令" class="headerlink" title="八、NB-IoT模组常用AT指令"></a>八、NB-IoT模组常用AT指令</h2><h3 id="NB-IoT芯片的常用AT指令"><a href="#NB-IoT芯片的常用AT指令" class="headerlink" title="NB-IoT芯片的常用AT指令"></a>NB-IoT芯片的常用AT指令</h3><p>NB-IoT芯片的AT指令可以分为测试指令（AT+<X>=?）、查询指令（AT+<X>?）、有参数的执行指令（AT+<X>=&lt;…&gt;）和无参数的执行指令（AT+<X>）。</p>
 <h3 id="NB-IoT-3GPP相关指令"><a href="#NB-IoT-3GPP相关指令" class="headerlink" title="NB-IoT 3GPP相关指令"></a>NB-IoT 3GPP相关指令</h3><ol>
