@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Raspberry Pi" />
+  <meta name="keywords" content="算法,PAT,考研," />
 
 
 
@@ -79,15 +79,18 @@
 
 
 
-<meta name="description" content="Live2D 看板娘 &#x2F; Demo   #github svg { 	transition: all 1s; 	fill: #222; 	color: #fff; 	position: absolute; 	top: 0; 	right: 0; 	border: 0; 	width: 80px; 	height: 80px; } #github:hover svg { 	width: 16">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Artangnis&#39;s Blog">
-<meta property="og:url" content="http://www.artangnis.top/live2d-widget/live2d-widget/demo/demo1.html">
+<meta name="description" content="算法笔记（1）——基本数据类型    数据类型 取值范围 大致范围 占用大小 输入格式 输出格式     int $- 2^{31}$ ~ $ +(2^{31} - 1)$ $- 2 × 10^9$ ~ $+2 × 10^9$ 4Byte scanf(“%d”, &amp;d); printf(“%d”, d);   long long $- 2^{63}$ ~ $ +(2^{63} - 1)$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法笔记（1）——基本数据类型">
+<meta property="og:url" content="http://www.artangnis.top/2020/06/10/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89%E2%80%94%E2%80%94%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
 <meta property="og:site_name" content="Artangnis&#39;s Blog">
-<meta property="og:description" content="Live2D 看板娘 &#x2F; Demo   #github svg { 	transition: all 1s; 	fill: #222; 	color: #fff; 	position: absolute; 	top: 0; 	right: 0; 	border: 0; 	width: 80px; 	height: 80px; } #github:hover svg { 	width: 16">
-<meta property="article:published_time" content="2020-03-18T06:07:30.127Z">
-<meta property="article:modified_time" content="2020-03-18T06:07:30.127Z">
+<meta property="og:description" content="算法笔记（1）——基本数据类型    数据类型 取值范围 大致范围 占用大小 输入格式 输出格式     int $- 2^{31}$ ~ $ +(2^{31} - 1)$ $- 2 × 10^9$ ~ $+2 × 10^9$ 4Byte scanf(“%d”, &amp;d); printf(“%d”, d);   long long $- 2^{63}$ ~ $ +(2^{63} - 1)$">
+<meta property="article:published_time" content="2020-06-09T16:21:16.000Z">
+<meta property="article:modified_time" content="2020-06-09T16:45:33.143Z">
 <meta property="article:author" content="阿汤尼斯">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="PAT">
+<meta property="article:tag" content="考研">
 <meta name="twitter:card" content="summary">
 
 
@@ -118,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://www.artangnis.top/live2d-widget/live2d-widget/demo/demo1.html"/>
+  <link rel="canonical" href="http://www.artangnis.top/2020/06/10/算法笔记（1）——基本数据类型/"/>
 
 
 
 
 
-  <title> | Artangnis's Blog</title>
+  <title>算法笔记（1）——基本数据类型 | Artangnis's Blog</title>
   
 
 
@@ -146,7 +149,7 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
   <script src="https://cdn.jsdelivr.net/gh/artangnis/live2d-widget@latest/autoload.js"></script>
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <script src="/live2d-widget/autoload.js"></script>
 
@@ -297,68 +300,233 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.artangnis.top/2020/06/10/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89%E2%80%94%E2%80%94%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阿汤尼斯">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/teriri.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Artangnis's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline"></h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Live2D 看板娘 / Demo</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
-<style>
-#github svg {
-	transition: all 1s;
-	fill: #222;
-	color: #fff;
-	position: absolute;
-	top: 0;
-	right: 0;
-	border: 0;
-	width: 80px;
-	height: 80px;
-}
-#github:hover svg {
-	width: 160px;
-	height: 160px;
-}
-</style>
-<meta name="generator" content="Hexo 4.2.0"></head>
-<body>
-<a id="github" href="https://github.com/stevenjoezhang/live2d-widget" target="_blank" title="Visit the open-source code on GitHub!">
-	<svg viewBox="0 0 250 250" aria-hidden="true">
-		<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-		<path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" class="octo-arm"></path>
-		<path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
-	</svg>
-</a>
-<script src="../autoload.js"></script>
-</body>
-</html>
-
+          <h1 class="post-title" itemprop="name headline">算法笔记（1）——基本数据类型</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-10T00:21:16+08:00">
+                2020-06-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h1 id="算法笔记（1）——基本数据类型"><a href="#算法笔记（1）——基本数据类型" class="headerlink" title="算法笔记（1）——基本数据类型"></a>算法笔记（1）——基本数据类型</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">数据类型</th>
+<th>取值范围</th>
+<th>大致范围</th>
+<th>占用大小</th>
+<th>输入格式</th>
+<th>输出格式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">int</td>
+<td>$- 2^{31}$ ~ $ +(2^{31} - 1)$</td>
+<td>$- 2 × 10^9$ ~ $+2 × 10^9$</td>
+<td>4Byte</td>
+<td>scanf(“%d”, &amp;d);</td>
+<td>printf(“%d”, d);</td>
+</tr>
+<tr>
+<td style="text-align:left">long long</td>
+<td>$- 2^{63}$ ~ $ +(2^{63} - 1)$</td>
+<td>$- 9 × 10^{18}$ ~ $+9 × 10^{18}$</td>
+<td>8Byte</td>
+<td>scanf(“%lld”, &amp;lld);</td>
+<td>printf(“%lld”, lld);</td>
+</tr>
+<tr>
+<td style="text-align:left">float</td>
+<td>$- 2^{128}$ ~ $ +2^{128}$</td>
+<td>实际精度6~7位</td>
+<td>4Byte(符号1位，指数8位，尾数23位)</td>
+<td>scanf(“%f”, &amp;f);</td>
+<td>printf(“%f”, f);</td>
+</tr>
+<tr>
+<td style="text-align:left">double</td>
+<td>$- 2^{1024}$ ~ $ +2^{1024}$</td>
+<td>实际精度15~16位</td>
+<td>8Byte(符号1位，指数11位，尾数52位)</td>
+<td>scanf(“%lf”, &amp;lf);</td>
+<td><strong>printf(“%f”, f);</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">char</td>
+<td>$-128$ ~ $+127$</td>
+<td>$-128$ ~ $+127$</td>
+<td></td>
+<td>scanf(“%c”, &amp;c);字符串：<strong>scanf(“%s”, str);</strong></td>
+<td>printf(“%c”, c); 字符串：printf(“%s”, str);</td>
+</tr>
+<tr>
+<td style="text-align:left">bool</td>
+<td>0 or 1(false or true)</td>
+<td>0 or 1(false or true)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<ol>
+<li>小写字母比大写字母的ASCII码值大<strong>32</strong>；</li>
+<li>由于数组名称本身就代表了数组第一个元素的地址，所以scanf中，<strong>char字符串数组整个输入的情况下不需要加取地址运算符</strong>；</li>
+<li>在scanf中，<strong>%c格式是可以读入空格和换行的</strong>，其他格式的输入是以空格和换行作为读入结束的标志；</li>
+<li>常用输出格式：<strong>%0md</strong>（使不足m位的int型变量以m位进行右对齐输出，高位用0补齐）、<strong>%.mf</strong>（使浮点数保留m位小数输出，服从“四舍五入五成双”的规则）；</li>
+<li>getchar和putchar分别用来输入和输出<strong>单个字符（包括换行符）</strong>，gets和puts分别用来输入和输出<strong>一行字符串</strong>；</li>
+<li>gets识别换行符<strong>\n</strong>作为输入结束，因此scanf完一个整数后，如果要使用gets，需要先用getchar接收整数后的换换行符；</li>
+<li>char字符串数组的末尾都有一个<strong>空字符\0</strong>，以<strong>表示存放的字符串的结尾</strong>，结束符\0的ASCII码为0，即空字符NULL，占用一个字符位，因此创建char字符串数组时字符数组的长度比实际存储的字符串长度至少多1；</li>
+<li>空字符\0和空格不是一个东西，空格的ASCII码为32。</li>
+</ol>
+</blockquote>
+
       
     </div>
     
     
     
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          
+            <a href="/tags/PAT/" rel="tag"># PAT</a>
+          
+            <a href="/tags/%E8%80%83%E7%A0%94/" rel="tag"># 考研</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/06/04/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/" rel="next" title="树莓派零基础学习（1）">
+                <i class="fa fa-chevron-left"></i> 树莓派零基础学习（1）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -391,8 +559,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -457,6 +634,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#算法笔记（1）——基本数据类型"><span class="nav-text">算法笔记（1）——基本数据类型</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1006,6 +1199,26 @@ setInterval("createtime()",250);
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
