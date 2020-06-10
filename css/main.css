@@ -1249,6 +1249,23 @@ pre .javascript .function {
   -o-transform: rotate(30deg);
   transform: rotate(30deg);
 }
+.post-title {
+  font-size: 26px;
+  text-align: center;
+  word-break: break-word;
+  font-weight: 400;
+  background-color: #b9d3ee;
+  border-radius: 0.3em;
+  line-height: 1em;
+  padding-bottom: 0.12em;
+  padding-top: 0.12em;
+  box-shadow: 2px 2px 7px #9fb6cd;
+}
+@media (max-width: 767px) {
+  .post-title {
+    font-size: 22px;
+  }
+}
 .use-motion .post-block,
 .use-motion .pagination,
 .use-motion .comments {
@@ -1819,7 +1836,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff34cd;
+  background: #917a9d;
 }
 .links-of-blogroll {
   font-size: 13px;
