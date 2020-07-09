@@ -118,7 +118,7 @@
 <meta property="og:site_name" content="Artangnis&#39;s Blog">
 <meta property="og:description" content="数据类型 取值范围 大致范围 占用大小 输入格式 输出格式     int $- 2^{31}$ ~ $ +(2^{31} - 1)$ $- 2 × 10^9$ ~ $+2 × 10^9$ 4Byte scanf(“%d”, &amp;d); printf(“%d”, d);   long long $- 2^{63}$ ~ $ +(2^{63} - 1)$ $- 9 × 10^{18}$">
 <meta property="article:published_time" content="2020-06-09T16:21:16.000Z">
-<meta property="article:modified_time" content="2020-07-09T15:33:01.982Z">
+<meta property="article:modified_time" content="2020-07-09T15:43:07.426Z">
 <meta property="article:author" content="阿汤尼斯">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="PAT">
@@ -498,23 +498,32 @@
 </div>
 <blockquote>
 <ol>
-<li>小写字母比大写字母的ASCII码值大<strong>32</strong>；</li>
-<li>由于数组名称本身就代表了数组第一个元素的地址，所以scanf中，<strong>char字符串数组整个输入的情况下不需要加取地址运算符</strong>；</li>
-<li>在scanf中，<strong>%c格式是可以读入空格和换行的</strong>，其他格式的输入是以空格和换行作为读入结束的标志；</li>
-<li>常用输出格式：<strong>%0md</strong>（使不足m位的int型变量以m位进行右对齐输出，高位用0补齐）、<strong>%.mf</strong>（使浮点数保留m位小数输出，服从“四舍五入五成双”的规则）；</li>
-<li>getchar和putchar分别用来输入和输出<strong>单个字符（包括换行符）</strong>，gets和puts分别用来输入和输出<strong>一行字符串</strong>；</li>
-<li>gets识别换行符<strong>\n</strong>作为输入结束，因此scanf完一个整数后，如果要使用gets，需要先用getchar接收整数后的换换行符；</li>
-<li>char字符串数组的末尾都有一个<strong>空字符\0</strong>，以<strong>表示存放的字符串的结尾</strong>，结束符\0的ASCII码为0，即空字符NULL，占用一个字符位，因此创建char字符串数组时字符数组的长度比实际存储的字符串长度至少多1；</li>
-<li>空字符\0和空格不是一个东西，空格的ASCII码为32；</li>
-<li>常用 math 函数（使用时要在程序开头加上 <code>math.h</code> 头文件）：</li>
+<li><p>小写字母比大写字母的ASCII码值大<strong>32</strong>；</p>
+</li>
+<li><p>由于数组名称本身就代表了数组第一个元素的地址，所以scanf中，<strong>char字符串数组整个输入的情况下不需要加取地址运算符</strong>；</p>
+</li>
+<li><p>在scanf中，<strong>%c格式是可以读入空格和换行的</strong>，其他格式的输入是以空格和换行作为读入结束的标志；</p>
+</li>
+<li><p>常用输出格式：<strong>%0md</strong>（使不足m位的int型变量以m位进行右对齐输出，高位用0补齐）、<strong>%.mf</strong>（使浮点数保留m位小数输出，服从“四舍五入五成双”的规则）；</p>
+</li>
+<li><p>getchar和putchar分别用来输入和输出<strong>单个字符（包括换行符）</strong>，gets和puts分别用来输入和输出<strong>一行字符串</strong>；</p>
+</li>
+<li><p>gets识别换行符<strong>\n</strong>作为输入结束，因此scanf完一个整数后，如果要使用gets，需要先用getchar接收整数后的换换行符；</p>
+</li>
+<li><p>char字符串数组的末尾都有一个<strong>空字符\0</strong>，以<strong>表示存放的字符串的结尾</strong>，结束符\0的ASCII码为0，即空字符NULL，占用一个字符位，因此创建char字符串数组时字符数组的长度比实际存储的字符串长度至少多1；</p>
+</li>
+<li><p>空字符\0和空格不是一个东西，空格的ASCII码为32；</p>
+</li>
+<li><p>常用 math 函数（使用时要在程序开头加上 <code>math.h</code> 头文件）：</p>
+<p>(1). <code>fabs(double x)</code> : 该函数用于对 double 型变量取绝对值；</p>
+<p>(2). <code>floor(double x)</code> : 该函数用于对 double 型变量的向下取整；</p>
+<p>(3). <code>ceil(double x)</code> : 该函数用于对 double 型变量的向上取整；</p>
+<p>(4). <code>pow(double r, double p)</code> : 该函数用于返回 $r^p$ ，要求 r 和 p 都是 double 型变量；</p>
+<p>(5). <code>sqrt(double x)</code> : 该函数用于返回 double 型变量的算术平方根；</p>
+<p>(6). <code>log(double x)</code> : 该函数用于返回 double 型变量的以自然对数为底的对数；</p>
+<p>(7). <code>round(double x)</code> : 该函数用于将 double 型变量四舍五入，返回值也是 double 型，需进行取整。 </p>
+</li>
 </ol>
-<p>​        (1). <code>fabs(double x)</code> : 该函数用于对 double 型变量取绝对值；</p>
-<p>​        (2). <code>floor(double x)</code> : 该函数用于对 double 型变量的向下取整；</p>
-<p>​        (3). <code>ceil(double x)</code> : 该函数用于对 double 型变量的向上取整；</p>
-<p>​        (4). <code>pow(double r, double p)</code> : 该函数用于返回 $r^p$ ，要求 r 和 p 都是 double 型变量；</p>
-<p>​        (5). <code>sqrt(double x)</code> : 该函数用于返回 double 型变量的算术平方根；</p>
-<p>​        (6). <code>log(double x)</code> : 该函数用于返回 double 型变量的以自然对数为底的对数；</p>
-<p>​        (7). <code>round(double x)</code> : 该函数用于将 double 型变量四舍五入，返回值也是 double 型，需进行取整。 </p>
 </blockquote>
 
       
