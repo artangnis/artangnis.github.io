@@ -84,6 +84,19 @@
 </li>
 <li><p>空字符\0和空格不是一个东西，空格的ASCII码为32；</p>
 </li>
+<li><p>常用 string 函数（使用时要在程序开头加上 <code>string.h</code> 头文件）：</p>
+<p>(1). <code>strlen(str)</code> : 该函数用于返回字符数组中第一个\0前的字符个数；</p>
+<p>(2). <code>strcmp(str1, str2)</code> : 该函数用于返回两个字符串大小的比较结果，比较原则是按<strong>字典序</strong>。如果<code>str1 &gt; str2</code>，则返回一个正整数，如果<code>str1 = str2</code>，则返回0，如果<code>str1 &lt; str2</code>，则返回一个负整数；</p>
+<p>(3). <code>strcpy(str1, str2)</code> : 该函数用于将字符数组 str2 复制给字符数组 str1 ，包括结束符\0；</p>
+<p>(4). <code>strcat(str1, str2)</code> : 该函数用于将字符数组 str2 接到字符数组 str1 后面；</p>
+<p>(5). <code>sscanf(str, &quot;%d&quot;, &amp;n)</code> : 该函数用于将字符数组 str 中的内容以 “%d” 的格式写到 n 中；</p>
+<p>(6). <code>sprintf(str, &quot;%d&quot;, n)</code> : 该函数用于将 n 以 “%d” 的格式写到字符数组 str 中。</p>
+</li>
+<li><p>字符数组的初始化方法：</p>
+<p>(1). <code>char str[15] = {&#39;H&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;, &#39;o&#39;, &#39; &#39;, &#39;W&#39;, &#39;o&#39;, &#39;r&#39;, &#39;l&#39;, &#39;d&#39;, &#39;!&#39;};</code></p>
+<p>(2). 通过直接赋值字符串来初始化（<strong>仅限初始化</strong>，程序其他位置不允许直接赋值整个字符串）：</p>
+<p>​       <code>char str[15] = &quot;Hello World!&quot;;</code></p>
+</li>
 <li><p>常用 math 函数（使用时要在程序开头加上 <code>math.h</code> 头文件）：</p>
 <p>(1). <code>fabs(double x)</code> : 该函数用于对 double 型变量取绝对值；</p>
 <p>(2). <code>floor(double x)</code> : 该函数用于对 double 型变量的向下取整；</p>
@@ -91,7 +104,7 @@
 <p>(4). <code>pow(double r, double p)</code> : 该函数用于返回 $r^p$ ，要求 r 和 p 都是 double 型变量；</p>
 <p>(5). <code>sqrt(double x)</code> : 该函数用于返回 double 型变量的算术平方根；</p>
 <p>(6). <code>log(double x)</code> : 该函数用于返回 double 型变量的以自然对数为底的对数；</p>
-<p>(7). <code>round(double x)</code> : 该函数用于将 double 型变量四舍五入，返回值也是 double 型，需进行取整。 </p>
+<p>(7). <code>round(double x)</code> : 该函数用于将 double 型变量四舍五入，返回值也是 double 型，需进行取整。</p>
 </li>
 </ol>
 </blockquote>
