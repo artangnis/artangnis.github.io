@@ -1,8 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>算法笔记（1）——基本数据类型</title>
-    <url>/2020/06/10/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89%E2%80%94%E2%80%94%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+    <title>算法笔记(2) —— 初识指针</title>
+    <url>/2020/07/11/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0(2)%20%E2%80%94%E2%80%94%20%E5%88%9D%E8%AF%86%E6%8C%87%E9%92%88/</url>
+    <content><![CDATA[<h1 id="一、指针基本概念"><a href="#一、指针基本概念" class="headerlink" title="一、指针基本概念"></a>一、指针基本概念</h1><h2 id="1、指针自身的类型"><a href="#1、指针自身的类型" class="headerlink" title="1、指针自身的类型"></a>1、指针自身的类型</h2><p>从语法的角度看，只要<strong>把指针声明语句里的指针变量名去掉</strong>，剩下的部分就是该指针的类型。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> *ptr;          <span class="comment">//指针的类型是int*</span></span><br><span class="line"><span class="keyword">int</span> **ptr;         <span class="comment">//指针的类型是int**</span></span><br><span class="line"><span class="keyword">int</span> *ptr[<span class="number">3</span>];       <span class="comment">//指针的类型是int*[3]</span></span><br><span class="line"><span class="keyword">int</span> (*ptr)[<span class="number">3</span>];     <span class="comment">//指针的类型是int(*)[3]</span></span><br></pre></td></tr></table></figure>
+<h2 id="2、指针指向的类型"><a href="#2、指针指向的类型" class="headerlink" title="2、指针指向的类型"></a>2、指针指向的类型</h2><p>当你通过指针来访问指针所指向的内存区时，指针所指向的类型决定了编译器将把那片内存区里的内容当做什么来看待。从语法上看，只要<strong>把指针声明语句中的指针名字和名字左边的指针声明符*去掉</strong>，剩下的部分就是指针所指向的类型。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> *ptr;          <span class="comment">//指针所指向的类型是int</span></span><br><span class="line"><span class="keyword">int</span> **ptr;         <span class="comment">//指针所指向的的类型是int*</span></span><br><span class="line"><span class="keyword">int</span> *ptr[<span class="number">3</span>];       <span class="comment">//指针所指向的类型是int[3]</span></span><br><span class="line"><span class="keyword">int</span> (*ptr)[<span class="number">3</span>];     <span class="comment">//指针所指向的的类型是int()[3]</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><em>p[N]， (\</em>P)[N]，及**p的区别：</p>
+<p><code>int  *p[N]</code> 表示指针数组，也就是说定义了N个不同指向 int 型的指针。</p>
+<p><code>int (*p)[N]</code>表示定义一个指针，指向一个 int[N] 型的指针。</p>
+<p><code>int **p</code> 表示定义一个指向指针的指针。</p>
+<p>注意 [] 的优先级要高于 *。</p>
+</blockquote>
+<h2 id="3、指针的值（指针所指向的内存区或地址）"><a href="#3、指针的值（指针所指向的内存区或地址）" class="headerlink" title="3、指针的值（指针所指向的内存区或地址）"></a>3、指针的值（指针所指向的内存区或地址）</h2><p>指针的值是指针本身存储的数值，这个值将被编译器当作一个地址，而不是一个一般的数值。指针所指向的内存区就是从指针的值所代表的那个内存地址开始，长度为 <code>sizeof(指针所指向的类型)</code> 的一片内存区。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a = <span class="number">233</span>;</span><br><span class="line">	<span class="keyword">int</span> *p;</span><br><span class="line">	p = &amp;a;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"&amp;a = %d\n"</span>, &amp;a);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">" p = %d\n"</span>, p);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"p+1 = %d\n"</span>, p+<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"sizeof *p = %d\n"</span>, <span class="keyword">sizeof</span>(*p));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"sizeof int = %d\n"</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">&amp;a = <span class="number">6487572</span></span><br><span class="line">p = <span class="number">6487572</span></span><br><span class="line">p+<span class="number">1</span> = <span class="number">6487576</span></span><br><span class="line"><span class="keyword">sizeof</span> *p = <span class="number">4</span></span><br><span class="line"><span class="keyword">sizeof</span> <span class="keyword">int</span> = <span class="number">4</span></span><br></pre></td></tr></table></figure>
+<h1 id="二、运算符-amp-和"><a href="#二、运算符-amp-和" class="headerlink" title="二、运算符&amp;和*"></a>二、运算符&amp;和*</h1><p>&amp; 是<strong>取地址运算符</strong>，* 是<strong>间接运算符</strong>。<br>&amp;a 的运算结果是一个<strong>指针</strong>，该指针的值是声明 a 时开辟的地址，指针的类型是 a 的类型对应的指针类型，指针所指向的类型就是 a 的类型，指针所指向的地址就是 a 的地址。<br>*p 的运算结果是 p 所指向的东西，它的类型是 p 指向的类型，它所占用的地址是 p 所指向的地址。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a = <span class="number">12</span>;</span><br><span class="line">    <span class="keyword">int</span> b = <span class="number">21</span>;</span><br><span class="line">    <span class="keyword">int</span> *p;       <span class="comment">//p是一个指针，该指针的自身的类型为int *型，指向的类型为int型。</span></span><br><span class="line">    <span class="keyword">int</span> **ptr;    <span class="comment">//ptr是一个二级指针（指向指针的指针），该指针自身的类型为int **型，指向的类型为int *型。</span></span><br><span class="line">    </span><br><span class="line">	p = &amp;a;       <span class="comment">//&amp;a的结果是一个指针，该指针的类型是int *型，指向的类型是int型，指向的地址是a的地址；</span></span><br><span class="line">                  <span class="comment">//将&amp;a赋值给p，即将变量a所在内存地址存放到p中。</span></span><br><span class="line">	*p = <span class="number">24</span>;      <span class="comment">//*p用于取出p中存放的内存地址（变量a的地址）所对应的内容（变量a的值）；</span></span><br><span class="line">                  <span class="comment">//将24赋值给*p，即将24赋值给变量a。</span></span><br><span class="line">	ptr = &amp;p;     <span class="comment">//&amp;p的运算结果是一个指针，该指针的类型为int **型；</span></span><br><span class="line">                  <span class="comment">//将&amp;p赋值给ptr，就是将指针p自身所在内存地址存放在到ptr中。</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"  ptr = &amp;p :\n"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"     ptr = %d\n"</span>, ptr);                 <span class="comment">//  ptr = 6487560</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"    *ptr = %d\n"</span>, *ptr);                <span class="comment">// *ptr = 6487572</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"   **ptr = %d\n"</span>, **ptr);               <span class="comment">//**ptr = 24</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;p = %d\n"</span>, &amp;p);                  <span class="comment">//   &amp;p = 6487560</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       p = %d\n"</span>, p);                   <span class="comment">//    p = 6487572</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      *p = %d\n"</span>, *p);                  <span class="comment">//   *p = 24</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;a = %d\n"</span>, &amp;a);                  <span class="comment">//   &amp;a = 6487572</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       a = %d\n"</span>, a);                   <span class="comment">//    a = 24</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;b = %d\n"</span>, &amp;b);                  <span class="comment">//   &amp;b = 6487568</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"       b = %d\n"</span>, b);                   <span class="comment">//    b = 21</span></span><br><span class="line">    </span><br><span class="line">	*ptr = &amp;b;    <span class="comment">//*ptr用于取出ptr中存放的内存地址（指针p自身所在的地址）所对应的内容（指针p）；</span></span><br><span class="line">                  <span class="comment">//*ptr是一个指针，&amp;b的结果也是一个指针，这两个指针的类型和所指向的类型是一样的；</span></span><br><span class="line">	              <span class="comment">//将&amp;b赋值给*ptr，就是将变量b的地址存放到指针p中。</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">" *ptr = &amp;b :\n"</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"     ptr = %d\n"</span>, ptr);                 <span class="comment">//  ptr = 6487560</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"    *ptr = %d\n"</span>, *ptr);                <span class="comment">// *ptr = 6487568</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"   **ptr = %d\n"</span>, **ptr);               <span class="comment">//**ptr = 21</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"      &amp;p = %d\n"</span>, &amp;p);                  <span class="comment">//   &amp;p = 6487560</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"       p = %d\n"</span>, p);                   <span class="comment">//    p = 6487568</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"      *p = %d\n"</span>, *p);                  <span class="comment">//   *p = 21</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;a = %d\n"</span>, &amp;a);                  <span class="comment">//   &amp;a = 6487572</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       a = %d\n"</span>, a);                   <span class="comment">//    a = 24</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"      &amp;b = %d\n"</span>, &amp;b);                  <span class="comment">//   &amp;b = 6487568</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"       b = %d\n"</span>, b);                   <span class="comment">//    b = 21</span></span><br><span class="line">    </span><br><span class="line">	**ptr = <span class="number">34</span>;   <span class="comment">//**ptr先取出ptr中存放的地址所对应的内容（指针p），再对取出的内容进行*运算操作，即*p；</span></span><br><span class="line">                  <span class="comment">//将34赋值给**ptr，就是将34赋值给*p，也就是将34赋值给变量b。</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"**ptr = 34 :\n"</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"     ptr = %d\n"</span>, ptr);                 <span class="comment">//  ptr = 6487560</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"    *ptr = %d\n"</span>, *ptr);                <span class="comment">// *ptr = 6487568</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"   **ptr = %d\n"</span>, **ptr);               <span class="comment">//**ptr = 34</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"      &amp;p = %d\n"</span>, &amp;p);                  <span class="comment">//   &amp;p = 6487560</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       p = %d\n"</span>, p);                   <span class="comment">//    p = 6487568</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      *p = %d\n"</span>, *p);                  <span class="comment">//   *p = 34</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;a = %d\n"</span>, &amp;a);                  <span class="comment">//   &amp;a = 6487572</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       a = %d\n"</span>, a);                   <span class="comment">//    a = 24</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;b = %d\n"</span>, &amp;b);                  <span class="comment">//   &amp;b = 6487568</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       b = %d\n"</span>, b);                   <span class="comment">//    b = 34</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="三、数组与指针"><a href="#三、数组与指针" class="headerlink" title="三、数组与指针"></a>三、数组与指针</h1><blockquote>
+<p>重点补充：</p>
+<ol>
+<li>指针的加减，以<strong>指针所指向的类型</strong>为单位进行偏移。</li>
+<li>首地址：一段内存空间中的第一个<strong>存储单元</strong>的地址，其类型为该存储单元类型对应的指针类型。</li>
+</ol>
+</blockquote>
+<h2 id="1、一维数组与指针"><a href="#1、一维数组与指针" class="headerlink" title="1、一维数组与指针"></a>1、一维数组与指针</h2><h4 id="一维数组的首地址是该一维数组的第一个数组元素的地址"><a href="#一维数组的首地址是该一维数组的第一个数组元素的地址" class="headerlink" title="一维数组的首地址是该一维数组的第一个数组元素的地址"></a>一维数组的首地址是该一维数组的第一个数组元素的地址</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">5</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"   a = %d\n"</span>, a);        <span class="comment">//   a = 6487552     a表示数组的首地址，并指向存储单元a[0]，其自身类型为int*型；</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">" a+1 = %d\n"</span>, a+<span class="number">1</span>);      <span class="comment">// a+1 = 6487556     a+1偏移与指针所指向的类型（int型）有关，为4字节。</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"  &amp;a = %d\n"</span>, &amp;a);       <span class="comment">//  &amp;a = 6487552     &amp;a是一个指针，指向整个数组，其自身类型为int(*)[5]型；</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"&amp;a+1 = %d\n"</span>, &amp;a+<span class="number">1</span>);     <span class="comment">//&amp;a+1 = 6487572     &amp;a+1偏移与指针所指向的类型（int[5]型）有关，为20字节；</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"sizeof int = %d\n"</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));                  <span class="comment">//sizeof int = 4</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"sizeof int[5] = %d\n"</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>[<span class="number">5</span>]));            <span class="comment">//sizeof int[5] = 20</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>总结：</p>
+<ol>
+<li>a 和 &amp;a 的结果都是数组的首地址，但他们的类型是不一样的：<strong>a—— 数据类型 *</strong>；<strong>&amp;a—— 数据类型 (*) [数组元素个数]</strong>。</li>
+<li><strong>数组名仅仅是“相当于”指针</strong>，而并不是真的是指针，数组名仅仅只是一个常量（一个值为数组首元素地址的常量），所以不能进行加减运算，而常量更是无法取地址的，之所以有 &amp;a，是因为这里的 a 此时<strong>代表了整个数组</strong>。</li>
+</ol>
+</blockquote>
+<h2 id="2、二维数组与指针"><a href="#2、二维数组与指针" class="headerlink" title="2、二维数组与指针"></a>2、二维数组与指针</h2><h4 id="二维数组的首地址是该二维数组的第一个一维数组的地址"><a href="#二维数组的首地址是该二维数组的第一个一维数组的地址" class="headerlink" title="二维数组的首地址是该二维数组的第一个一维数组的地址"></a>二维数组的首地址是该二维数组的第一个一维数组的地址</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">3</span>][<span class="number">4</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"    &amp;a = %d\n"</span>, &amp;a);      <span class="comment">//    &amp;a = 6487520  &amp;a为指向整个二维数组的指针，其自身类型为int(*)[3][4]型；</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"  &amp;a+1 = %d\n"</span>, &amp;a+<span class="number">1</span>);    <span class="comment">//  &amp;a+1 = 6487568  &amp;a+1偏移与指针指向的类型（int[3][4]型）有关，为48字节。</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"     a = %d\n"</span>, a);       <span class="comment">//     a = 6487520  a表示二维数组的首地址，指向一维数组a[0]，类型为int*[4]型；</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"   a+1 = %d\n"</span>, a+<span class="number">1</span>);     <span class="comment">//   a+1 = 6487536  a+1便宜与指针指向的类型（int[4]型）有关，为16字节。</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"  a[0] = %d\n"</span>, a[<span class="number">0</span>]);    <span class="comment">//  a[0] = 6487520  a[0]表示一维数组的首地址，指向元素a[0][0]，类型为int*型；</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"a[0]+1 = %d\n"</span>, a[<span class="number">0</span>]+<span class="number">1</span>);  <span class="comment">//a[0]+1 = 6487524  a[0]+1偏移与指针指向的类型（int）有关，为4字节。</span></span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"sizeof int[3][4] = %d\n"</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>[<span class="number">3</span>][<span class="number">4</span>]));      <span class="comment">//sizeof int[3][4] = 48</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"sizeof int[4] = %d\n"</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>[<span class="number">4</span>]));            <span class="comment">//sizeof int[4] = 16</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"sizeof int = %d\n"</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));                  <span class="comment">//sizeof int = 4</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于三维数组 int a[1][2][3]，有如下结论：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指针</th>
+<th style="text-align:center">自身类型</th>
+<th style="text-align:center">指向类型</th>
+<th style="text-align:center">单位偏移量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&amp;a</td>
+<td style="text-align:center">int(*)[1][2][3]</td>
+<td style="text-align:center">int[1][2][3]</td>
+<td style="text-align:center">sizeof(int[1][2][3]) $= 1<em>2</em>3*4 = 24$字节</td>
+</tr>
+<tr>
+<td style="text-align:center">a</td>
+<td style="text-align:center">int(*)[2][3]</td>
+<td style="text-align:center">int[2][3]</td>
+<td style="text-align:center">sizeof(int[2][3]) $= 2<em>3</em>4 = 24$字节</td>
+</tr>
+<tr>
+<td style="text-align:center">a[0]</td>
+<td style="text-align:center">int(*)[3]</td>
+<td style="text-align:center">int[3]</td>
+<td style="text-align:center">sizeof(int[3]) $ = 3*4 = 12$字节</td>
+</tr>
+<tr>
+<td style="text-align:center">a[0][0]</td>
+<td style="text-align:center">int*</td>
+<td style="text-align:center">int</td>
+<td style="text-align:center">sizeof(int) $= 4$字节</td>
+</tr>
+</tbody>
+</table>
+</div>
+]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>PAT</tag>
+        <tag>C/C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法笔记(1) —— 基本数据类型</title>
+    <url>/2020/06/10/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0(1)%20%E2%80%94%E2%80%94%20%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
     <content><![CDATA[<div class="table-container">
 <table>
 <thead>
@@ -116,6 +201,107 @@
         <tag>算法</tag>
         <tag>PAT</tag>
         <tag>C/C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>树莓派零基础学习（1）</title>
+    <url>/2020/06/04/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="一、树莓派开机前的准备工作"><a href="#一、树莓派开机前的准备工作" class="headerlink" title="一、树莓派开机前的准备工作"></a>一、树莓派开机前的准备工作</h2><h3 id="（1）硬件及软件准备"><a href="#（1）硬件及软件准备" class="headerlink" title="（1）硬件及软件准备"></a>（1）硬件及软件准备</h3><h4 id="硬件准备"><a href="#硬件准备" class="headerlink" title="硬件准备"></a>硬件准备</h4><p>树莓派4B、树莓派电源线或安卓数据线、SD卡（16G以上）、读卡器、电脑、可触摸屏幕、HDMI线、无线键鼠</p>
+<h4 id="软件准备"><a href="#软件准备" class="headerlink" title="软件准备"></a>软件准备</h4><p>SD Formatter、Win32DiskImager、VNC Viewer、putty、Notepad++、Advanced IP Scanner、树莓派镜像Raspbian-buster-full</p>
+<blockquote>
+<p>百度云：<a href="https://pan.baidu.com/s/1XJzltHUag9VFpm_QSrOaQQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1XJzltHUag9VFpm_QSrOaQQ</a>   提取码：kxfj</p>
+</blockquote>
+<h3 id="（2）格式化SD卡"><a href="#（2）格式化SD卡" class="headerlink" title="（2）格式化SD卡"></a>（2）格式化SD卡</h3><p>首先需要将SD卡格式化，将SD卡插入读卡器并接入电脑，打开<code>SD Formatter</code>，检查一下SD卡路径是否正确，若不正确的话需要点击<strong>Refresh</strong>刷新路径；若正确的话就可以直接点击<strong>Format</strong>进行格式化，格式化完成后电脑会重新读取读卡器，我的电脑中会出现一个<code>boot</code>盘，如果<strong>系统出现需要对“U盘”进行格式化的弹窗请点击取消</strong>，否则就需要重头开始格式化SD卡了。</p>
+<h3 id="（3）在SD卡中烧录树莓派镜像"><a href="#（3）在SD卡中烧录树莓派镜像" class="headerlink" title="（3）在SD卡中烧录树莓派镜像"></a>（3）在SD卡中烧录树莓派镜像</h3><p>格式化SD卡成功后，打开<code>Win32DiskImager</code>选择之前下载的树莓派官方镜像（扩展名<code>.img</code>），SD卡路径系统会自动填充，然后点击<strong>Write</strong>等待写入完成。烧录成功后，boot盘里就会出现一系列的文件。</p>
+<h3 id="（4）配置SSH文件"><a href="#（4）配置SSH文件" class="headerlink" title="（4）配置SSH文件"></a>（4）配置SSH文件</h3><p>在<code>boot</code>盘中手动创建一个空白记事本<code>.txt</code>文件，命名为<code>ssh</code>，删掉<code>.txt</code>扩展名。</p>
+<h3 id="（5）配置Wi-Fi文件"><a href="#（5）配置Wi-Fi文件" class="headerlink" title="（5）配置Wi-Fi文件"></a>（5）配置Wi-Fi文件</h3><p>用同样的方法新建一个空白文件<code>wpa_supplicant.conf</code>（注意要删掉扩展名<code>.txt</code>），并用Notepad++打开<code>wpa_supplicant.conf</code>,输入以下配置，可以用多个<code>network{}</code>来配置多个Wi-Fi：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">country&#x3D;GB</span><br><span class="line">ctrl_interface&#x3D;DIR&#x3D;&#x2F;var&#x2F;run&#x2F;wpa_supplicant GROUP&#x3D;netdev</span><br><span class="line">update_config&#x3D;1</span><br><span class="line">network&#x3D;&#123;</span><br><span class="line">	ssid&#x3D;&quot;输入WiFi的名字，不删除引号,不能有中文&quot;</span><br><span class="line">	psk&#x3D;&quot;输入WiFi密码，不删除引号&quot;</span><br><span class="line">	priority&#x3D;输入数字，数字越大优先级越高</span><br><span class="line">&#125;</span><br><span class="line">network&#x3D;&#123;</span><br><span class="line">	ssid&#x3D;&quot;输入WiFi的名字，不删除引号,不能有中文&quot;</span><br><span class="line">	psk&#x3D;&quot;输入WiFi密码，不删除引号&quot;</span><br><span class="line">	priority&#x3D;输入数字，数字越大优先级越高</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二、树莓派开机启动"><a href="#二、树莓派开机启动" class="headerlink" title="二、树莓派开机启动"></a>二、树莓派开机启动</h2><p>弹出读卡器，拔出SD卡并插到树莓派的SD卡槽中，用HDMI线将显示屏与树莓派相连，最后用树莓派电源线或安卓数据线给树莓派通电。树莓派上的红灯常亮，表示通电；绿灯间歇性亮，表示读写SD卡。如果绿灯闪烁，屏幕上显示出树莓派的logo，说明操作系统正常。</p>
+<h2 id="三、树莓派换源（清华大学开源软件镜像站）"><a href="#三、树莓派换源（清华大学开源软件镜像站）" class="headerlink" title="三、树莓派换源（清华大学开源软件镜像站）"></a>三、树莓派换源（清华大学开源软件镜像站）</h2><h3 id="将Raspbain包管理器apt-get换源"><a href="#将Raspbain包管理器apt-get换源" class="headerlink" title="将Raspbain包管理器apt-get换源"></a>将<code>Raspbain</code>包管理器<code>apt-get</code>换源</h3><p>在树莓派的命令行界面输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo nano &#x2F;etc&#x2F;apt&#x2F;sources.list</span><br></pre></td></tr></table></figure>
+<p>使用键盘方向键控制，在第一行开头加一个<code>#</code>，把以下代码拷贝到最后一行之后：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deb http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;raspbian&#x2F;raspbian&#x2F; stretch main contrib non-free rpi</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;raspbian&#x2F;raspbian&#x2F; stretch main contrib non-free rpi</span><br></pre></td></tr></table></figure>
+<p>修改完毕后，先按键盘上的<code>ctrl</code>+<code>o</code>，再按回车保存，再按<code>ctrl</code>+<code>x</code>退出Nano编辑器回到命令行界面，之后输入以下命令更新到清华大学镜像源最新的软件列表：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<p>这个命令，会访问源列表里的每个网址，并读取软件列表，然后保存在树莓派本地。</p>
+<blockquote>
+<p>以上步骤实现了Raspbian的包管理器<code>apt-get</code>换源到清华大学软件镜像站，并更新了软件列表，今后在树莓派命令行中执行<code>sudo apt-get install</code>+<code>软件名</code>时便会自动从清华大学开源软件镜像站高速下载软件。</p>
+</blockquote>
+<h3 id="将Python第三方模块安装工具pip换源"><a href="#将Python第三方模块安装工具pip换源" class="headerlink" title="将Python第三方模块安装工具pip换源"></a>将<code>Python</code>第三方模块安装工具<code>pip</code>换源</h3><h4 id="方法一：通过命令行换源"><a href="#方法一：通过命令行换源" class="headerlink" title="方法一：通过命令行换源"></a>方法一：通过命令行换源</h4><blockquote>
+<p>清华大学开源软件镜像站官方推荐方法，但该方法在树莓派上可能会失效。</p>
+</blockquote>
+<p>只需树莓派命令行中输入下面这一行命令，即可永久设置pip下载源为国内源</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip config set global.index-url https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple</span><br></pre></td></tr></table></figure>
+<h4 id="方法二：通过配置脚本换源"><a href="#方法二：通过配置脚本换源" class="headerlink" title="方法二：通过配置脚本换源"></a>方法二：通过配置脚本换源</h4><p>在树莓派的命令行中<strong>依次输入</strong>运行以下三个命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo mkdir ~&#x2F;.pip</span><br><span class="line">cd .pip</span><br><span class="line">sudo nano pip.conf</span><br></pre></td></tr></table></figure>
+<p>在打开的文件中输入以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[global]</span><br><span class="line">timeout &#x3D; 10</span><br><span class="line">index-url &#x3D;  http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;pypi&#x2F;simple&#x2F;</span><br><span class="line">extra-index-url&#x3D; http:&#x2F;&#x2F;pypi.douban.com&#x2F;simple&#x2F;</span><br><span class="line">[install]</span><br><span class="line">trusted-host&#x3D;</span><br><span class="line">    mirrors.aliyun.com</span><br><span class="line">    pypi.douban.com</span><br></pre></td></tr></table></figure>
+<p>先按键盘上的<code>ctrl</code>+<code>o</code>，再按回车保存，再按<code>ctrl</code>+<code>x</code>退出Nano编辑器回到命令行界面。</p>
+<h2 id="四、树莓派内部配置"><a href="#四、树莓派内部配置" class="headerlink" title="四、树莓派内部配置"></a>四、树莓派内部配置</h2><p>打开树莓派命令行界面输入命令，输入以下代码进入树莓派配置界面：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo raspi-config</span><br></pre></td></tr></table></figure>
+<p>利用<strong>方向键</strong>切换光标位置。</p>
+<h3 id="第一行：Change-User-Password修改密码"><a href="#第一行：Change-User-Password修改密码" class="headerlink" title="第一行：Change User Password修改密码"></a>第一行：<code>Change User Password</code>修改密码</h3><p>按照里面的要求修改成自己的密码即可。默认用户名为<code>pi</code>，密码为<code>raspberry</code>。</p>
+<p>这个密码会用于<strong>远程SSH登陆</strong>、<strong>VNC远程桌面</strong>及<strong>管理员root权限</strong>。</p>
+<h3 id="第四行：Localisation-Options选择地区"><a href="#第四行：Localisation-Options选择地区" class="headerlink" title="第四行：Localisation Options选择地区"></a>第四行：<code>Localisation Options</code>选择地区</h3><blockquote>
+<p>通过<code>Change Locale</code>选项来选择所在国家：</p>
+<p>将光标移到这个列表的最下面，让光标指在zh_CN.UTF-8 UTF-8前面，先按空格，再按回车，回到之前的界面再按回车。</p>
+<p>通过<code>Change Timezone</code>选项来选择所在时区：</p>
+<p>选择<code>Asia</code>，再选择<code>Shanghai</code>，回车确定。</p>
+<p>通过<code>Change Wi-fi Country</code>选项来选择Wi-Fi国家：</p>
+<p>选择<code>CN China</code>，回车确定。</p>
+</blockquote>
+<h3 id="第五行：Interfacing-Options开启功能"><a href="#第五行：Interfacing-Options开启功能" class="headerlink" title="第五行：Interfacing Options开启功能"></a>第五行：<code>Interfacing Options</code>开启功能</h3><p>打开<code>Camera</code>、<code>SSH</code>、<code>VNC</code>、<code>Serial</code>、<code>Remote GPIO</code>功能。</p>
+<blockquote>
+<p>Camera：摄像头</p>
+<p>SSH：SSH远程通信与登陆</p>
+<p>VNC：VNC远程桌面登陆</p>
+<p>Serial：串口控制</p>
+<p>Remote GPIO：远程GPIO引脚控制</p>
+</blockquote>
+<h3 id="第七行：Advanced-Options高级设置"><a href="#第七行：Advanced-Options高级设置" class="headerlink" title="第七行：Advanced Options高级设置"></a>第七行：<code>Advanced Options</code>高级设置</h3><blockquote>
+<p>选择<code>Expand Filesystem</code>，将根目录扩展到这个SD卡，充分利用SD卡的存储空间。</p>
+<p>选择<code>Overscan</code>，在整个屏幕上显示。</p>
+<p>选择<code>Audio</code>，选择<code>Force 3.5mm(&#39;headphone&#39; jack)</code>，树莓派的声音会从耳机孔输出。</p>
+<p>选择<code>Resolution</code>，选择默认设置，自动根据显示屏调整分辨率。</p>
+<p>选择<code>Pixel Doubling</code>，增加桌面显示画质，选择<code>Finish</code>，会跳出对话框问是否重新启动，可以直接回车确定重启，也可以等下次启动时候生效。</p>
+</blockquote>
+<h2 id="五、获取树莓派IP地址"><a href="#五、获取树莓派IP地址" class="headerlink" title="五、获取树莓派IP地址"></a>五、获取树莓派IP地址</h2><ol>
+<li><p>如果树莓派连接到了显示屏上，可以直接鼠标指向右上角网络图标，IP地址会自动显示；</p>
+</li>
+<li><p>如果树莓派连接到了显示屏上，可以打开树莓派命令行窗口，输入<code>ifconfig</code>；</p>
+</li>
+<li>如果没有显示屏，用手机连到与树莓派同一个网络的Wi-Fi下，打开苹果手机APP<code>dataplicity</code>应用上扫描出树莓派的IP地址；</li>
+<li>如果没有显示屏，用电脑连到与树莓派同一个网络的Wi-Fi或者有线网络下，在电脑上打开<code>Advanced IP Scanner</code>，扫描出树莓派的IP地址。</li>
+</ol>
+<h2 id="六、远程登录树莓派"><a href="#六、远程登录树莓派" class="headerlink" title="六、远程登录树莓派"></a>六、远程登录树莓派</h2><p>通过之前的方法获取了树莓派的IP地址后就可以开始远程登录树莓派了，远程登录树莓派适合在没有屏幕或者有屏幕但不方便操作的情况下使用。</p>
+<h3 id="方法一：putty"><a href="#方法一：putty" class="headerlink" title="方法一：putty"></a>方法一：putty</h3><p><code>putty</code>是用来在电脑上远程输入树莓派root命令的，其功能和电脑的command窗口很像，但无法像VNC那样可以显示图形界面。</p>
+<p>打开<code>putty</code>，输入树莓派IP地址，端口<code>Port</code>默认为22，点击<code>Open</code>后会弹出一个英文的安全提示窗口，点击“是Y”就会打开一个命令行窗口，然后在黑色框里输入你的ID，输入<code>pi</code>，点回车，然后输入统一的默认密码<code>raspberry</code>（如果在之前的树莓派内部配置中修改了密码的话，则输入修改后的密码，<strong>由于Linux系统不显示密码，所以看不到输入的内容</strong>），确认回车后，就可以开始输入命令行了。</p>
+<h3 id="方法二：VNC-Viewer"><a href="#方法二：VNC-Viewer" class="headerlink" title="方法二：VNC Viewer"></a>方法二：VNC Viewer</h3><p>想要使用VNC来远程登录树莓派必须先开启树莓派内部配置中<code>Interfacing Options</code>的<code>VNC</code>功能，没有屏幕的话只能先通过<code>putty</code>远程登录树莓派，再进行树莓派内部配置。</p>
+<p>确认<code>VNC</code>功能开启后，打开<code>VNC Viewer</code>，选择顶部菜单栏<code>File</code>中的<code>New connection</code>建立新的连接，输入树莓派的IP地址并自定义新连接的名字，确认回车后，在出现的画面中点击Continue，然后就会出现一个需要输入ID和密码的界面，输入之后就能远程登录树莓派了。</p>
+<h2 id="七、中文字体及输入法的下载和安装"><a href="#七、中文字体及输入法的下载和安装" class="headerlink" title="七、中文字体及输入法的下载和安装"></a>七、中文字体及输入法的下载和安装</h2><p>打开树莓派命令行，输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install fonts-wqy-zenhei</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这行命令里的<code>sudo</code>表示使用管理员root权限，<code>apt-get</code>表示使用apt-get包管理器来下载，<code>install</code>表示下载安装，<code>fonts-wqy-zenhei</code>表示软件名字，所有的<code>sudo apt-get install</code>+<code>软件名</code>都表示这样的意思。</p>
+</blockquote>
+<p>接下来，安装中文输入法fcitx及Google拼音输入法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install fcitx fcitx-googlepinyin fcitx-module-cloudpinyin fcitx-sunpinyin</span><br></pre></td></tr></table></figure>
+<p>在跳出的对话框中输入<code>y</code>和回车<code>↩</code>，确定下载安装，需要90MB存储空间。</p>
+<p>安装成功之后，会在下一次重启时生效。</p>
+<p>此后可以使用<code>ctrl</code>+<code>空格</code>切换为中文输入法。</p>
+<h2 id="八、升级所有安装的软件"><a href="#八、升级所有安装的软件" class="headerlink" title="八、升级所有安装的软件"></a>八、升级所有安装的软件</h2><p>运行下面这行命令，会把本地已安装的软件，与刚下载的软件列表里对应软件进行对比，如果发现已安装的软件版本太低，就会提示你更新，执行这行命令可能需要很长时间。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>我们刚刚还运行了<code>sudo apt-get update</code>命令，现在运行<code>sudo apt-get upgrade</code>命令，有什么不同呢？</p>
+<p>答：<code>update</code>仅仅是从下载源获取并更新可下载软件列表，相当于更新索引地图，而<code>upgrade</code>是更新软件本身，所以后者要花费多得多的时间。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>项目</category>
+      </categories>
+      <tags>
+        <tag>RaspberryPi</tag>
+        <tag>硬件开发</tag>
+        <tag>树莓派</tag>
       </tags>
   </entry>
   <entry>
@@ -706,120 +892,6 @@
         <tag>IoT</tag>
         <tag>华为</tag>
         <tag>物联网</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>算法笔记（2）——指针</title>
-    <url>/2020/07/11/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94%E6%8C%87%E9%92%88/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>考研</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>PAT</tag>
-        <tag>C/C++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>树莓派零基础学习（1）</title>
-    <url>/2020/06/04/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="一、树莓派开机前的准备工作"><a href="#一、树莓派开机前的准备工作" class="headerlink" title="一、树莓派开机前的准备工作"></a>一、树莓派开机前的准备工作</h2><h3 id="（1）硬件及软件准备"><a href="#（1）硬件及软件准备" class="headerlink" title="（1）硬件及软件准备"></a>（1）硬件及软件准备</h3><h4 id="硬件准备"><a href="#硬件准备" class="headerlink" title="硬件准备"></a>硬件准备</h4><p>树莓派4B、树莓派电源线或安卓数据线、SD卡（16G以上）、读卡器、电脑、可触摸屏幕、HDMI线、无线键鼠</p>
-<h4 id="软件准备"><a href="#软件准备" class="headerlink" title="软件准备"></a>软件准备</h4><p>SD Formatter、Win32DiskImager、VNC Viewer、putty、Notepad++、Advanced IP Scanner、树莓派镜像Raspbian-buster-full</p>
-<blockquote>
-<p>百度云：<a href="https://pan.baidu.com/s/1XJzltHUag9VFpm_QSrOaQQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1XJzltHUag9VFpm_QSrOaQQ</a>   提取码：kxfj</p>
-</blockquote>
-<h3 id="（2）格式化SD卡"><a href="#（2）格式化SD卡" class="headerlink" title="（2）格式化SD卡"></a>（2）格式化SD卡</h3><p>首先需要将SD卡格式化，将SD卡插入读卡器并接入电脑，打开<code>SD Formatter</code>，检查一下SD卡路径是否正确，若不正确的话需要点击<strong>Refresh</strong>刷新路径；若正确的话就可以直接点击<strong>Format</strong>进行格式化，格式化完成后电脑会重新读取读卡器，我的电脑中会出现一个<code>boot</code>盘，如果<strong>系统出现需要对“U盘”进行格式化的弹窗请点击取消</strong>，否则就需要重头开始格式化SD卡了。</p>
-<h3 id="（3）在SD卡中烧录树莓派镜像"><a href="#（3）在SD卡中烧录树莓派镜像" class="headerlink" title="（3）在SD卡中烧录树莓派镜像"></a>（3）在SD卡中烧录树莓派镜像</h3><p>格式化SD卡成功后，打开<code>Win32DiskImager</code>选择之前下载的树莓派官方镜像（扩展名<code>.img</code>），SD卡路径系统会自动填充，然后点击<strong>Write</strong>等待写入完成。烧录成功后，boot盘里就会出现一系列的文件。</p>
-<h3 id="（4）配置SSH文件"><a href="#（4）配置SSH文件" class="headerlink" title="（4）配置SSH文件"></a>（4）配置SSH文件</h3><p>在<code>boot</code>盘中手动创建一个空白记事本<code>.txt</code>文件，命名为<code>ssh</code>，删掉<code>.txt</code>扩展名。</p>
-<h3 id="（5）配置Wi-Fi文件"><a href="#（5）配置Wi-Fi文件" class="headerlink" title="（5）配置Wi-Fi文件"></a>（5）配置Wi-Fi文件</h3><p>用同样的方法新建一个空白文件<code>wpa_supplicant.conf</code>（注意要删掉扩展名<code>.txt</code>），并用Notepad++打开<code>wpa_supplicant.conf</code>,输入以下配置，可以用多个<code>network{}</code>来配置多个Wi-Fi：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">country&#x3D;GB</span><br><span class="line">ctrl_interface&#x3D;DIR&#x3D;&#x2F;var&#x2F;run&#x2F;wpa_supplicant GROUP&#x3D;netdev</span><br><span class="line">update_config&#x3D;1</span><br><span class="line">network&#x3D;&#123;</span><br><span class="line">	ssid&#x3D;&quot;输入WiFi的名字，不删除引号,不能有中文&quot;</span><br><span class="line">	psk&#x3D;&quot;输入WiFi密码，不删除引号&quot;</span><br><span class="line">	priority&#x3D;输入数字，数字越大优先级越高</span><br><span class="line">&#125;</span><br><span class="line">network&#x3D;&#123;</span><br><span class="line">	ssid&#x3D;&quot;输入WiFi的名字，不删除引号,不能有中文&quot;</span><br><span class="line">	psk&#x3D;&quot;输入WiFi密码，不删除引号&quot;</span><br><span class="line">	priority&#x3D;输入数字，数字越大优先级越高</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="二、树莓派开机启动"><a href="#二、树莓派开机启动" class="headerlink" title="二、树莓派开机启动"></a>二、树莓派开机启动</h2><p>弹出读卡器，拔出SD卡并插到树莓派的SD卡槽中，用HDMI线将显示屏与树莓派相连，最后用树莓派电源线或安卓数据线给树莓派通电。树莓派上的红灯常亮，表示通电；绿灯间歇性亮，表示读写SD卡。如果绿灯闪烁，屏幕上显示出树莓派的logo，说明操作系统正常。</p>
-<h2 id="三、树莓派换源（清华大学开源软件镜像站）"><a href="#三、树莓派换源（清华大学开源软件镜像站）" class="headerlink" title="三、树莓派换源（清华大学开源软件镜像站）"></a>三、树莓派换源（清华大学开源软件镜像站）</h2><h3 id="将Raspbain包管理器apt-get换源"><a href="#将Raspbain包管理器apt-get换源" class="headerlink" title="将Raspbain包管理器apt-get换源"></a>将<code>Raspbain</code>包管理器<code>apt-get</code>换源</h3><p>在树莓派的命令行界面输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo nano &#x2F;etc&#x2F;apt&#x2F;sources.list</span><br></pre></td></tr></table></figure>
-<p>使用键盘方向键控制，在第一行开头加一个<code>#</code>，把以下代码拷贝到最后一行之后：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deb http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;raspbian&#x2F;raspbian&#x2F; stretch main contrib non-free rpi</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;raspbian&#x2F;raspbian&#x2F; stretch main contrib non-free rpi</span><br></pre></td></tr></table></figure>
-<p>修改完毕后，先按键盘上的<code>ctrl</code>+<code>o</code>，再按回车保存，再按<code>ctrl</code>+<code>x</code>退出Nano编辑器回到命令行界面，之后输入以下命令更新到清华大学镜像源最新的软件列表：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
-<p>这个命令，会访问源列表里的每个网址，并读取软件列表，然后保存在树莓派本地。</p>
-<blockquote>
-<p>以上步骤实现了Raspbian的包管理器<code>apt-get</code>换源到清华大学软件镜像站，并更新了软件列表，今后在树莓派命令行中执行<code>sudo apt-get install</code>+<code>软件名</code>时便会自动从清华大学开源软件镜像站高速下载软件。</p>
-</blockquote>
-<h3 id="将Python第三方模块安装工具pip换源"><a href="#将Python第三方模块安装工具pip换源" class="headerlink" title="将Python第三方模块安装工具pip换源"></a>将<code>Python</code>第三方模块安装工具<code>pip</code>换源</h3><h4 id="方法一：通过命令行换源"><a href="#方法一：通过命令行换源" class="headerlink" title="方法一：通过命令行换源"></a>方法一：通过命令行换源</h4><blockquote>
-<p>清华大学开源软件镜像站官方推荐方法，但该方法在树莓派上可能会失效。</p>
-</blockquote>
-<p>只需树莓派命令行中输入下面这一行命令，即可永久设置pip下载源为国内源</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip config set global.index-url https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple</span><br></pre></td></tr></table></figure>
-<h4 id="方法二：通过配置脚本换源"><a href="#方法二：通过配置脚本换源" class="headerlink" title="方法二：通过配置脚本换源"></a>方法二：通过配置脚本换源</h4><p>在树莓派的命令行中<strong>依次输入</strong>运行以下三个命令</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo mkdir ~&#x2F;.pip</span><br><span class="line">cd .pip</span><br><span class="line">sudo nano pip.conf</span><br></pre></td></tr></table></figure>
-<p>在打开的文件中输入以下内容：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[global]</span><br><span class="line">timeout &#x3D; 10</span><br><span class="line">index-url &#x3D;  http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;pypi&#x2F;simple&#x2F;</span><br><span class="line">extra-index-url&#x3D; http:&#x2F;&#x2F;pypi.douban.com&#x2F;simple&#x2F;</span><br><span class="line">[install]</span><br><span class="line">trusted-host&#x3D;</span><br><span class="line">    mirrors.aliyun.com</span><br><span class="line">    pypi.douban.com</span><br></pre></td></tr></table></figure>
-<p>先按键盘上的<code>ctrl</code>+<code>o</code>，再按回车保存，再按<code>ctrl</code>+<code>x</code>退出Nano编辑器回到命令行界面。</p>
-<h2 id="四、树莓派内部配置"><a href="#四、树莓派内部配置" class="headerlink" title="四、树莓派内部配置"></a>四、树莓派内部配置</h2><p>打开树莓派命令行界面输入命令，输入以下代码进入树莓派配置界面：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo raspi-config</span><br></pre></td></tr></table></figure>
-<p>利用<strong>方向键</strong>切换光标位置。</p>
-<h3 id="第一行：Change-User-Password修改密码"><a href="#第一行：Change-User-Password修改密码" class="headerlink" title="第一行：Change User Password修改密码"></a>第一行：<code>Change User Password</code>修改密码</h3><p>按照里面的要求修改成自己的密码即可。默认用户名为<code>pi</code>，密码为<code>raspberry</code>。</p>
-<p>这个密码会用于<strong>远程SSH登陆</strong>、<strong>VNC远程桌面</strong>及<strong>管理员root权限</strong>。</p>
-<h3 id="第四行：Localisation-Options选择地区"><a href="#第四行：Localisation-Options选择地区" class="headerlink" title="第四行：Localisation Options选择地区"></a>第四行：<code>Localisation Options</code>选择地区</h3><blockquote>
-<p>通过<code>Change Locale</code>选项来选择所在国家：</p>
-<p>将光标移到这个列表的最下面，让光标指在zh_CN.UTF-8 UTF-8前面，先按空格，再按回车，回到之前的界面再按回车。</p>
-<p>通过<code>Change Timezone</code>选项来选择所在时区：</p>
-<p>选择<code>Asia</code>，再选择<code>Shanghai</code>，回车确定。</p>
-<p>通过<code>Change Wi-fi Country</code>选项来选择Wi-Fi国家：</p>
-<p>选择<code>CN China</code>，回车确定。</p>
-</blockquote>
-<h3 id="第五行：Interfacing-Options开启功能"><a href="#第五行：Interfacing-Options开启功能" class="headerlink" title="第五行：Interfacing Options开启功能"></a>第五行：<code>Interfacing Options</code>开启功能</h3><p>打开<code>Camera</code>、<code>SSH</code>、<code>VNC</code>、<code>Serial</code>、<code>Remote GPIO</code>功能。</p>
-<blockquote>
-<p>Camera：摄像头</p>
-<p>SSH：SSH远程通信与登陆</p>
-<p>VNC：VNC远程桌面登陆</p>
-<p>Serial：串口控制</p>
-<p>Remote GPIO：远程GPIO引脚控制</p>
-</blockquote>
-<h3 id="第七行：Advanced-Options高级设置"><a href="#第七行：Advanced-Options高级设置" class="headerlink" title="第七行：Advanced Options高级设置"></a>第七行：<code>Advanced Options</code>高级设置</h3><blockquote>
-<p>选择<code>Expand Filesystem</code>，将根目录扩展到这个SD卡，充分利用SD卡的存储空间。</p>
-<p>选择<code>Overscan</code>，在整个屏幕上显示。</p>
-<p>选择<code>Audio</code>，选择<code>Force 3.5mm(&#39;headphone&#39; jack)</code>，树莓派的声音会从耳机孔输出。</p>
-<p>选择<code>Resolution</code>，选择默认设置，自动根据显示屏调整分辨率。</p>
-<p>选择<code>Pixel Doubling</code>，增加桌面显示画质，选择<code>Finish</code>，会跳出对话框问是否重新启动，可以直接回车确定重启，也可以等下次启动时候生效。</p>
-</blockquote>
-<h2 id="五、获取树莓派IP地址"><a href="#五、获取树莓派IP地址" class="headerlink" title="五、获取树莓派IP地址"></a>五、获取树莓派IP地址</h2><ol>
-<li><p>如果树莓派连接到了显示屏上，可以直接鼠标指向右上角网络图标，IP地址会自动显示；</p>
-</li>
-<li><p>如果树莓派连接到了显示屏上，可以打开树莓派命令行窗口，输入<code>ifconfig</code>；</p>
-</li>
-<li>如果没有显示屏，用手机连到与树莓派同一个网络的Wi-Fi下，打开苹果手机APP<code>dataplicity</code>应用上扫描出树莓派的IP地址；</li>
-<li>如果没有显示屏，用电脑连到与树莓派同一个网络的Wi-Fi或者有线网络下，在电脑上打开<code>Advanced IP Scanner</code>，扫描出树莓派的IP地址。</li>
-</ol>
-<h2 id="六、远程登录树莓派"><a href="#六、远程登录树莓派" class="headerlink" title="六、远程登录树莓派"></a>六、远程登录树莓派</h2><p>通过之前的方法获取了树莓派的IP地址后就可以开始远程登录树莓派了，远程登录树莓派适合在没有屏幕或者有屏幕但不方便操作的情况下使用。</p>
-<h3 id="方法一：putty"><a href="#方法一：putty" class="headerlink" title="方法一：putty"></a>方法一：putty</h3><p><code>putty</code>是用来在电脑上远程输入树莓派root命令的，其功能和电脑的command窗口很像，但无法像VNC那样可以显示图形界面。</p>
-<p>打开<code>putty</code>，输入树莓派IP地址，端口<code>Port</code>默认为22，点击<code>Open</code>后会弹出一个英文的安全提示窗口，点击“是Y”就会打开一个命令行窗口，然后在黑色框里输入你的ID，输入<code>pi</code>，点回车，然后输入统一的默认密码<code>raspberry</code>（如果在之前的树莓派内部配置中修改了密码的话，则输入修改后的密码，<strong>由于Linux系统不显示密码，所以看不到输入的内容</strong>），确认回车后，就可以开始输入命令行了。</p>
-<h3 id="方法二：VNC-Viewer"><a href="#方法二：VNC-Viewer" class="headerlink" title="方法二：VNC Viewer"></a>方法二：VNC Viewer</h3><p>想要使用VNC来远程登录树莓派必须先开启树莓派内部配置中<code>Interfacing Options</code>的<code>VNC</code>功能，没有屏幕的话只能先通过<code>putty</code>远程登录树莓派，再进行树莓派内部配置。</p>
-<p>确认<code>VNC</code>功能开启后，打开<code>VNC Viewer</code>，选择顶部菜单栏<code>File</code>中的<code>New connection</code>建立新的连接，输入树莓派的IP地址并自定义新连接的名字，确认回车后，在出现的画面中点击Continue，然后就会出现一个需要输入ID和密码的界面，输入之后就能远程登录树莓派了。</p>
-<h2 id="七、中文字体及输入法的下载和安装"><a href="#七、中文字体及输入法的下载和安装" class="headerlink" title="七、中文字体及输入法的下载和安装"></a>七、中文字体及输入法的下载和安装</h2><p>打开树莓派命令行，输入以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install fonts-wqy-zenhei</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这行命令里的<code>sudo</code>表示使用管理员root权限，<code>apt-get</code>表示使用apt-get包管理器来下载，<code>install</code>表示下载安装，<code>fonts-wqy-zenhei</code>表示软件名字，所有的<code>sudo apt-get install</code>+<code>软件名</code>都表示这样的意思。</p>
-</blockquote>
-<p>接下来，安装中文输入法fcitx及Google拼音输入法：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install fcitx fcitx-googlepinyin fcitx-module-cloudpinyin fcitx-sunpinyin</span><br></pre></td></tr></table></figure>
-<p>在跳出的对话框中输入<code>y</code>和回车<code>↩</code>，确定下载安装，需要90MB存储空间。</p>
-<p>安装成功之后，会在下一次重启时生效。</p>
-<p>此后可以使用<code>ctrl</code>+<code>空格</code>切换为中文输入法。</p>
-<h2 id="八、升级所有安装的软件"><a href="#八、升级所有安装的软件" class="headerlink" title="八、升级所有安装的软件"></a>八、升级所有安装的软件</h2><p>运行下面这行命令，会把本地已安装的软件，与刚下载的软件列表里对应软件进行对比，如果发现已安装的软件版本太低，就会提示你更新，执行这行命令可能需要很长时间。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>我们刚刚还运行了<code>sudo apt-get update</code>命令，现在运行<code>sudo apt-get upgrade</code>命令，有什么不同呢？</p>
-<p>答：<code>update</code>仅仅是从下载源获取并更新可下载软件列表，相当于更新索引地图，而<code>upgrade</code>是更新软件本身，所以后者要花费多得多的时间。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>项目</category>
-      </categories>
-      <tags>
-        <tag>RaspberryPi</tag>
-        <tag>硬件开发</tag>
-        <tag>树莓派</tag>
       </tags>
   </entry>
 </search>

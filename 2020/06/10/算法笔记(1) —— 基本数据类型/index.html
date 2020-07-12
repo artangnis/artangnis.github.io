@@ -111,12 +111,14 @@
 
 
 
+<meta name="description" content="数据类型 取值范围 大致范围 占用大小 输入格式 输出格式     int $- 2^{31}$ ~ $ +(2^{31} - 1)$ $- 2 × 10^9$ ~ $+2 × 10^9$ 4Byte scanf(“%d”, &amp;d); printf(“%d”, d);   long long $- 2^{63}$ ~ $ +(2^{63} - 1)$ $- 9 × 10^{18}$">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法笔记（2）——指针">
-<meta property="og:url" content="http://www.artangnis.top/2020/07/11/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94%E6%8C%87%E9%92%88/index.html">
+<meta property="og:title" content="算法笔记(1) —— 基本数据类型">
+<meta property="og:url" content="http://www.artangnis.top/2020/06/10/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0(1)%20%E2%80%94%E2%80%94%20%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
 <meta property="og:site_name" content="Artangnis&#39;s Blog">
-<meta property="article:published_time" content="2020-07-11T10:10:20.000Z">
-<meta property="article:modified_time" content="2020-07-11T10:11:26.859Z">
+<meta property="og:description" content="数据类型 取值范围 大致范围 占用大小 输入格式 输出格式     int $- 2^{31}$ ~ $ +(2^{31} - 1)$ $- 2 × 10^9$ ~ $+2 × 10^9$ 4Byte scanf(“%d”, &amp;d); printf(“%d”, d);   long long $- 2^{63}$ ~ $ +(2^{63} - 1)$ $- 9 × 10^{18}$">
+<meta property="article:published_time" content="2020-06-09T16:21:16.000Z">
+<meta property="article:modified_time" content="2020-07-12T03:08:16.862Z">
 <meta property="article:author" content="阿汤尼斯">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="PAT">
@@ -151,13 +153,13 @@
 
 
 
-  <link rel="canonical" href="http://www.artangnis.top/2020/07/11/算法笔记（2）——指针/"/>
+  <link rel="canonical" href="http://www.artangnis.top/2020/06/10/算法笔记(1) —— 基本数据类型/"/>
 
 
 
 
 
-  <title>算法笔记（2）——指针 | Artangnis's Blog</title>
+  <title>算法笔记(1) —— 基本数据类型 | Artangnis's Blog</title>
   
 
 
@@ -342,7 +344,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.artangnis.top/2020/07/11/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94%E6%8C%87%E9%92%88/">
+    <link itemprop="mainEntityOfPage" href="http://www.artangnis.top/2020/06/10/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0(1)%20%E2%80%94%E2%80%94%20%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="阿汤尼斯">
@@ -359,7 +361,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">算法笔记（2）——指针</h1>
+          <h1 class="post-title" itemprop="name headline">算法笔记(1) —— 基本数据类型</h1>
         
 
         <div class="post-meta">
@@ -371,8 +373,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-11T18:10:20+08:00">
-                2020-07-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-10T00:21:16+08:00">
+                2020-06-10
               </time>
             
 
@@ -431,7 +433,112 @@
       
 
       
-        
+        <div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">数据类型</th>
+<th>取值范围</th>
+<th>大致范围</th>
+<th>占用大小</th>
+<th>输入格式</th>
+<th>输出格式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">int</td>
+<td>$- 2^{31}$ ~ $ +(2^{31} - 1)$</td>
+<td>$- 2 × 10^9$ ~ $+2 × 10^9$</td>
+<td>4Byte</td>
+<td>scanf(“%d”, &amp;d);</td>
+<td>printf(“%d”, d);</td>
+</tr>
+<tr>
+<td style="text-align:left">long long</td>
+<td>$- 2^{63}$ ~ $ +(2^{63} - 1)$</td>
+<td>$- 9 × 10^{18}$ ~ $+9 × 10^{18}$</td>
+<td>8Byte</td>
+<td>scanf(“%lld”, &amp;lld);</td>
+<td>printf(“%lld”, lld);</td>
+</tr>
+<tr>
+<td style="text-align:left">float</td>
+<td>$- 2^{128}$ ~ $ +2^{128}$</td>
+<td>实际精度6~7位</td>
+<td>4Byte(符号1位，指数8位，尾数23位)</td>
+<td>scanf(“%f”, &amp;f);</td>
+<td>printf(“%f”, f);</td>
+</tr>
+<tr>
+<td style="text-align:left">double</td>
+<td>$- 2^{1024}$ ~ $ +2^{1024}$</td>
+<td>实际精度15~16位</td>
+<td>8Byte(符号1位，指数11位，尾数52位)</td>
+<td>scanf(“%lf”, &amp;lf);</td>
+<td><strong>printf(“%f”, f);</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">char</td>
+<td>$-128$ ~ $+127$</td>
+<td>$-128$ ~ $+127$</td>
+<td></td>
+<td>scanf(“%c”, &amp;c);字符串：<strong>scanf(“%s”, str);</strong></td>
+<td>printf(“%c”, c); 字符串：printf(“%s”, str);</td>
+</tr>
+<tr>
+<td style="text-align:left">bool</td>
+<td>0 or 1(false or true)</td>
+<td>0 or 1(false or true)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<ol>
+<li><p>小写字母比大写字母的ASCII码值大<strong>32</strong>；</p>
+</li>
+<li><p>由于数组名称本身就代表了数组第一个元素的地址，所以scanf中，<strong>char字符串数组整个输入的情况下不需要加取地址运算符</strong>；</p>
+</li>
+<li><p>在scanf中，<strong>%c格式是可以读入空格和换行的</strong>，其他格式的输入是以空格和换行作为读入结束的标志；</p>
+</li>
+<li><p>常用输出格式：<strong>%0md</strong>（使不足m位的int型变量以m位进行右对齐输出，高位用0补齐）、<strong>%.mf</strong>（使浮点数保留m位小数输出，服从“四舍五入五成双”的规则）；</p>
+</li>
+<li><p>getchar和putchar分别用来输入和输出<strong>单个字符（包括换行符）</strong>，gets和puts分别用来输入和输出<strong>一行字符串</strong>；</p>
+</li>
+<li><p>gets识别换行符<strong>\n</strong>作为输入结束，因此scanf完一个整数后，如果要使用gets，需要先用getchar接收整数后的换换行符；</p>
+</li>
+<li><p>char字符串数组的末尾都有一个<strong>空字符\0</strong>，以<strong>表示存放的字符串的结尾</strong>，结束符\0的ASCII码为0，即空字符NULL，占用一个字符位，因此创建char字符串数组时字符数组的长度比实际存储的字符串长度至少多1；</p>
+</li>
+<li><p>空字符\0和空格不是一个东西，空格的ASCII码为32；</p>
+</li>
+<li><p>常用 string 函数（使用时要在程序开头加上 <code>string.h</code> 头文件）：</p>
+<p>(1). <code>strlen(str)</code> : 该函数用于返回字符数组中第一个\0前的字符个数；</p>
+<p>(2). <code>strcmp(str1, str2)</code> : 该函数用于返回两个字符串大小的比较结果，比较原则是按<strong>字典序</strong>。如果<code>str1 &gt; str2</code>，则返回一个正整数，如果<code>str1 = str2</code>，则返回0，如果<code>str1 &lt; str2</code>，则返回一个负整数；</p>
+<p>(3). <code>strcpy(str1, str2)</code> : 该函数用于将字符数组 str2 复制给字符数组 str1 ，包括结束符\0；</p>
+<p>(4). <code>strcat(str1, str2)</code> : 该函数用于将字符数组 str2 接到字符数组 str1 后面；</p>
+<p>(5). <code>sscanf(str, &quot;%d&quot;, &amp;n)</code> : 该函数用于将字符数组 str 中的内容以 “%d” 的格式写到 n 中；</p>
+<p>(6). <code>sprintf(str, &quot;%d&quot;, n)</code> : 该函数用于将 n 以 “%d” 的格式写到字符数组 str 中。</p>
+</li>
+<li><p>字符数组的初始化方法：</p>
+<p>(1). <code>char str[15] = {&#39;H&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;, &#39;o&#39;, &#39; &#39;, &#39;W&#39;, &#39;o&#39;, &#39;r&#39;, &#39;l&#39;, &#39;d&#39;, &#39;!&#39;};</code></p>
+<p>(2). 通过直接赋值字符串来初始化（<strong>仅限初始化</strong>，程序其他位置不允许直接赋值整个字符串）：</p>
+<p>​       <code>char str[15] = &quot;Hello World!&quot;;</code></p>
+</li>
+<li><p>常用 math 函数（使用时要在程序开头加上 <code>math.h</code> 头文件）：</p>
+<p>(1). <code>fabs(double x)</code> : 该函数用于对 double 型变量取绝对值；</p>
+<p>(2). <code>floor(double x)</code> : 该函数用于对 double 型变量的向下取整；</p>
+<p>(3). <code>ceil(double x)</code> : 该函数用于对 double 型变量的向上取整；</p>
+<p>(4). <code>pow(double r, double p)</code> : 该函数用于返回 $r^p$ ，要求 r 和 p 都是 double 型变量；</p>
+<p>(5). <code>sqrt(double x)</code> : 该函数用于返回 double 型变量的算术平方根；</p>
+<p>(6). <code>log(double x)</code> : 该函数用于返回 double 型变量的以自然对数为底的对数；</p>
+<p>(7). <code>round(double x)</code> : 该函数用于将 double 型变量四舍五入，返回值也是 double 型，需进行取整。</p>
+</li>
+</ol>
+</blockquote>
+
       
     </div>
     
@@ -476,8 +583,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/06/10/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89%E2%80%94%E2%80%94%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="next" title="算法笔记（1）——基本数据类型">
-                <i class="fa fa-chevron-left"></i> 算法笔记（1）——基本数据类型
+              <a href="/2020/06/04/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/" rel="next" title="树莓派零基础学习（1）">
+                <i class="fa fa-chevron-left"></i> 树莓派零基础学习（1）
               </a>
             
           </div>
@@ -485,6 +592,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/11/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0(2)%20%E2%80%94%E2%80%94%20%E5%88%9D%E8%AF%86%E6%8C%87%E9%92%88/" rel="prev" title="算法笔记(2) —— 初识指针">
+                算法笔记(2) —— 初识指针 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
