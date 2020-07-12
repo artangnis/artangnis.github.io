@@ -1,209 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>算法笔记(2) —— 初识指针</title>
-    <url>/2020/07/11/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0(2)%20%E2%80%94%E2%80%94%20%E5%88%9D%E8%AF%86%E6%8C%87%E9%92%88/</url>
-    <content><![CDATA[<h1 id="一、指针基本概念"><a href="#一、指针基本概念" class="headerlink" title="一、指针基本概念"></a>一、指针基本概念</h1><h2 id="1、指针自身的类型"><a href="#1、指针自身的类型" class="headerlink" title="1、指针自身的类型"></a>1、指针自身的类型</h2><p>从语法的角度看，只要<strong>把指针声明语句里的指针变量名去掉</strong>，剩下的部分就是该指针的类型。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> *ptr;          <span class="comment">//指针的类型是int*</span></span><br><span class="line"><span class="keyword">int</span> **ptr;         <span class="comment">//指针的类型是int**</span></span><br><span class="line"><span class="keyword">int</span> *ptr[<span class="number">3</span>];       <span class="comment">//指针的类型是int*[3]</span></span><br><span class="line"><span class="keyword">int</span> (*ptr)[<span class="number">3</span>];     <span class="comment">//指针的类型是int(*)[3]</span></span><br></pre></td></tr></table></figure>
-<h2 id="2、指针指向的类型"><a href="#2、指针指向的类型" class="headerlink" title="2、指针指向的类型"></a>2、指针指向的类型</h2><p>当你通过指针来访问指针所指向的内存区时，指针所指向的类型决定了编译器将把那片内存区里的内容当做什么来看待。从语法上看，只要<strong>把指针声明语句中的指针名字和名字左边的指针声明符*去掉</strong>，剩下的部分就是指针所指向的类型。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> *ptr;          <span class="comment">//指针所指向的类型是int</span></span><br><span class="line"><span class="keyword">int</span> **ptr;         <span class="comment">//指针所指向的的类型是int*</span></span><br><span class="line"><span class="keyword">int</span> *ptr[<span class="number">3</span>];       <span class="comment">//指针所指向的类型是int[3]</span></span><br><span class="line"><span class="keyword">int</span> (*ptr)[<span class="number">3</span>];     <span class="comment">//指针所指向的的类型是int()[3]</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><em>p[N]， (\</em>P)[N]，及**p的区别：</p>
-<p><code>int  *p[N]</code> 表示指针数组，也就是说定义了N个不同指向 int 型的指针。</p>
-<p><code>int (*p)[N]</code>表示定义一个指针，指向一个 int[N] 型的指针。</p>
-<p><code>int **p</code> 表示定义一个指向指针的指针。</p>
-<p>注意 [] 的优先级要高于 *。</p>
-</blockquote>
-<h2 id="3、指针的值（指针所指向的内存区或地址）"><a href="#3、指针的值（指针所指向的内存区或地址）" class="headerlink" title="3、指针的值（指针所指向的内存区或地址）"></a>3、指针的值（指针所指向的内存区或地址）</h2><p>指针的值是指针本身存储的数值，这个值将被编译器当作一个地址，而不是一个一般的数值。指针所指向的内存区就是从指针的值所代表的那个内存地址开始，长度为 <code>sizeof(指针所指向的类型)</code> 的一片内存区。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">233</span>;</span><br><span class="line">    <span class="keyword">int</span> *p;</span><br><span class="line">    p = &amp;a;</span><br><span class="line">	</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"&amp;a = %d\n"</span>, &amp;a);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">" p = %d\n"</span>, p);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"p+1 = %d\n"</span>, p+<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"sizeof *p = %d\n"</span>, <span class="keyword">sizeof</span>(*p));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"sizeof int = %d\n"</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">&amp;a = <span class="number">6487572</span></span><br><span class="line">p = <span class="number">6487572</span></span><br><span class="line">p+<span class="number">1</span> = <span class="number">6487576</span></span><br><span class="line"><span class="keyword">sizeof</span> *p = <span class="number">4</span></span><br><span class="line"><span class="keyword">sizeof</span> <span class="keyword">int</span> = <span class="number">4</span></span><br></pre></td></tr></table></figure>
-<h1 id="二、运算符-amp-和"><a href="#二、运算符-amp-和" class="headerlink" title="二、运算符&amp;和*"></a>二、运算符&amp;和*</h1><p>&amp; 是<strong>取地址运算符</strong>，* 是<strong>间接运算符</strong>。<br>&amp;a 的运算结果是一个<strong>指针</strong>，该指针的值是声明 a 时开辟的地址，指针的类型是 a 的类型对应的指针类型，指针所指向的类型就是 a 的类型，指针所指向的地址就是 a 的地址。<br>*p 的运算结果是 p 所指向的东西，它的类型是 p 指向的类型，它所占用的地址是 p 所指向的地址。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">12</span>;</span><br><span class="line">    <span class="keyword">int</span> b = <span class="number">21</span>;</span><br><span class="line">    <span class="keyword">int</span> *p;       <span class="comment">//p是一个指针，该指针的自身的类型为int *型，指向的类型为int型。</span></span><br><span class="line">    <span class="keyword">int</span> **ptr;    <span class="comment">//ptr是一个二级指针（指向指针的指针），该指针自身的类型为int **型，指向的类型为int *型。</span></span><br><span class="line">    </span><br><span class="line">    p = &amp;a;       <span class="comment">//&amp;a的结果是一个指针，该指针的类型是int *型，指向的类型是int型，指向的地址是a的地址；</span></span><br><span class="line">                  <span class="comment">//将&amp;a赋值给p，即将变量a所在内存地址存放到p中。</span></span><br><span class="line">    *p = <span class="number">24</span>;      <span class="comment">//*p用于取出p中存放的内存地址（变量a的地址）所对应的内容（变量a的值）；</span></span><br><span class="line">                  <span class="comment">//将24赋值给*p，即将24赋值给变量a。</span></span><br><span class="line">    ptr = &amp;p;     <span class="comment">//&amp;p的运算结果是一个指针，该指针的类型为int **型；</span></span><br><span class="line">                  <span class="comment">//将&amp;p赋值给ptr，就是将指针p自身所在内存地址存放在到ptr中。</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"  ptr = &amp;p :\n"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"     ptr = %d\n"</span>, ptr);                 <span class="comment">//  ptr = 6487560</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"    *ptr = %d\n"</span>, *ptr);                <span class="comment">// *ptr = 6487572</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"   **ptr = %d\n"</span>, **ptr);               <span class="comment">//**ptr = 24</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;p = %d\n"</span>, &amp;p);                  <span class="comment">//   &amp;p = 6487560</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       p = %d\n"</span>, p);                   <span class="comment">//    p = 6487572</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      *p = %d\n"</span>, *p);                  <span class="comment">//   *p = 24</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;a = %d\n"</span>, &amp;a);                  <span class="comment">//   &amp;a = 6487572</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       a = %d\n"</span>, a);                   <span class="comment">//    a = 24</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;b = %d\n"</span>, &amp;b);                  <span class="comment">//   &amp;b = 6487568</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       b = %d\n"</span>, b);                   <span class="comment">//    b = 21</span></span><br><span class="line">    </span><br><span class="line">    *ptr = &amp;b;    <span class="comment">//*ptr用于取出ptr中存放的内存地址（指针p自身所在的地址）所对应的内容（指针p）；</span></span><br><span class="line">                  <span class="comment">//*ptr是一个指针，&amp;b的结果也是一个指针，这两个指针的类型和所指向的类型是一样的；</span></span><br><span class="line">	              <span class="comment">//将&amp;b赋值给*ptr，就是将变量b的地址存放到指针p中。</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">" *ptr = &amp;b :\n"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"     ptr = %d\n"</span>, ptr);                 <span class="comment">//  ptr = 6487560</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"    *ptr = %d\n"</span>, *ptr);                <span class="comment">// *ptr = 6487568</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"   **ptr = %d\n"</span>, **ptr);               <span class="comment">//**ptr = 21</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;p = %d\n"</span>, &amp;p);                  <span class="comment">//   &amp;p = 6487560</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       p = %d\n"</span>, p);                   <span class="comment">//    p = 6487568</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      *p = %d\n"</span>, *p);                  <span class="comment">//   *p = 21</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;a = %d\n"</span>, &amp;a);                  <span class="comment">//   &amp;a = 6487572</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       a = %d\n"</span>, a);                   <span class="comment">//    a = 24</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;b = %d\n"</span>, &amp;b);                  <span class="comment">//   &amp;b = 6487568</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       b = %d\n"</span>, b);                   <span class="comment">//    b = 21</span></span><br><span class="line">    </span><br><span class="line">    **ptr = <span class="number">34</span>;   <span class="comment">//**ptr先取出ptr中存放的地址所对应的内容（指针p），再对取出的内容进行*运算操作，即*p；</span></span><br><span class="line">                  <span class="comment">//将34赋值给**ptr，就是将34赋值给*p，也就是将34赋值给变量b。</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"**ptr = 34 :\n"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"     ptr = %d\n"</span>, ptr);                 <span class="comment">//  ptr = 6487560</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"    *ptr = %d\n"</span>, *ptr);                <span class="comment">// *ptr = 6487568</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"   **ptr = %d\n"</span>, **ptr);               <span class="comment">//**ptr = 34</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;p = %d\n"</span>, &amp;p);                  <span class="comment">//   &amp;p = 6487560</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       p = %d\n"</span>, p);                   <span class="comment">//    p = 6487568</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      *p = %d\n"</span>, *p);                  <span class="comment">//   *p = 34</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;a = %d\n"</span>, &amp;a);                  <span class="comment">//   &amp;a = 6487572</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       a = %d\n"</span>, a);                   <span class="comment">//    a = 24</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;b = %d\n"</span>, &amp;b);                  <span class="comment">//   &amp;b = 6487568</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       b = %d\n"</span>, b);                   <span class="comment">//    b = 34</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="三、数组与指针"><a href="#三、数组与指针" class="headerlink" title="三、数组与指针"></a>三、数组与指针</h1><blockquote>
-<p>重点补充：</p>
-<ol>
-<li>指针的加减，以<strong>指针所指向的类型</strong>为单位进行偏移。</li>
-<li>首地址：一段内存空间中的第一个<strong>存储单元</strong>的地址，其类型为该存储单元类型对应的指针类型。</li>
-</ol>
-</blockquote>
-<h2 id="1、一维数组与指针"><a href="#1、一维数组与指针" class="headerlink" title="1、一维数组与指针"></a>1、一维数组与指针</h2><h4 id="一维数组的首地址是该一维数组的第一个数组元素的地址"><a href="#一维数组的首地址是该一维数组的第一个数组元素的地址" class="headerlink" title="一维数组的首地址是该一维数组的第一个数组元素的地址"></a>一维数组的首地址是该一维数组的第一个数组元素的地址</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">5</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"   a = %d\n"</span>, a);        <span class="comment">//   a = 6487552     a表示数组的首地址，并指向存储单元a[0]，其自身类型为int*型；</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">" a+1 = %d\n"</span>, a+<span class="number">1</span>);      <span class="comment">// a+1 = 6487556     a+1偏移与指针所指向的类型（int型）有关，为4字节。</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"  &amp;a = %d\n"</span>, &amp;a);       <span class="comment">//  &amp;a = 6487552     &amp;a是一个指针，指向整个数组，其自身类型为int(*)[5]型；</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"&amp;a+1 = %d\n"</span>, &amp;a+<span class="number">1</span>);     <span class="comment">//&amp;a+1 = 6487572     &amp;a+1偏移与指针所指向的类型（int[5]型）有关，为20字节；</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"sizeof int = %d\n"</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));                  <span class="comment">//sizeof int = 4</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"sizeof int[5] = %d\n"</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>[<span class="number">5</span>]));            <span class="comment">//sizeof int[5] = 20</span></span><br><span class="line">	</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>总结：</p>
-<ol>
-<li>a 和 &amp;a 的结果都是数组的首地址，但他们的类型是不一样的：<strong>a—— 数据类型 *</strong>；<strong>&amp;a—— 数据类型 (*) [数组元素个数]</strong>。</li>
-<li><strong>数组名仅仅是“相当于”指针</strong>，而并不是真的是指针，数组名仅仅只是一个常量（一个值为数组首元素地址的常量），所以不能进行加减运算，而常量更是无法取地址的，之所以有 &amp;a，是因为这里的 a 此时<strong>代表了整个数组</strong>。</li>
-</ol>
-</blockquote>
-<h2 id="2、二维数组与指针"><a href="#2、二维数组与指针" class="headerlink" title="2、二维数组与指针"></a>2、二维数组与指针</h2><h4 id="二维数组的首地址是该二维数组的第一个一维数组的地址"><a href="#二维数组的首地址是该二维数组的第一个一维数组的地址" class="headerlink" title="二维数组的首地址是该二维数组的第一个一维数组的地址"></a>二维数组的首地址是该二维数组的第一个一维数组的地址</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">3</span>][<span class="number">4</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"    &amp;a = %d\n"</span>, &amp;a);      <span class="comment">//    &amp;a = 6487520  &amp;a为指向整个二维数组的指针，其自身类型为int(*)[3][4]型；</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"  &amp;a+1 = %d\n"</span>, &amp;a+<span class="number">1</span>);    <span class="comment">//  &amp;a+1 = 6487568  &amp;a+1偏移与指针指向的类型（int[3][4]型）有关，为48字节。</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"     a = %d\n"</span>, a);       <span class="comment">//     a = 6487520  a表示二维数组的首地址，指向一维数组a[0]，类型为int*[4]型；</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"   a+1 = %d\n"</span>, a+<span class="number">1</span>);     <span class="comment">//   a+1 = 6487536  a+1便宜与指针指向的类型（int[4]型）有关，为16字节。</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"  a[0] = %d\n"</span>, a[<span class="number">0</span>]);    <span class="comment">//  a[0] = 6487520  a[0]表示一维数组的首地址，指向元素a[0][0]，类型为int*型；</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"a[0]+1 = %d\n"</span>, a[<span class="number">0</span>]+<span class="number">1</span>);  <span class="comment">//a[0]+1 = 6487524  a[0]+1偏移与指针指向的类型（int）有关，为4字节。</span></span><br><span class="line">	</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"sizeof int[3][4] = %d\n"</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>[<span class="number">3</span>][<span class="number">4</span>]));      <span class="comment">//sizeof int[3][4] = 48</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"sizeof int[4] = %d\n"</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>[<span class="number">4</span>]));            <span class="comment">//sizeof int[4] = 16</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"sizeof int = %d\n"</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));                  <span class="comment">//sizeof int = 4</span></span><br><span class="line">	</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>对于三维数组 int a[1][2][3]，有如下结论：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">指针</th>
-<th style="text-align:center">自身类型</th>
-<th style="text-align:center">指向类型</th>
-<th style="text-align:center">单位偏移量</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">&amp;a</td>
-<td style="text-align:center">int(*)[1][2][3]</td>
-<td style="text-align:center">int[1][2][3]</td>
-<td style="text-align:center">sizeof(int[1][2][3]) $= 1<em>2</em>3*4 = 24$字节</td>
-</tr>
-<tr>
-<td style="text-align:center">a</td>
-<td style="text-align:center">int(*)[2][3]</td>
-<td style="text-align:center">int[2][3]</td>
-<td style="text-align:center">sizeof(int[2][3]) $= 2<em>3</em>4 = 24$字节</td>
-</tr>
-<tr>
-<td style="text-align:center">a[0]</td>
-<td style="text-align:center">int(*)[3]</td>
-<td style="text-align:center">int[3]</td>
-<td style="text-align:center">sizeof(int[3]) $ = 3*4 = 12$字节</td>
-</tr>
-<tr>
-<td style="text-align:center">a[0][0]</td>
-<td style="text-align:center">int*</td>
-<td style="text-align:center">int</td>
-<td style="text-align:center">sizeof(int) $= 4$字节</td>
-</tr>
-</tbody>
-</table>
-</div>
-]]></content>
-      <categories>
-        <category>考研</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>PAT</tag>
-        <tag>C/C++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>算法笔记(1) —— 基本数据类型</title>
-    <url>/2020/06/10/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0(1)%20%E2%80%94%E2%80%94%20%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
-    <content><![CDATA[<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">数据类型</th>
-<th>取值范围</th>
-<th>大致范围</th>
-<th>占用大小</th>
-<th>输入格式</th>
-<th>输出格式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">int</td>
-<td>$- 2^{31}$ ~ $ +(2^{31} - 1)$</td>
-<td>$- 2 × 10^9$ ~ $+2 × 10^9$</td>
-<td>4Byte</td>
-<td>scanf(“%d”, &amp;d);</td>
-<td>printf(“%d”, d);</td>
-</tr>
-<tr>
-<td style="text-align:left">long long</td>
-<td>$- 2^{63}$ ~ $ +(2^{63} - 1)$</td>
-<td>$- 9 × 10^{18}$ ~ $+9 × 10^{18}$</td>
-<td>8Byte</td>
-<td>scanf(“%lld”, &amp;lld);</td>
-<td>printf(“%lld”, lld);</td>
-</tr>
-<tr>
-<td style="text-align:left">float</td>
-<td>$- 2^{128}$ ~ $ +2^{128}$</td>
-<td>实际精度6~7位</td>
-<td>4Byte(符号1位，指数8位，尾数23位)</td>
-<td>scanf(“%f”, &amp;f);</td>
-<td>printf(“%f”, f);</td>
-</tr>
-<tr>
-<td style="text-align:left">double</td>
-<td>$- 2^{1024}$ ~ $ +2^{1024}$</td>
-<td>实际精度15~16位</td>
-<td>8Byte(符号1位，指数11位，尾数52位)</td>
-<td>scanf(“%lf”, &amp;lf);</td>
-<td><strong>printf(“%f”, f);</strong></td>
-</tr>
-<tr>
-<td style="text-align:left">char</td>
-<td>$-128$ ~ $+127$</td>
-<td>$-128$ ~ $+127$</td>
-<td></td>
-<td>scanf(“%c”, &amp;c);字符串：<strong>scanf(“%s”, str);</strong></td>
-<td>printf(“%c”, c); 字符串：printf(“%s”, str);</td>
-</tr>
-<tr>
-<td style="text-align:left">bool</td>
-<td>0 or 1(false or true)</td>
-<td>0 or 1(false or true)</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-<blockquote>
-<ol>
-<li><p>小写字母比大写字母的ASCII码值大<strong>32</strong>；</p>
-</li>
-<li><p>由于数组名称本身就代表了数组第一个元素的地址，所以scanf中，<strong>char字符串数组整个输入的情况下不需要加取地址运算符</strong>；</p>
-</li>
-<li><p>在scanf中，<strong>%c格式是可以读入空格和换行的</strong>，其他格式的输入是以空格和换行作为读入结束的标志；</p>
-</li>
-<li><p>常用输出格式：<strong>%0md</strong>（使不足m位的int型变量以m位进行右对齐输出，高位用0补齐）、<strong>%.mf</strong>（使浮点数保留m位小数输出，服从“四舍五入五成双”的规则）；</p>
-</li>
-<li><p>getchar和putchar分别用来输入和输出<strong>单个字符（包括换行符）</strong>，gets和puts分别用来输入和输出<strong>一行字符串</strong>；</p>
-</li>
-<li><p>gets识别换行符<strong>\n</strong>作为输入结束，因此scanf完一个整数后，如果要使用gets，需要先用getchar接收整数后的换换行符；</p>
-</li>
-<li><p>char字符串数组的末尾都有一个<strong>空字符\0</strong>，以<strong>表示存放的字符串的结尾</strong>，结束符\0的ASCII码为0，即空字符NULL，占用一个字符位，因此创建char字符串数组时字符数组的长度比实际存储的字符串长度至少多1；</p>
-</li>
-<li><p>空字符\0和空格不是一个东西，空格的ASCII码为32；</p>
-</li>
-<li><p>常用 string 函数（使用时要在程序开头加上 <code>string.h</code> 头文件）：</p>
-<p>(1). <code>strlen(str)</code> : 该函数用于返回字符数组中第一个\0前的字符个数；</p>
-<p>(2). <code>strcmp(str1, str2)</code> : 该函数用于返回两个字符串大小的比较结果，比较原则是按<strong>字典序</strong>。如果<code>str1 &gt; str2</code>，则返回一个正整数，如果<code>str1 = str2</code>，则返回0，如果<code>str1 &lt; str2</code>，则返回一个负整数；</p>
-<p>(3). <code>strcpy(str1, str2)</code> : 该函数用于将字符数组 str2 复制给字符数组 str1 ，包括结束符\0；</p>
-<p>(4). <code>strcat(str1, str2)</code> : 该函数用于将字符数组 str2 接到字符数组 str1 后面；</p>
-<p>(5). <code>sscanf(str, &quot;%d&quot;, &amp;n)</code> : 该函数用于将字符数组 str 中的内容以 “%d” 的格式写到 n 中；</p>
-<p>(6). <code>sprintf(str, &quot;%d&quot;, n)</code> : 该函数用于将 n 以 “%d” 的格式写到字符数组 str 中。</p>
-</li>
-<li><p>字符数组的初始化方法：</p>
-<p>(1). <code>char str[15] = {&#39;H&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;, &#39;o&#39;, &#39; &#39;, &#39;W&#39;, &#39;o&#39;, &#39;r&#39;, &#39;l&#39;, &#39;d&#39;, &#39;!&#39;};</code></p>
-<p>(2). 通过直接赋值字符串来初始化（<strong>仅限初始化</strong>，程序其他位置不允许直接赋值整个字符串）：</p>
-<p>​       <code>char str[15] = &quot;Hello World!&quot;;</code></p>
-</li>
-<li><p>常用 math 函数（使用时要在程序开头加上 <code>math.h</code> 头文件）：</p>
-<p>(1). <code>fabs(double x)</code> : 该函数用于对 double 型变量取绝对值；</p>
-<p>(2). <code>floor(double x)</code> : 该函数用于对 double 型变量的向下取整；</p>
-<p>(3). <code>ceil(double x)</code> : 该函数用于对 double 型变量的向上取整；</p>
-<p>(4). <code>pow(double r, double p)</code> : 该函数用于返回 $r^p$ ，要求 r 和 p 都是 double 型变量；</p>
-<p>(5). <code>sqrt(double x)</code> : 该函数用于返回 double 型变量的算术平方根；</p>
-<p>(6). <code>log(double x)</code> : 该函数用于返回 double 型变量的以自然对数为底的对数；</p>
-<p>(7). <code>round(double x)</code> : 该函数用于将 double 型变量四舍五入，返回值也是 double 型，需进行取整。</p>
-</li>
-</ol>
-</blockquote>
-]]></content>
-      <categories>
-        <category>考研</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>PAT</tag>
-        <tag>C/C++</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>树莓派零基础学习（1）</title>
     <url>/2020/06/04/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/</url>
     <content><![CDATA[<h2 id="一、树莓派开机前的准备工作"><a href="#一、树莓派开机前的准备工作" class="headerlink" title="一、树莓派开机前的准备工作"></a>一、树莓派开机前的准备工作</h2><h3 id="（1）硬件及软件准备"><a href="#（1）硬件及软件准备" class="headerlink" title="（1）硬件及软件准备"></a>（1）硬件及软件准备</h3><h4 id="硬件准备"><a href="#硬件准备" class="headerlink" title="硬件准备"></a>硬件准备</h4><p>树莓派4B、树莓派电源线或安卓数据线、SD卡（16G以上）、读卡器、电脑、可触摸屏幕、HDMI线、无线键鼠</p>
@@ -892,6 +689,209 @@
         <tag>IoT</tag>
         <tag>华为</tag>
         <tag>物联网</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法笔记(1) —— 基本数据类型</title>
+    <url>/2020/06/10/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0(1)%20%E2%80%94%E2%80%94%20%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+    <content><![CDATA[<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">数据类型</th>
+<th>取值范围</th>
+<th>大致范围</th>
+<th>占用大小</th>
+<th>输入格式</th>
+<th>输出格式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">int</td>
+<td>$- 2^{31}$ ~ $ +(2^{31} - 1)$</td>
+<td>$- 2 × 10^9$ ~ $+2 × 10^9$</td>
+<td>4Byte</td>
+<td>scanf(“%d”, &amp;d);</td>
+<td>printf(“%d”, d);</td>
+</tr>
+<tr>
+<td style="text-align:left">long long</td>
+<td>$- 2^{63}$ ~ $ +(2^{63} - 1)$</td>
+<td>$- 9 × 10^{18}$ ~ $+9 × 10^{18}$</td>
+<td>8Byte</td>
+<td>scanf(“%lld”, &amp;lld);</td>
+<td>printf(“%lld”, lld);</td>
+</tr>
+<tr>
+<td style="text-align:left">float</td>
+<td>$- 2^{128}$ ~ $ +2^{128}$</td>
+<td>实际精度6~7位</td>
+<td>4Byte(符号1位，指数8位，尾数23位)</td>
+<td>scanf(“%f”, &amp;f);</td>
+<td>printf(“%f”, f);</td>
+</tr>
+<tr>
+<td style="text-align:left">double</td>
+<td>$- 2^{1024}$ ~ $ +2^{1024}$</td>
+<td>实际精度15~16位</td>
+<td>8Byte(符号1位，指数11位，尾数52位)</td>
+<td>scanf(“%lf”, &amp;lf);</td>
+<td><strong>printf(“%f”, f);</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">char</td>
+<td>$-128$ ~ $+127$</td>
+<td>$-128$ ~ $+127$</td>
+<td></td>
+<td>scanf(“%c”, &amp;c);字符串：<strong>scanf(“%s”, str);</strong></td>
+<td>printf(“%c”, c); 字符串：printf(“%s”, str);</td>
+</tr>
+<tr>
+<td style="text-align:left">bool</td>
+<td>0 or 1(false or true)</td>
+<td>0 or 1(false or true)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<ol>
+<li><p>小写字母比大写字母的ASCII码值大<strong>32</strong>；</p>
+</li>
+<li><p>由于数组名称本身就代表了数组第一个元素的地址，所以scanf中，<strong>char字符串数组整个输入的情况下不需要加取地址运算符</strong>；</p>
+</li>
+<li><p>在scanf中，<strong>%c格式是可以读入空格和换行的</strong>，其他格式的输入是以空格和换行作为读入结束的标志；</p>
+</li>
+<li><p>常用输出格式：<strong>%0md</strong>（使不足m位的int型变量以m位进行右对齐输出，高位用0补齐）、<strong>%.mf</strong>（使浮点数保留m位小数输出，服从“四舍五入五成双”的规则）；</p>
+</li>
+<li><p>getchar和putchar分别用来输入和输出<strong>单个字符（包括换行符）</strong>，gets和puts分别用来输入和输出<strong>一行字符串</strong>；</p>
+</li>
+<li><p>gets识别换行符<strong>\n</strong>作为输入结束，因此scanf完一个整数后，如果要使用gets，需要先用getchar接收整数后的换换行符；</p>
+</li>
+<li><p>char字符串数组的末尾都有一个<strong>空字符\0</strong>，以<strong>表示存放的字符串的结尾</strong>，结束符\0的ASCII码为0，即空字符NULL，占用一个字符位，因此创建char字符串数组时字符数组的长度比实际存储的字符串长度至少多1；</p>
+</li>
+<li><p>空字符\0和空格不是一个东西，空格的ASCII码为32；</p>
+</li>
+<li><p>常用 string 函数（使用时要在程序开头加上 <code>string.h</code> 头文件）：</p>
+<p>(1). <code>strlen(str)</code> : 该函数用于返回字符数组中第一个\0前的字符个数；</p>
+<p>(2). <code>strcmp(str1, str2)</code> : 该函数用于返回两个字符串大小的比较结果，比较原则是按<strong>字典序</strong>。如果<code>str1 &gt; str2</code>，则返回一个正整数，如果<code>str1 = str2</code>，则返回0，如果<code>str1 &lt; str2</code>，则返回一个负整数；</p>
+<p>(3). <code>strcpy(str1, str2)</code> : 该函数用于将字符数组 str2 复制给字符数组 str1 ，包括结束符\0；</p>
+<p>(4). <code>strcat(str1, str2)</code> : 该函数用于将字符数组 str2 接到字符数组 str1 后面；</p>
+<p>(5). <code>sscanf(str, &quot;%d&quot;, &amp;n)</code> : 该函数用于将字符数组 str 中的内容以 “%d” 的格式写到 n 中；</p>
+<p>(6). <code>sprintf(str, &quot;%d&quot;, n)</code> : 该函数用于将 n 以 “%d” 的格式写到字符数组 str 中。</p>
+</li>
+<li><p>字符数组的初始化方法：</p>
+<p>(1). <code>char str[15] = {&#39;H&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;, &#39;o&#39;, &#39; &#39;, &#39;W&#39;, &#39;o&#39;, &#39;r&#39;, &#39;l&#39;, &#39;d&#39;, &#39;!&#39;};</code></p>
+<p>(2). 通过直接赋值字符串来初始化（<strong>仅限初始化</strong>，程序其他位置不允许直接赋值整个字符串）：</p>
+<p>​       <code>char str[15] = &quot;Hello World!&quot;;</code></p>
+</li>
+<li><p>常用 math 函数（使用时要在程序开头加上 <code>math.h</code> 头文件）：</p>
+<p>(1). <code>fabs(double x)</code> : 该函数用于对 double 型变量取绝对值；</p>
+<p>(2). <code>floor(double x)</code> : 该函数用于对 double 型变量的向下取整；</p>
+<p>(3). <code>ceil(double x)</code> : 该函数用于对 double 型变量的向上取整；</p>
+<p>(4). <code>pow(double r, double p)</code> : 该函数用于返回 $r^p$ ，要求 r 和 p 都是 double 型变量；</p>
+<p>(5). <code>sqrt(double x)</code> : 该函数用于返回 double 型变量的算术平方根；</p>
+<p>(6). <code>log(double x)</code> : 该函数用于返回 double 型变量的以自然对数为底的对数；</p>
+<p>(7). <code>round(double x)</code> : 该函数用于将 double 型变量四舍五入，返回值也是 double 型，需进行取整。</p>
+</li>
+</ol>
+</blockquote>
+]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>PAT</tag>
+        <tag>C/C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法笔记(2) —— 初识指针</title>
+    <url>/2020/07/11/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0(2)%20%E2%80%94%E2%80%94%20%E5%88%9D%E8%AF%86%E6%8C%87%E9%92%88/</url>
+    <content><![CDATA[<h1 id="一、指针基本概念"><a href="#一、指针基本概念" class="headerlink" title="一、指针基本概念"></a>一、指针基本概念</h1><h2 id="1、指针自身的类型"><a href="#1、指针自身的类型" class="headerlink" title="1、指针自身的类型"></a>1、指针自身的类型</h2><p>从语法的角度看，只要<strong>把指针声明语句里的指针变量名去掉</strong>，剩下的部分就是该指针的类型。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> *ptr;          <span class="comment">//指针的类型是int*</span></span><br><span class="line"><span class="keyword">int</span> **ptr;         <span class="comment">//指针的类型是int**</span></span><br><span class="line"><span class="keyword">int</span> *ptr[<span class="number">3</span>];       <span class="comment">//指针的类型是int*[3]</span></span><br><span class="line"><span class="keyword">int</span> (*ptr)[<span class="number">3</span>];     <span class="comment">//指针的类型是int(*)[3]</span></span><br></pre></td></tr></table></figure>
+<h2 id="2、指针指向的类型"><a href="#2、指针指向的类型" class="headerlink" title="2、指针指向的类型"></a>2、指针指向的类型</h2><p>当你通过指针来访问指针所指向的内存区时，指针所指向的类型决定了编译器将把那片内存区里的内容当做什么来看待。从语法上看，只要<strong>把指针声明语句中的指针名字和名字左边的指针声明符*去掉</strong>，剩下的部分就是指针所指向的类型。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> *ptr;          <span class="comment">//指针所指向的类型是int</span></span><br><span class="line"><span class="keyword">int</span> **ptr;         <span class="comment">//指针所指向的的类型是int*</span></span><br><span class="line"><span class="keyword">int</span> *ptr[<span class="number">3</span>];       <span class="comment">//指针所指向的类型是int[3]</span></span><br><span class="line"><span class="keyword">int</span> (*ptr)[<span class="number">3</span>];     <span class="comment">//指针所指向的的类型是int()[3]</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><em>p[N]， (\</em>P)[N]，及**p的区别：</p>
+<p><code>int  *p[N]</code> 表示指针数组，也就是说定义了N个不同指向 int 型的指针。</p>
+<p><code>int (*p)[N]</code>表示定义一个指针，指向一个 int[N] 型的指针。</p>
+<p><code>int **p</code> 表示定义一个指向指针的指针。</p>
+<p>注意 [] 的优先级要高于 *。</p>
+</blockquote>
+<h2 id="3、指针的值（指针所指向的内存区或地址）"><a href="#3、指针的值（指针所指向的内存区或地址）" class="headerlink" title="3、指针的值（指针所指向的内存区或地址）"></a>3、指针的值（指针所指向的内存区或地址）</h2><p>指针的值是指针本身存储的数值，这个值将被编译器当作一个地址，而不是一个一般的数值。指针所指向的内存区就是从指针的值所代表的那个内存地址开始，长度为 <code>sizeof(指针所指向的类型)</code> 的一片内存区。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">233</span>;</span><br><span class="line">    <span class="keyword">int</span> *p;</span><br><span class="line">    p = &amp;a;</span><br><span class="line">	</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"&amp;a = %d\n"</span>, &amp;a);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">" p = %d\n"</span>, p);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"p+1 = %d\n"</span>, p+<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"sizeof *p = %d\n"</span>, <span class="keyword">sizeof</span>(*p));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"sizeof int = %d\n"</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">&amp;a = <span class="number">6487572</span></span><br><span class="line">p = <span class="number">6487572</span></span><br><span class="line">p+<span class="number">1</span> = <span class="number">6487576</span></span><br><span class="line"><span class="keyword">sizeof</span> *p = <span class="number">4</span></span><br><span class="line"><span class="keyword">sizeof</span> <span class="keyword">int</span> = <span class="number">4</span></span><br></pre></td></tr></table></figure>
+<h1 id="二、运算符-amp-和"><a href="#二、运算符-amp-和" class="headerlink" title="二、运算符&amp;和*"></a>二、运算符&amp;和*</h1><p>&amp; 是<strong>取地址运算符</strong>，* 是<strong>间接运算符</strong>。<br>&amp;a 的运算结果是一个<strong>指针</strong>，该指针的值是声明 a 时开辟的地址，指针的类型是 a 的类型对应的指针类型，指针所指向的类型就是 a 的类型，指针所指向的地址就是 a 的地址。<br>*p 的运算结果是 p 所指向的东西，它的类型是 p 指向的类型，它所占用的地址是 p 所指向的地址。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">12</span>;</span><br><span class="line">    <span class="keyword">int</span> b = <span class="number">21</span>;</span><br><span class="line">    <span class="keyword">int</span> *p;       <span class="comment">//p是一个指针，该指针的自身的类型为int *型，指向的类型为int型。</span></span><br><span class="line">    <span class="keyword">int</span> **ptr;    <span class="comment">//ptr是一个二级指针（指向指针的指针），该指针自身的类型为int **型，指向的类型为int *型。</span></span><br><span class="line">    </span><br><span class="line">    p = &amp;a;       <span class="comment">//&amp;a的结果是一个指针，该指针的类型是int *型，指向的类型是int型，指向的地址是a的地址；</span></span><br><span class="line">                  <span class="comment">//将&amp;a赋值给p，即将变量a所在内存地址存放到p中。</span></span><br><span class="line">    *p = <span class="number">24</span>;      <span class="comment">//*p用于取出p中存放的内存地址（变量a的地址）所对应的内容（变量a的值）；</span></span><br><span class="line">                  <span class="comment">//将24赋值给*p，即将24赋值给变量a。</span></span><br><span class="line">    ptr = &amp;p;     <span class="comment">//&amp;p的运算结果是一个指针，该指针的类型为int **型；</span></span><br><span class="line">                  <span class="comment">//将&amp;p赋值给ptr，就是将指针p自身所在内存地址存放在到ptr中。</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"  ptr = &amp;p :\n"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"     ptr = %d\n"</span>, ptr);                 <span class="comment">//  ptr = 6487560</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"    *ptr = %d\n"</span>, *ptr);                <span class="comment">// *ptr = 6487572</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"   **ptr = %d\n"</span>, **ptr);               <span class="comment">//**ptr = 24</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;p = %d\n"</span>, &amp;p);                  <span class="comment">//   &amp;p = 6487560</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       p = %d\n"</span>, p);                   <span class="comment">//    p = 6487572</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      *p = %d\n"</span>, *p);                  <span class="comment">//   *p = 24</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;a = %d\n"</span>, &amp;a);                  <span class="comment">//   &amp;a = 6487572</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       a = %d\n"</span>, a);                   <span class="comment">//    a = 24</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;b = %d\n"</span>, &amp;b);                  <span class="comment">//   &amp;b = 6487568</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       b = %d\n"</span>, b);                   <span class="comment">//    b = 21</span></span><br><span class="line">    </span><br><span class="line">    *ptr = &amp;b;    <span class="comment">//*ptr用于取出ptr中存放的内存地址（指针p自身所在的地址）所对应的内容（指针p）；</span></span><br><span class="line">                  <span class="comment">//*ptr是一个指针，&amp;b的结果也是一个指针，这两个指针的类型和所指向的类型是一样的；</span></span><br><span class="line">	              <span class="comment">//将&amp;b赋值给*ptr，就是将变量b的地址存放到指针p中。</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">" *ptr = &amp;b :\n"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"     ptr = %d\n"</span>, ptr);                 <span class="comment">//  ptr = 6487560</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"    *ptr = %d\n"</span>, *ptr);                <span class="comment">// *ptr = 6487568</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"   **ptr = %d\n"</span>, **ptr);               <span class="comment">//**ptr = 21</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;p = %d\n"</span>, &amp;p);                  <span class="comment">//   &amp;p = 6487560</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       p = %d\n"</span>, p);                   <span class="comment">//    p = 6487568</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      *p = %d\n"</span>, *p);                  <span class="comment">//   *p = 21</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;a = %d\n"</span>, &amp;a);                  <span class="comment">//   &amp;a = 6487572</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       a = %d\n"</span>, a);                   <span class="comment">//    a = 24</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;b = %d\n"</span>, &amp;b);                  <span class="comment">//   &amp;b = 6487568</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       b = %d\n"</span>, b);                   <span class="comment">//    b = 21</span></span><br><span class="line">    </span><br><span class="line">    **ptr = <span class="number">34</span>;   <span class="comment">//**ptr先取出ptr中存放的地址所对应的内容（指针p），再对取出的内容进行*运算操作，即*p；</span></span><br><span class="line">                  <span class="comment">//将34赋值给**ptr，就是将34赋值给*p，也就是将34赋值给变量b。</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"**ptr = 34 :\n"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"     ptr = %d\n"</span>, ptr);                 <span class="comment">//  ptr = 6487560</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"    *ptr = %d\n"</span>, *ptr);                <span class="comment">// *ptr = 6487568</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"   **ptr = %d\n"</span>, **ptr);               <span class="comment">//**ptr = 34</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;p = %d\n"</span>, &amp;p);                  <span class="comment">//   &amp;p = 6487560</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       p = %d\n"</span>, p);                   <span class="comment">//    p = 6487568</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      *p = %d\n"</span>, *p);                  <span class="comment">//   *p = 34</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;a = %d\n"</span>, &amp;a);                  <span class="comment">//   &amp;a = 6487572</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       a = %d\n"</span>, a);                   <span class="comment">//    a = 24</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"      &amp;b = %d\n"</span>, &amp;b);                  <span class="comment">//   &amp;b = 6487568</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"       b = %d\n"</span>, b);                   <span class="comment">//    b = 34</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="三、数组与指针"><a href="#三、数组与指针" class="headerlink" title="三、数组与指针"></a>三、数组与指针</h1><blockquote>
+<p>重点补充：</p>
+<ol>
+<li>指针的加减，以<strong>指针所指向的类型</strong>为单位进行偏移。</li>
+<li>首地址：一段内存空间中的第一个<strong>存储单元</strong>的地址，其类型为该存储单元类型对应的指针类型。</li>
+</ol>
+</blockquote>
+<h2 id="1、一维数组与指针"><a href="#1、一维数组与指针" class="headerlink" title="1、一维数组与指针"></a>1、一维数组与指针</h2><h4 id="一维数组的首地址是该一维数组的第一个数组元素的地址"><a href="#一维数组的首地址是该一维数组的第一个数组元素的地址" class="headerlink" title="一维数组的首地址是该一维数组的第一个数组元素的地址"></a>一维数组的首地址是该一维数组的第一个数组元素的地址</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">5</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"   a = %d\n"</span>, a);        <span class="comment">//   a = 6487552     a表示数组的首地址，并指向存储单元a[0]，其自身类型为int*型；</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">" a+1 = %d\n"</span>, a+<span class="number">1</span>);      <span class="comment">// a+1 = 6487556     a+1偏移与指针所指向的类型（int型）有关，为4字节。</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"  &amp;a = %d\n"</span>, &amp;a);       <span class="comment">//  &amp;a = 6487552     &amp;a是一个指针，指向整个数组，其自身类型为int(*)[5]型；</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"&amp;a+1 = %d\n"</span>, &amp;a+<span class="number">1</span>);     <span class="comment">//&amp;a+1 = 6487572     &amp;a+1偏移与指针所指向的类型（int[5]型）有关，为20字节；</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"sizeof int = %d\n"</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));                  <span class="comment">//sizeof int = 4</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"sizeof int[5] = %d\n"</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>[<span class="number">5</span>]));            <span class="comment">//sizeof int[5] = 20</span></span><br><span class="line">	</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>总结：</p>
+<ol>
+<li>a 和 &amp;a 的结果都是数组的首地址，但他们的类型是不一样的：<strong>a—— 数据类型 *</strong>；<strong>&amp;a—— 数据类型 (*) [数组元素个数]</strong>。</li>
+<li><strong>数组名仅仅是“相当于”指针</strong>，而并不是真的是指针，数组名仅仅只是一个常量（一个值为数组首元素地址的常量），所以不能进行加减运算，而常量更是无法取地址的，之所以有 &amp;a，是因为这里的 a 此时<strong>代表了整个数组</strong>。</li>
+</ol>
+</blockquote>
+<h2 id="2、二维数组与指针"><a href="#2、二维数组与指针" class="headerlink" title="2、二维数组与指针"></a>2、二维数组与指针</h2><h4 id="二维数组的首地址是该二维数组的第一个一维数组的地址"><a href="#二维数组的首地址是该二维数组的第一个一维数组的地址" class="headerlink" title="二维数组的首地址是该二维数组的第一个一维数组的地址"></a>二维数组的首地址是该二维数组的第一个一维数组的地址</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">3</span>][<span class="number">4</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"    &amp;a = %d\n"</span>, &amp;a);      <span class="comment">//    &amp;a = 6487520  &amp;a为指向整个二维数组的指针，其自身类型为int(*)[3][4]型；</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"  &amp;a+1 = %d\n"</span>, &amp;a+<span class="number">1</span>);    <span class="comment">//  &amp;a+1 = 6487568  &amp;a+1偏移与指针指向的类型（int[3][4]型）有关，为48字节。</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"     a = %d\n"</span>, a);       <span class="comment">//     a = 6487520  a表示二维数组的首地址，指向一维数组a[0]，类型为int*[4]型；</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"   a+1 = %d\n"</span>, a+<span class="number">1</span>);     <span class="comment">//   a+1 = 6487536  a+1便宜与指针指向的类型（int[4]型）有关，为16字节。</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"  a[0] = %d\n"</span>, a[<span class="number">0</span>]);    <span class="comment">//  a[0] = 6487520  a[0]表示一维数组的首地址，指向元素a[0][0]，类型为int*型；</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"a[0]+1 = %d\n"</span>, a[<span class="number">0</span>]+<span class="number">1</span>);  <span class="comment">//a[0]+1 = 6487524  a[0]+1偏移与指针指向的类型（int）有关，为4字节。</span></span><br><span class="line">	</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"sizeof int[3][4] = %d\n"</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>[<span class="number">3</span>][<span class="number">4</span>]));      <span class="comment">//sizeof int[3][4] = 48</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"sizeof int[4] = %d\n"</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>[<span class="number">4</span>]));            <span class="comment">//sizeof int[4] = 16</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"sizeof int = %d\n"</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));                  <span class="comment">//sizeof int = 4</span></span><br><span class="line">	</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于三维数组 int a[1][2][3]，有如下结论：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指针</th>
+<th style="text-align:center">自身类型</th>
+<th style="text-align:center">指向类型</th>
+<th style="text-align:center">单位偏移量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&amp;a</td>
+<td style="text-align:center">int(*)[1][2][3]</td>
+<td style="text-align:center">int[1][2][3]</td>
+<td style="text-align:center">sizeof(int[1][2][3]) $= 1<em>2</em>3*4 = 24$字节</td>
+</tr>
+<tr>
+<td style="text-align:center">a</td>
+<td style="text-align:center">int(*)[2][3]</td>
+<td style="text-align:center">int[2][3]</td>
+<td style="text-align:center">sizeof(int[2][3]) $= 2<em>3</em>4 = 24$字节</td>
+</tr>
+<tr>
+<td style="text-align:center">a[0]</td>
+<td style="text-align:center">int(*)[3]</td>
+<td style="text-align:center">int[3]</td>
+<td style="text-align:center">sizeof(int[3]) $ = 3*4 = 12$字节</td>
+</tr>
+<tr>
+<td style="text-align:center">a[0][0]</td>
+<td style="text-align:center">int*</td>
+<td style="text-align:center">int</td>
+<td style="text-align:center">sizeof(int) $= 4$字节</td>
+</tr>
+</tbody>
+</table>
+</div>
+]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>PAT</tag>
+        <tag>C/C++</tag>
       </tags>
   </entry>
 </search>
