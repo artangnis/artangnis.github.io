@@ -118,7 +118,7 @@
 <meta property="og:site_name" content="Artangnis&#39;s Blog">
 <meta property="og:description" content="一、指针基本概念1、指针自身的类型从语法的角度看，只要把指针声明语句里的指针变量名去掉，剩下的部分就是该指针的类型。 1234int *ptr;          &#x2F;&#x2F;指针的类型是int*int **ptr;         &#x2F;&#x2F;指针的类型是int**int *ptr[3];       &#x2F;&#x2F;指针的类型是int*[3]int (*ptr)[3];     &#x2F;&#x2F;指针的类型是int(*)[3] 2、指">
 <meta property="article:published_time" content="2020-07-11T10:10:20.000Z">
-<meta property="article:modified_time" content="2020-07-12T11:52:19.293Z">
+<meta property="article:modified_time" content="2020-07-12T11:54:10.542Z">
 <meta property="article:author" content="阿汤尼斯">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="PAT">
@@ -438,7 +438,7 @@
 <h2 id="2、指针指向的类型"><a href="#2、指针指向的类型" class="headerlink" title="2、指针指向的类型"></a>2、指针指向的类型</h2><p>当你通过指针来访问指针所指向的内存区时，指针所指向的类型决定了编译器将把那片内存区里的内容当做什么来看待。从语法上看，只要<strong>把指针声明语句中的指针名字和名字左边的指针声明符*去掉</strong>，剩下的部分就是指针所指向的类型。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *ptr;          <span class="comment">//指针所指向的类型是int</span></span><br><span class="line"><span class="keyword">int</span> **ptr;         <span class="comment">//指针所指向的的类型是int*</span></span><br><span class="line"><span class="keyword">int</span> *ptr[<span class="number">3</span>];       <span class="comment">//指针所指向的类型是int[3]</span></span><br><span class="line"><span class="keyword">int</span> (*ptr)[<span class="number">3</span>];     <span class="comment">//指针所指向的的类型是int()[3]</span></span><br></pre></td></tr></table></figure>
 <blockquote>
-<p><em>p[N]， (\</em>P)[N]，及**p的区别：</p>
+<p>*p[N]， (*P)[N]，及**p的区别：</p>
 <p><code>int  *p[N]</code> 表示指针数组，也就是说定义了N个不同指向 int 型的指针。</p>
 <p><code>int (*p)[N]</code>表示定义一个指针，指向一个 int[N] 型的指针。</p>
 <p><code>int **p</code> 表示定义一个指向指针的指针。</p>
