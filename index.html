@@ -393,7 +393,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-13T22:43:11+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-13T23:02:10+08:00">
                 2020-07-13
               </time>
             
@@ -492,22 +492,18 @@
 
       
         
-          
-          【codeup 1928】日期差值
+          <div align='center'>【codeup 1928】日期差值</font></div>
 
-题目描述
-1有两个日期，求两个日期之间的天数，如果两个日期是连续的，则规定它们之间的天数为两天。
-输入格式
-1有多组数据，每组数据有两行，分别表示两个日期，形式为YYYYMMDD。
-输出格式
-1每组数据输出一行，及日期差值。
-样例输入
-122013010120130105
-样例输出
-15
-参考代码
-123456789101112131415161718192021222324252627282930313233343536#include &lt;cstdio&gt;int month[13][2] = &#123;    &#123;0, 0&#125;, &#123;31, 31&#125;, &#123;28, 29&#125;, &#123;31, 31&#125;, &#123;30, 30&#125;, &#123;31, 31&#125;, &#123;30,30&#125;,    &#123;31, 31&#125;, &#123;31, 31&#125;, &#123;30, 30&#125;, &#123;31, 31&#12
-          ...
+<p>题目描述</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">有两个日期，求两个日期之间的天数，如果两个日期是连续的，则规定它们之间的天数为两天。</span><br></pre></td></tr></table></figure>
+<p>输入格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">有多组数据，每组数据有两行，分别表示两个日期，形式为YYYYMMDD。</span><br></pre></td></tr></table></figure>
+<p>输出格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">每组数据输出一行，及日期差值。</span><br></pre></td></tr></table></figure>
+<p>样例输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">20130101</span><br><span class="line">20130105</span><br></pre></td></tr></table></figure>
+<p>样例输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/07/13/%E7%AE%97%E6%B3%95%E6%97%A5%E8%AE%B0(1)%20%E2%80%94%E2%80%94%20%E6%97%A5%E6%9C%9F%E5%B7%AE%E5%80%BC/#more" rel="contents">
@@ -612,7 +608,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-13T22:48:34+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-13T23:03:54+08:00">
                 2020-07-13
               </time>
             
@@ -711,16 +707,8 @@
 
       
         
-          
-          一、指针基本概念1、指针自身的类型从语法的角度看，只要把指针声明语句里的指针变量名去掉，剩下的部分就是该指针的类型。
-1234int *ptr;          //指针的类型是int*int **ptr;         //指针的类型是int**int *ptr[3];       //指针的类型是int*[3]int (*ptr)[3];     //指针的类型是int(*)[3]
-2、指针指向的类型当你通过指针来访问指针所指向的内存区时，指针所指向的类型决定了编译器将把那片内存区里的内容当做什么来看待。从语法上看，只要把指针声明语句中的指针名字和名字左边的指针声明符*去掉，剩下的部分就是指针所指向的类型。
-1234int *ptr;          //指针所指向的类型是intint **ptr;         //指针所指向的的类型是int*int *ptr[3];       //指针所指向的类型是int[3]int (*ptr)[3];     //指针所指向的的类型是int()[3]
-
-*p[N]， (*P)[N]，及**p的区别：
-
-int  *p[N] 表示定
-          ...
+          <h1 id="一、指针基本概念"><a href="#一、指针基本概念" class="headerlink" title="一、指针基本概念"></a>一、指针基本概念</h1><h2 id="1、指针自身的类型"><a href="#1、指针自身的类型" class="headerlink" title="1、指针自身的类型"></a>1、指针自身的类型</h2><p>从语法的角度看，只要<strong>把指针声明语句里的指针变量名去掉</strong>，剩下的部分就是该指针的类型。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *ptr;          <span class="comment">//指针的类型是int*</span></span><br><span class="line"><span class="keyword">int</span> **ptr;         <span class="comment">//指针的类型是int**</span></span><br><span class="line"><span class="keyword">int</span> *ptr[<span class="number">3</span>];       <span class="comment">//指针的类型是int*[3]</span></span><br><span class="line"><span class="keyword">int</span> (*ptr)[<span class="number">3</span>];     <span class="comment">//指针的类型是int(*)[3]</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/07/11/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0(2)%20%E2%80%94%E2%80%94%20%E6%8C%87%E9%92%88/#more" rel="contents">
@@ -825,7 +813,7 @@ int  *p[N] 表示定
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-13T22:43:25+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-13T23:03:39+08:00">
                 2020-07-13
               </time>
             
@@ -924,56 +912,69 @@ int  *p[N] 表示定
 
       
         
-          
-          
-
-
-
-数据类型
-取值范围
-大致范围
-占用大小
-输入格式
-输出格式
-
-
-
-
-int
-$- 2^{31}$ ~ $ +(2^{31} - 1)$
-$- 2 × 10^9$ ~ $+2 × 10^9$
-4Byte
-scanf(“%d”, &amp;d);
-printf(“%d”, d);
-
-
-long long
-$- 2^{63}$ ~ $ +(2^{63} - 1)$
-$- 9 × 10^{18}$ ~ $+9 × 10^{18}$
-8Byte
-scanf(“%lld”, &amp;lld);
-printf(“%lld”, lld);
-
-
-float
-$- 2^{128}$ ~ $ +2^{128}$
-实际精度6~7位
-4Byte(符号1位，指数8位，尾数23位)
-scanf(“%f”, &amp;f);
-printf(“%f”, f);
-
-
-double
-$- 2^{1024}$ ~ $ +2^{1024}$
-实际精度15~16位
-8Byte(符号1位，指数11位，尾数52位)
-scanf(“%lf”, &amp;lf);
-printf(“%f”, f);
-
-
-char
-$-128$ 
-          ...
+          <div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">数据类型</th>
+<th>取值范围</th>
+<th>大致范围</th>
+<th>占用大小</th>
+<th>输入格式</th>
+<th>输出格式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">int</td>
+<td>$- 2^{31}$ ~ $ +(2^{31} - 1)$</td>
+<td>$- 2 × 10^9$ ~ $+2 × 10^9$</td>
+<td>4Byte</td>
+<td>scanf(“%d”, &amp;d);</td>
+<td>printf(“%d”, d);</td>
+</tr>
+<tr>
+<td style="text-align:left">long long</td>
+<td>$- 2^{63}$ ~ $ +(2^{63} - 1)$</td>
+<td>$- 9 × 10^{18}$ ~ $+9 × 10^{18}$</td>
+<td>8Byte</td>
+<td>scanf(“%lld”, &amp;lld);</td>
+<td>printf(“%lld”, lld);</td>
+</tr>
+<tr>
+<td style="text-align:left">float</td>
+<td>$- 2^{128}$ ~ $ +2^{128}$</td>
+<td>实际精度6~7位</td>
+<td>4Byte(符号1位，指数8位，尾数23位)</td>
+<td>scanf(“%f”, &amp;f);</td>
+<td>printf(“%f”, f);</td>
+</tr>
+<tr>
+<td style="text-align:left">double</td>
+<td>$- 2^{1024}$ ~ $ +2^{1024}$</td>
+<td>实际精度15~16位</td>
+<td>8Byte(符号1位，指数11位，尾数52位)</td>
+<td>scanf(“%lf”, &amp;lf);</td>
+<td><strong>printf(“%f”, f);</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">char</td>
+<td>$-128$ ~ $+127$</td>
+<td>$-128$ ~ $+127$</td>
+<td></td>
+<td>scanf(“%c”, &amp;c);字符串：<strong>scanf(“%s”, str);</strong></td>
+<td>printf(“%c”, c); 字符串：printf(“%s”, str);</td>
+</tr>
+<tr>
+<td style="text-align:left">bool</td>
+<td>0 or 1(false or true)</td>
+<td>0 or 1(false or true)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/06/10/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0(1)%20%E2%80%94%E2%80%94%20%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/#more" rel="contents">
@@ -1078,8 +1079,8 @@ $-128$
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-06-10T15:57:55+08:00">
-                2020-06-10
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-13T23:01:53+08:00">
+                2020-07-13
               </time>
             
           </span>
@@ -1166,15 +1167,12 @@ $-128$
 
       
         
-          
-          一、树莓派开机前的准备工作（1）硬件及软件准备硬件准备树莓派4B、树莓派电源线或安卓数据线、SD卡（16G以上）、读卡器、电脑、可触摸屏幕、HDMI线、无线键鼠
-软件准备SD Formatter、Win32DiskImager、VNC Viewer、putty、Notepad++、Advanced IP Scanner、树莓派镜像Raspbian-buster-full
-
-百度云：https://pan.baidu.com/s/1XJzltHUag9VFpm_QSrOaQQ   提取码：kxfj
-
-（2）格式化SD卡首先需要将SD卡格式化，将SD卡插入读卡器并接入电脑，打开SD Formatter，检查一下SD卡路径是否正确，若不正确的话需要点击Refresh刷新路径；若正确的话就可以直接点击Format进行格式化，格式化完成后电脑会重新读取读卡器，我的电脑中会出现一个boot盘，如果系统出现需要对“U盘”进行格式化的弹窗请点击取消，否则就需要重头开始格式化SD卡了。
-（3）在SD卡中烧录树莓派镜像格式化SD卡成功后，打开Win32DiskImager选择之前下载的树莓派官方镜像（扩展
-          ...
+          <h2 id="一、树莓派开机前的准备工作"><a href="#一、树莓派开机前的准备工作" class="headerlink" title="一、树莓派开机前的准备工作"></a>一、树莓派开机前的准备工作</h2><h3 id="（1）硬件及软件准备"><a href="#（1）硬件及软件准备" class="headerlink" title="（1）硬件及软件准备"></a>（1）硬件及软件准备</h3><h4 id="硬件准备"><a href="#硬件准备" class="headerlink" title="硬件准备"></a>硬件准备</h4><p>树莓派4B、树莓派电源线或安卓数据线、SD卡（16G以上）、读卡器、电脑、可触摸屏幕、HDMI线、无线键鼠</p>
+<h4 id="软件准备"><a href="#软件准备" class="headerlink" title="软件准备"></a>软件准备</h4><p>SD Formatter、Win32DiskImager、VNC Viewer、putty、Notepad++、Advanced IP Scanner、树莓派镜像Raspbian-buster-full</p>
+<blockquote>
+<p>百度云：<a href="https://pan.baidu.com/s/1XJzltHUag9VFpm_QSrOaQQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1XJzltHUag9VFpm_QSrOaQQ</a>   提取码：kxfj</p>
+</blockquote>
+<h3 id="（2）格式化SD卡"><a href="#（2）格式化SD卡" class="headerlink" title="（2）格式化SD卡"></a>（2）格式化SD卡</h3><p>首先需要将SD卡格式化，将SD卡插入读卡器并接入电脑，打开<code>SD Formatter</code>，检查一下SD卡路径是否正确，若不正确的话需要点击<strong>Refresh</strong>刷新路径；若正确的话就可以直接点击<strong>Format</strong>进行格式化，格式化完成后电脑会重新读取读卡器，我的电脑中会出现一个<code>boot</code>盘，如果<strong>系统出现需要对“U盘”进行格式化的弹窗请点击取消</strong>，否则就需要重头开始格式化SD卡了。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/06/04/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/#more" rel="contents">
@@ -1279,8 +1277,8 @@ $-128$
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-06-10T15:53:58+08:00">
-                2020-06-10
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-13T23:01:32+08:00">
+                2020-07-13
               </time>
             
           </span>
@@ -1367,12 +1365,10 @@ $-128$
 
       
         
-          
-          一、物联网概述物联网简介物联网（Internet of Things）概念最早于1999年由美国MIT提出，早期的物联网是指依托RFID（Radio Frequency Identification）技术和设备，按约定的通信协议与互联网结合，使物品信息实现智能化识别和管理，实现物品信息互联、可交换和共享而形成的网络。
-物联网是新一代信息技术的重要组成部分，也是“信息化”时代的重要发展阶段。物联网通过智能感知、识别技术与普适计算等通信感知技术，广泛应用于网络的融合中，也因此被称为继计算机、互联网之后世界信息产业发展的第三次浪潮。
-通过二维码识读设备、射频识别（RFID）装置、红外感应装置、全球定位系统和激光扫描器等信息传感设备，按约定的协议，把任何物品与互联网相连接，进行信息交换和通信，以实现智能化识别、定位、跟踪、监控和管理的一种网络。                                                                                                  ——国际电信联盟（ITU）
-物联网就是物物相连的互联网，这
-          ...
+          <h2 id="一、物联网概述"><a href="#一、物联网概述" class="headerlink" title="一、物联网概述"></a>一、物联网概述</h2><h3 id="物联网简介"><a href="#物联网简介" class="headerlink" title="物联网简介"></a>物联网简介</h3><p>物联网（Internet of Things）概念最早于<strong>1999年</strong>由美国MIT提出，早期的物联网是指依托RFID（Radio Frequency Identification）技术和设备，按约定的通信协议与互联网结合，使物品信息实现智能化识别和管理，实现物品信息互联、可交换和共享而形成的网络。</p>
+<p>物联网是新一代信息技术的重要组成部分，也是“信息化”时代的重要发展阶段。物联网通过智能感知、识别技术与普适计算等通信感知技术，广泛应用于网络的融合中，也因此被称为继计算机、互联网之后世界信息产业发展的第三次浪潮。</p>
+<p>通过二维码识读设备、射频识别（RFID）装置、红外感应装置、全球定位系统和激光扫描器等信息传感设备，按约定的协议，把<strong>任何物品与互联网相连接</strong>，进行信息交换和通信，以实现智能化识别、定位、跟踪、监控和管理的一种网络。                                                                                                  ——国际电信联盟（ITU）</p>
+<p>物联网就是<strong>物物相连</strong>的互联网，这其中有两层意思：其一，物联网的核心和基础仍然是互联网，是在互联网的基础上的延伸和扩展的网络；其二，其用户端延伸和扩展到了任何物品与物品之间，进行信息交换和通信，也就是物物相息。                                                                                                                  ——百度百科</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/06/04/HCIP-IoT%20Developer%E8%AE%A4%E8%AF%81%E2%80%94%E2%80%94%E7%89%A9%E8%81%94%E7%BD%91%E5%9F%BA%E7%A1%80/#more" rel="contents">

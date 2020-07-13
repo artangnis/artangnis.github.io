@@ -125,7 +125,7 @@
 <meta property="og:site_name" content="Artangnis&#39;s Blog">
 <meta property="og:description" content="一、树莓派开机前的准备工作（1）硬件及软件准备硬件准备树莓派4B、树莓派电源线或安卓数据线、SD卡（16G以上）、读卡器、电脑、可触摸屏幕、HDMI线、无线键鼠 软件准备SD Formatter、Win32DiskImager、VNC Viewer、putty、Notepad++、Advanced IP Scanner、树莓派镜像Raspbian-buster-full  百度云：https:&#x2F;&#x2F;">
 <meta property="article:published_time" content="2020-06-03T18:24:30.000Z">
-<meta property="article:modified_time" content="2020-06-10T07:57:55.912Z">
+<meta property="article:modified_time" content="2020-07-13T15:01:53.878Z">
 <meta property="article:author" content="阿汤尼斯">
 <meta property="article:tag" content="RaspberryPi">
 <meta property="article:tag" content="硬件开发">
@@ -396,8 +396,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-06-10T15:57:55+08:00">
-                2020-06-10
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-13T23:01:53+08:00">
+                2020-07-13
               </time>
             
           </span>
@@ -489,6 +489,7 @@
 <p>百度云：<a href="https://pan.baidu.com/s/1XJzltHUag9VFpm_QSrOaQQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1XJzltHUag9VFpm_QSrOaQQ</a>   提取码：kxfj</p>
 </blockquote>
 <h3 id="（2）格式化SD卡"><a href="#（2）格式化SD卡" class="headerlink" title="（2）格式化SD卡"></a>（2）格式化SD卡</h3><p>首先需要将SD卡格式化，将SD卡插入读卡器并接入电脑，打开<code>SD Formatter</code>，检查一下SD卡路径是否正确，若不正确的话需要点击<strong>Refresh</strong>刷新路径；若正确的话就可以直接点击<strong>Format</strong>进行格式化，格式化完成后电脑会重新读取读卡器，我的电脑中会出现一个<code>boot</code>盘，如果<strong>系统出现需要对“U盘”进行格式化的弹窗请点击取消</strong>，否则就需要重头开始格式化SD卡了。</p>
+<a id="more"></a>
 <h3 id="（3）在SD卡中烧录树莓派镜像"><a href="#（3）在SD卡中烧录树莓派镜像" class="headerlink" title="（3）在SD卡中烧录树莓派镜像"></a>（3）在SD卡中烧录树莓派镜像</h3><p>格式化SD卡成功后，打开<code>Win32DiskImager</code>选择之前下载的树莓派官方镜像（扩展名<code>.img</code>），SD卡路径系统会自动填充，然后点击<strong>Write</strong>等待写入完成。烧录成功后，boot盘里就会出现一系列的文件。</p>
 <h3 id="（4）配置SSH文件"><a href="#（4）配置SSH文件" class="headerlink" title="（4）配置SSH文件"></a>（4）配置SSH文件</h3><p>在<code>boot</code>盘中手动创建一个空白记事本<code>.txt</code>文件，命名为<code>ssh</code>，删掉<code>.txt</code>扩展名。</p>
 <h3 id="（5）配置Wi-Fi文件"><a href="#（5）配置Wi-Fi文件" class="headerlink" title="（5）配置Wi-Fi文件"></a>（5）配置Wi-Fi文件</h3><p>用同样的方法新建一个空白文件<code>wpa_supplicant.conf</code>（注意要删掉扩展名<code>.txt</code>），并用Notepad++打开<code>wpa_supplicant.conf</code>,输入以下配置，可以用多个<code>network{}</code>来配置多个Wi-Fi：</p>
