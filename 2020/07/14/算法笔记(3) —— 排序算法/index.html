@@ -118,14 +118,14 @@
 
 
 
-<meta name="description" content="数据类型 取值范围 大致范围 占用大小 输入格式 输出格式     int $- 2^{31}$ ~ $ +(2^{31} - 1)$ $- 2 × 10^9$ ~ $+2 × 10^9$ 4Byte scanf(“%d”, &amp;d); printf(“%d”, d);   long long $- 2^{63}$ ~ $ +(2^{63} - 1)$ $- 9 × 10^{18}$">
+<meta name="description" content="一、冒泡排序冒泡排序的本质在于交换，即每次通过交换的方式把当前剩余元素的最大值移动到一端，而当前剩余元素减少为0时，排序结束。 对于一个拥有 n 个元素的数组进行冒泡排序，整个过程执行 n-1 趟，每一趟从左到右依次比较相邻的两个数，如果大的数在左边，则交换这两个数，当该趟结束时，该趟最大数被移动到当前剩余数的最右边。 具体代码实现如下：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法笔记(1) —— 基本数据类型">
-<meta property="og:url" content="http://www.artangnis.top/2020/06/10/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0(1)%20%E2%80%94%E2%80%94%20%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
+<meta property="og:title" content="算法笔记(3) —— 排序算法">
+<meta property="og:url" content="http://www.artangnis.top/2020/07/14/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0(3)%20%E2%80%94%E2%80%94%20%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Artangnis&#39;s Blog">
-<meta property="og:description" content="数据类型 取值范围 大致范围 占用大小 输入格式 输出格式     int $- 2^{31}$ ~ $ +(2^{31} - 1)$ $- 2 × 10^9$ ~ $+2 × 10^9$ 4Byte scanf(“%d”, &amp;d); printf(“%d”, d);   long long $- 2^{63}$ ~ $ +(2^{63} - 1)$ $- 9 × 10^{18}$">
-<meta property="article:published_time" content="2020-06-09T16:21:16.000Z">
-<meta property="article:modified_time" content="2020-07-13T15:03:39.706Z">
+<meta property="og:description" content="一、冒泡排序冒泡排序的本质在于交换，即每次通过交换的方式把当前剩余元素的最大值移动到一端，而当前剩余元素减少为0时，排序结束。 对于一个拥有 n 个元素的数组进行冒泡排序，整个过程执行 n-1 趟，每一趟从左到右依次比较相邻的两个数，如果大的数在左边，则交换这两个数，当该趟结束时，该趟最大数被移动到当前剩余数的最右边。 具体代码实现如下：">
+<meta property="article:published_time" content="2020-07-14T07:30:49.000Z">
+<meta property="article:modified_time" content="2020-07-14T15:19:03.954Z">
 <meta property="article:author" content="阿汤尼斯">
 <meta property="article:tag" content="算法基础">
 <meta property="article:tag" content="PAT">
@@ -160,13 +160,13 @@
 
 
 
-  <link rel="canonical" href="http://www.artangnis.top/2020/06/10/算法笔记(1) —— 基本数据类型/"/>
+  <link rel="canonical" href="http://www.artangnis.top/2020/07/14/算法笔记(3) —— 排序算法/"/>
 
 
 
 
 
-  <title>算法笔记(1) —— 基本数据类型 | Artangnis's Blog</title>
+  <title>算法笔记(3) —— 排序算法 | Artangnis's Blog</title>
   
 
 
@@ -341,7 +341,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.artangnis.top/2020/06/10/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0(1)%20%E2%80%94%E2%80%94%20%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+    <link itemprop="mainEntityOfPage" href="http://www.artangnis.top/2020/07/14/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0(3)%20%E2%80%94%E2%80%94%20%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="阿汤尼斯">
@@ -358,7 +358,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">算法笔记(1) —— 基本数据类型</h1>
+          <h1 class="post-title" itemprop="name headline">算法笔记(3) —— 排序算法</h1>
         
 
         <div class="post-meta">
@@ -370,8 +370,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-10T00:21:16+08:00">
-                2020-06-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-14T15:30:49+08:00">
+                2020-07-14
               </time>
             
 
@@ -386,8 +386,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-13T23:03:39+08:00">
-                2020-07-13
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-14T23:19:03+08:00">
+                2020-07-14
               </time>
             
           </span>
@@ -447,7 +447,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k 字
+                  1.5k 字
                 </span>
               
 
@@ -463,7 +463,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4 分钟
+                  6 分钟
                 </span>
               
             </div>
@@ -484,112 +484,31 @@
       
 
       
-        <div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">数据类型</th>
-<th>取值范围</th>
-<th>大致范围</th>
-<th>占用大小</th>
-<th>输入格式</th>
-<th>输出格式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">int</td>
-<td>$- 2^{31}$ ~ $ +(2^{31} - 1)$</td>
-<td>$- 2 × 10^9$ ~ $+2 × 10^9$</td>
-<td>4Byte</td>
-<td>scanf(“%d”, &amp;d);</td>
-<td>printf(“%d”, d);</td>
-</tr>
-<tr>
-<td style="text-align:left">long long</td>
-<td>$- 2^{63}$ ~ $ +(2^{63} - 1)$</td>
-<td>$- 9 × 10^{18}$ ~ $+9 × 10^{18}$</td>
-<td>8Byte</td>
-<td>scanf(“%lld”, &amp;lld);</td>
-<td>printf(“%lld”, lld);</td>
-</tr>
-<tr>
-<td style="text-align:left">float</td>
-<td>$- 2^{128}$ ~ $ +2^{128}$</td>
-<td>实际精度6~7位</td>
-<td>4Byte(符号1位，指数8位，尾数23位)</td>
-<td>scanf(“%f”, &amp;f);</td>
-<td>printf(“%f”, f);</td>
-</tr>
-<tr>
-<td style="text-align:left">double</td>
-<td>$- 2^{1024}$ ~ $ +2^{1024}$</td>
-<td>实际精度15~16位</td>
-<td>8Byte(符号1位，指数11位，尾数52位)</td>
-<td>scanf(“%lf”, &amp;lf);</td>
-<td><strong>printf(“%f”, f);</strong></td>
-</tr>
-<tr>
-<td style="text-align:left">char</td>
-<td>$-128$ ~ $+127$</td>
-<td>$-128$ ~ $+127$</td>
-<td></td>
-<td>scanf(“%c”, &amp;c);字符串：<strong>scanf(“%s”, str);</strong></td>
-<td>printf(“%c”, c); 字符串：printf(“%s”, str);</td>
-</tr>
-<tr>
-<td style="text-align:left">bool</td>
-<td>0 or 1(false or true)</td>
-<td>0 or 1(false or true)</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
+        <h1 id="一、冒泡排序"><a href="#一、冒泡排序" class="headerlink" title="一、冒泡排序"></a>一、冒泡排序</h1><p>冒泡排序的本质在于<strong>交换</strong>，即每次通过交换的方式把当前剩余元素的最大值移动到一端，而当前剩余元素减少为0时，排序结束。</p>
+<p>对于一个拥有 n 个元素的数组进行冒泡排序，整个过程执行 n-1 趟，每一趟从左到右依次比较相邻的两个数，如果大的数在左边，则交换这两个数，当该趟结束时，该趟最大数被移动到当前剩余数的最右边。</p>
+<p>具体代码实现如下：</p>
 <a id="more"></a>
-<blockquote>
-<ol>
-<li><p>小写字母比大写字母的ASCII码值大<strong>32</strong>；</p>
-</li>
-<li><p>由于数组名称本身就代表了数组第一个元素的地址，所以scanf中，<strong>char字符串数组整个输入的情况下不需要加取地址运算符</strong>；</p>
-</li>
-<li><p>在scanf中，<strong>%c格式是可以读入空格和换行的</strong>，其他格式的输入是以空格和换行作为读入结束的标志；</p>
-</li>
-<li><p>常用输出格式：<strong>%0md</strong>（使不足m位的int型变量以m位进行右对齐输出，高位用0补齐）、<strong>%.mf</strong>（使浮点数保留m位小数输出，服从“四舍五入五成双”的规则）；</p>
-</li>
-<li><p>getchar和putchar分别用来输入和输出<strong>单个字符（包括换行符）</strong>，gets和puts分别用来输入和输出<strong>一行字符串</strong>；</p>
-</li>
-<li><p>gets识别换行符<strong>\n</strong>作为输入结束，因此scanf完一个整数后，如果要使用gets，需要先用getchar接收整数后的换换行符；</p>
-</li>
-<li><p>char字符串数组的末尾都有一个<strong>空字符\0</strong>，以<strong>表示存放的字符串的结尾</strong>，结束符\0的ASCII码为0，即空字符NULL，占用一个字符位，因此创建char字符串数组时字符数组的长度比实际存储的字符串长度至少多1；</p>
-</li>
-<li><p>空字符\0和空格不是一个东西，空格的ASCII码为32；</p>
-</li>
-<li><p>常用 string 函数（使用时要在程序开头加上 <code>string.h</code> 头文件）：</p>
-<p>(1). <code>strlen(str)</code> : 该函数用于返回字符数组中第一个\0前的字符个数；</p>
-<p>(2). <code>strcmp(str1, str2)</code> : 该函数用于返回两个字符串大小的比较结果，比较原则是按<strong>字典序</strong>。如果<code>str1 &gt; str2</code>，则返回一个正整数，如果<code>str1 = str2</code>，则返回0，如果<code>str1 &lt; str2</code>，则返回一个负整数；</p>
-<p>(3). <code>strcpy(str1, str2)</code> : 该函数用于将字符数组 str2 复制给字符数组 str1 ，包括结束符\0；</p>
-<p>(4). <code>strcat(str1, str2)</code> : 该函数用于将字符数组 str2 接到字符数组 str1 后面；</p>
-<p>(5). <code>sscanf(str, &quot;%d&quot;, &amp;n)</code> : 该函数用于将字符数组 str 中的内容以 “%d” 的格式写到 n 中；</p>
-<p>(6). <code>sprintf(str, &quot;%d&quot;, n)</code> : 该函数用于将 n 以 “%d” 的格式写到字符数组 str 中。</p>
-</li>
-<li><p>字符数组的初始化方法：</p>
-<p>(1). <code>char str[15] = {&#39;H&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;, &#39;o&#39;, &#39; &#39;, &#39;W&#39;, &#39;o&#39;, &#39;r&#39;, &#39;l&#39;, &#39;d&#39;, &#39;!&#39;};</code></p>
-<p>(2). 通过直接赋值字符串来初始化（<strong>仅限初始化</strong>，程序其他位置不允许直接赋值整个字符串）：</p>
-<p>​       <code>char str[15] = &quot;Hello World!&quot;;</code></p>
-</li>
-<li><p>常用 math 函数（使用时要在程序开头加上 <code>math.h</code> 头文件）：</p>
-<p>(1). <code>fabs(double x)</code> : 该函数用于对 double 型变量取绝对值；</p>
-<p>(2). <code>floor(double x)</code> : 该函数用于对 double 型变量的向下取整；</p>
-<p>(3). <code>ceil(double x)</code> : 该函数用于对 double 型变量的向上取整；</p>
-<p>(4). <code>pow(double r, double p)</code> : 该函数用于返回 $r^p$ ，要求 r 和 p 都是 double 型变量；</p>
-<p>(5). <code>sqrt(double x)</code> : 该函数用于返回 double 型变量的算术平方根；</p>
-<p>(6). <code>log(double x)</code> : 该函数用于返回 double 型变量的以自然对数为底的对数；</p>
-<p>(7). <code>round(double x)</code> : 该函数用于将 double 型变量四舍五入，返回值也是 double 型，需进行取整。</p>
-</li>
-</ol>
-</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BubbleSort</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n<span class="number">-1</span>; i++) &#123;    <span class="comment">//排序过程进行n-1趟</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n-i; j++) &#123;    <span class="comment">//第i趟从a[0]到a[n-i-1]都与下一个数进行比较，每趟结束后最大的数在a[n-i]</span></span><br><span class="line">    	    <span class="keyword">if</span>(a[j] &gt; a[j+<span class="number">1</span>]) &#123;    <span class="comment">//如果左边的数更大，则交换a[j]和a[j+1]</span></span><br><span class="line">    		    <span class="keyword">int</span> temp = a[j];</span><br><span class="line">    		    a[j] = a[j+<span class="number">1</span>];</span><br><span class="line">    		    a[j+<span class="number">1</span>] = temp;</span><br><span class="line">		    &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">50</span>], n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;    <span class="comment">//依次输入未排序的数组元素</span></span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    Bubble(a, n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">	    <span class="built_in">printf</span>(<span class="string">"%d "</span>, a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="二、选择排序"><a href="#二、选择排序" class="headerlink" title="二、选择排序"></a>二、选择排序</h1><h2 id="1、简单选择排序"><a href="#1、简单选择排序" class="headerlink" title="1、简单选择排序"></a>1、简单选择排序</h2><p>简单选择排序是众多选择排序中最常用的一种。简单排序的基本思想是：首先，选出最小的数，放在第一个位置；然后，选出第二小的数，放在第二个位置；以此类推，直到所有的数从小到大排序。</p>
+<p>简单排序的具体实现为：对于数组 a[n]，令 i 从 0 枚举到 n-1，进行 n 趟操作，每趟从待排序部分 [i，n-1] 中选择最小的元素，令其与待排序部分的第一个元素 a[i] 进行交换，这样元素 a[i] 就会与当前有序区间 [0，i-1] 形成新的有序区间 [1，i]，在进行 n 趟操作后便可完成排序。</p>
+<p>具体代码实现如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SimpleSelectSort</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> mix, temp;</span><br><span class="line">    <span class="keyword">int</span> i, j;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt;= n<span class="number">-1</span>; i++)&#123;    <span class="comment">//每次循环数组，找出最小的元素，放在前面</span></span><br><span class="line">        mix = i;</span><br><span class="line">        <span class="keyword">for</span>(j = i+<span class="number">1</span>; j &lt;= n<span class="number">-1</span>; j++) &#123;    <span class="comment">//找出未排序部分最小元素的下标</span></span><br><span class="line">            <span class="keyword">if</span>(a[j] &lt; a[mix]) &#123;</span><br><span class="line">                mix = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i != mix) &#123;</span><br><span class="line">            temp = a[i];</span><br><span class="line">            a[i] = a[mix];</span><br><span class="line">            a[mix] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">50</span>], n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;    <span class="comment">//依次输入未排序的数组元素</span></span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    SimpleSelectSort(a, n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">	    <span class="built_in">printf</span>(<span class="string">"%d "</span>, a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="三、插入排序"><a href="#三、插入排序" class="headerlink" title="三、插入排序"></a>三、插入排序</h1><h2 id="1、直接插入排序"><a href="#1、直接插入排序" class="headerlink" title="1、直接插入排序"></a>1、直接插入排序</h2><p>直接插入排序是众多插入排序方法中最直观的一种，直接插入排序是指，对于数组 a[n]，令 i 从 1 到 n-1 枚举，进行 n-1 趟操作，如果数组 a 的前 i-1 个元素 [0，i-1] 已经有序，而范围 [i，n-1] 还未有序，那么该趟从范围 [0，i-1] 中寻找某个位置 j，使得将 a[i] 插入位置 j 后范围 [0，i] 有序。</p>
+<p>具体代码实现如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">StraightInsertSort</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;    <span class="comment">//从第二个元素开始枚举，与前面有序部分进行比较</span></span><br><span class="line">        <span class="keyword">int</span> j = i<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> temp = a[i];</span><br><span class="line">        <span class="keyword">while</span>(j &gt;= <span class="number">0</span> &amp;&amp; temp &lt; a[j]) &#123;    <span class="comment">//当temp比其左边的数的值小时，从后向前枚举有序部分来确定插入位置</span></span><br><span class="line">            a[j+<span class="number">1</span>] = a[j];</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        a[j+<span class="number">1</span>] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">50</span>], n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;    <span class="comment">//依次输入未排序的数组元素</span></span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    StraightInsertSort(a, n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">	    <span class="built_in">printf</span>(<span class="string">"%d "</span>, a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="四、sort-排序"><a href="#四、sort-排序" class="headerlink" title="四、sort 排序"></a>四、sort 排序</h1><p>顾名思义，sort 函数就是用来排序的函数，它根据具体情况使用不同的排序方法，而且 sort 函数在实现的过程中规避了经典快速排序中可能会出现的会导致实际复杂度退化到 O($n^2$) 的极端情况，所以其效率比较高。</p>
+<h2 id="1、如何使用-sort-排序"><a href="#1、如何使用-sort-排序" class="headerlink" title="1、如何使用 sort 排序"></a>1、如何使用 sort 排序</h2><p>sort 函数的使用必须加上头文件 “<strong>#include\<algorithm\></strong>” 和 “<strong>using namespace std;</strong>”，其使用方式如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort(首元素地址（必填），尾元素地址的下一个地址（必填），比较函数cmp（非必填）);</span><br></pre></td></tr></table></figure>
+<p>对一个 int 型数组 a[4] = {3, 4, 9, 5} 进行排序：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort(a, a + <span class="number">4</span>);    <span class="comment">//int型数组（double型也一样）默认从小到大进行排序，输出结果为3,4,5,9</span></span><br></pre></td></tr></table></figure>
+<p>对一个 char 型数组 a[5] = {‘T’, ‘W’, ‘A’, ‘K’, ‘B’} 进行排序：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort(a, a + <span class="number">5</span>);    <span class="comment">//char型数组默认按字典序从小到大进行排序，输出结果为A，B，K，T，W</span></span><br></pre></td></tr></table></figure>
+<h2 id="2、如何实现比较函数-cmp"><a href="#2、如何实现比较函数-cmp" class="headerlink" title="2、如何实现比较函数 cmp"></a>2、如何实现比较函数 cmp</h2><h3 id="（1）基本数据类型数组的排序"><a href="#（1）基本数据类型数组的排序" class="headerlink" title="（1）基本数据类型数组的排序"></a>（1）基本数据类型数组的排序</h3><p>对一个 int 型数组 a[4] = {3, 4, 9, 5} 进行排序：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a &gt; b;      <span class="comment">//从大到小排序，double型和char型同理</span></span><br><span class="line">    <span class="comment">//return a &lt; b;    //从小到大排序，double型和char型同理</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">3</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    sort(a, a + <span class="number">4</span>, cmp);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="（2）结构体数组的排序"><a href="#（2）结构体数组的排序" class="headerlink" title="（2）结构体数组的排序"></a>（2）结构体数组的排序</h3><p>现定义了如下的结构体：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line">    <span class="keyword">char</span> y[<span class="number">10</span>];</span><br><span class="line">&#125;ssd[<span class="number">10</span>];</span><br></pre></td></tr></table></figure>
+<p>如果想先按 x 从大到小排序，但当 x 相等的情况下，按照 y 的大小从小到大来排序，则 cmp 函数的写法为：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(node a, node b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a.x != a.y) <span class="keyword">return</span> a.x &gt; b.x;            <span class="comment">//x不等时按x从大到小排序</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">strcmp</span>(a.y, b.y) &lt; <span class="number">0</span>;           <span class="comment">//x相等时按y从小到大排序</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -635,8 +554,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/06/04/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/" rel="next" title="树莓派零基础学习（1）">
-                <i class="fa fa-chevron-left"></i> 树莓派零基础学习（1）
+              <a href="/2020/07/14/%E7%AE%97%E6%B3%95%E6%97%A5%E8%AE%B0(2)%20%E2%80%94%E2%80%94%20%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/" rel="next" title="算法日记(2) —— 进制转换">
+                <i class="fa fa-chevron-left"></i> 算法日记(2) —— 进制转换
               </a>
             
           </div>
@@ -644,10 +563,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/07/11/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0(2)%20%E2%80%94%E2%80%94%20%E6%8C%87%E9%92%88/" rel="prev" title="算法笔记(2) —— 指针">
-                算法笔记(2) —— 指针 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -699,8 +614,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -774,6 +698,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、冒泡排序"><span class="nav-text">一、冒泡排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、选择排序"><span class="nav-text">二、选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、简单选择排序"><span class="nav-text">1、简单选择排序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、插入排序"><span class="nav-text">三、插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、直接插入排序"><span class="nav-text">1、直接插入排序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、sort-排序"><span class="nav-text">四、sort 排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、如何使用-sort-排序"><span class="nav-text">1、如何使用 sort 排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、如何实现比较函数-cmp"><span class="nav-text">2、如何实现比较函数 cmp</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）基本数据类型数组的排序"><span class="nav-text">（1）基本数据类型数组的排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）结构体数组的排序"><span class="nav-text">（2）结构体数组的排序</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
