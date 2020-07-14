@@ -107,7 +107,7 @@
 
 
 
-  <meta name="keywords" content="Tech otaku save the world!" />
+  <meta name="keywords" content="算法习题,PAT,C/C++," />
 
 
 
@@ -118,19 +118,19 @@
 
 
 
-<meta name="description" content="看板娘登陆平台     html, body { 	height: 100%; } body { 	display: flex; 	align-items: center; 	justify-content: center; 	padding-top: 40px; 	padding-bottom: 40px; 	background-color: #f5f5f5; } .form-sig">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Artangnis&#39;s Blog">
-<meta property="og:url" content="http://www.artangnis.top/live2d-widget/live2d-widget/demo/demo2.html">
+<meta name="description" content="对于一个 P 进制的数，如果要转换成 Q 进制，需要分为两步：  将 P 进制的数 x 转换成十进制数 y  若 P 进制数 x 为 $a_1a_2···a_n$，则 x 可以通过以下公式转换为十进制数 y：  y &#x3D; a_1*P^{n-1}+a_2*P^{n-2}+···+a_n而这个公式可以很容易用循环来实现： 123456int y &#x3D; 0, product &#x3D; 1;    &#x2F;&#x2F;produc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法日记(2) —— 进制转换">
+<meta property="og:url" content="http://www.artangnis.top/2020/07/14/%E7%AE%97%E6%B3%95%E6%97%A5%E8%AE%B0(2)%20%E2%80%94%E2%80%94%20%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/index.html">
 <meta property="og:site_name" content="Artangnis&#39;s Blog">
-<meta property="og:description" content="看板娘登陆平台     html, body { 	height: 100%; } body { 	display: flex; 	align-items: center; 	justify-content: center; 	padding-top: 40px; 	padding-bottom: 40px; 	background-color: #f5f5f5; } .form-sig">
-<meta property="og:image" content="http://www.artangnis.top/live2d-widget/live2d-widget/assets/screenshot-1.png">
-<meta property="article:published_time" content="2020-03-18T06:07:30.129Z">
-<meta property="article:modified_time" content="2020-03-18T06:07:30.129Z">
+<meta property="og:description" content="对于一个 P 进制的数，如果要转换成 Q 进制，需要分为两步：  将 P 进制的数 x 转换成十进制数 y  若 P 进制数 x 为 $a_1a_2···a_n$，则 x 可以通过以下公式转换为十进制数 y：  y &#x3D; a_1*P^{n-1}+a_2*P^{n-2}+···+a_n而这个公式可以很容易用循环来实现： 123456int y &#x3D; 0, product &#x3D; 1;    &#x2F;&#x2F;produc">
+<meta property="article:published_time" content="2020-07-14T02:52:30.000Z">
+<meta property="article:modified_time" content="2020-07-14T04:38:34.608Z">
 <meta property="article:author" content="阿汤尼斯">
-<meta property="article:tag" content="AIoT">
+<meta property="article:tag" content="算法习题">
+<meta property="article:tag" content="PAT">
+<meta property="article:tag" content="C&#x2F;C++">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.artangnis.top/live2d-widget/live2d-widget/assets/screenshot-1.png">
 
 
 
@@ -160,13 +160,13 @@
 
 
 
-  <link rel="canonical" href="http://www.artangnis.top/live2d-widget/live2d-widget/demo/demo2.html"/>
+  <link rel="canonical" href="http://www.artangnis.top/2020/07/14/算法日记(2) —— 进制转换/"/>
 
 
 
 
 
-  <title> | Artangnis's Blog</title>
+  <title>算法日记(2) —— 进制转换 | Artangnis's Blog</title>
   
 
 
@@ -188,7 +188,7 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
   <script src="https://cdn.jsdelivr.net/gh/artangnis/live2d-widget@latest/autoload.js"></script>
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <script src="/live2d-widget/autoload.js"></script>
 
@@ -339,284 +339,265 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.artangnis.top/2020/07/14/%E7%AE%97%E6%B3%95%E6%97%A5%E8%AE%B0(2)%20%E2%80%94%E2%80%94%20%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阿汤尼斯">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/teriri.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Artangnis's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline"></h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>看板娘登陆平台</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
-<script src="../live2d.min.js"></script>
-<style>
-html, body {
-	height: 100%;
-}
-body {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding-top: 40px;
-	padding-bottom: 40px;
-	background-color: #f5f5f5;
-}
-.form-signin {
-	width: 100%;
-	max-width: 330px;
-	padding: 15px;
-	margin: 0 auto;
-}
-.form-signin .checkbox {
-	font-weight: 400;
-}
-.form-signin .form-control {
-	position: relative;
-	box-sizing: border-box;
-	height: auto;
-	padding: 10px;
-	font-size: 16px;
-}
-.form-signin .form-control:focus {
-	z-index: 2;
-}
-.form-signin input[type=text] {
-	margin-bottom: -1px;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
-}
-.form-signin input[type=password] {
-	margin-bottom: 10px;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
-}
-#stage {
-	position: relative;
-}
-#stage img {
-	width: 100%;
-	margin-bottom: 20px;
-	border-radius: 20px;
-}
-#stage a {
-	position: absolute;
-	width: 2em;
-	height: 2em;
-	border-radius: 50%;
-}
-#inner {
-	position: relative;
-	background-color: #999;
-	clip-path: circle(120px at center);
-	-webkit-clip-path: circle(120px at center);
-}
-#cover {
-	position: absolute;
-	background-color: #CB3837;
-	width: 100%;
-	height: 100%;
-	bottom: 10%;
-	transition: all 1s;
-	box-shadow: 0 0 0 5px rgba(0, 0, 0, .1);
-}
-#text {
-	position: absolute;
-	bottom: 30%;
-	font-size: 2em;
-	left: 50%;
-	transform: translateX(-50%);
-	opacity: 0.4;
-	font-weight: bold;
-}
-#detail {
-	position: absolute;
-	background: rgba(255, 255, 255, .1);
-	width: 100%;
-	height: 10px;
-	bottom: 0;
-}
-#handle {
-	position: absolute;
-	background: #ccc;
-	bottom: -2px;
-	box-shadow: 0 1px 0 1px rgba(0, 0, 0, .1);
-	height: 8px;
-	left: 50%;
-	margin-left: -15px;
-	width: 30px;
-	cursor: pointer;
-}
-#info {
-	left: 40px;
-	bottom: 20px;
-}
-#refresh {
-	right: 40px;
-	bottom: 20px;
-}
-#live2d {
-	cursor: grab;
-}
-#live2d:active {
-	cursor: grabbing;
-}
-</style>
-<meta name="generator" content="Hexo 4.2.0"></head>
-<body class="text-center">
-<form class="form-signin" action="login.php" method="post">
-	<div id="stage">
-		<div id="inner">
-			<div id="cover">
-				<div id="text">
-					<span style="color: cyan;">MIMI</span><span style="color: white">POWERED</span>
-				</div>
-				<div id="detail"></div>
-				<div id="handle"></div>
-			</div>
-			<canvas class="mb-4" id="live2d" width="300" height="300"></canvas>
-		</div>
-		<a id="info" href="javascript:info()"><i class="fa fa-lg fa-info"></i></a>
-		<a id="refresh" href="javascript:refresh()"><i class="fa fa-lg fa-refresh"></i></a>
-	</div>
-	<h1 class="h3 mb-3 font-weight-normal">看板娘登陆平台</h1>
-	<label for="room" class="sr-only">用户名</label>
-	<input type="text" name="room" class="form-control" placeholder="用户名" required autofocus>
-	<label for="pass" class="sr-only">密码</label>
-	<input type="password" name="pass" class="form-control" placeholder="密码" required>
-	<div class="checkbox mb-3">
-		<label>
-			<input type="checkbox" value="remember-me"> 记住我
-		</label>
-	</div>
-	<button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
-	<p class="mt-5 mb-3 text-muted">Copyleft &copy; Mimi 2019</p>
-</form>
-<script>
-window.addEventListener("load", () => {
-	"use strict";
-
-	if (!CSS.supports("clip-path", "circle(120px at center)") && !CSS.supports("-webkit-clip-path", "circle(120px at center)")) {
-		document.getElementById("stage").innerHTML = '<img src="../assets/screenshot-1.png">';
-		return;
-	}
-
-	var apiPath = "https://live2d.fghrsh.net/api", state = 0,
-		modelId = localStorage.getItem("modelId"),
-		modelTexturesId = localStorage.getItem("modelTexturesId");
-	if (modelId === null) {
-		modelId = 1;
-		modelTexturesId = 53;
-	}
-	loadModel(modelId, modelTexturesId);
-
-	function loadModel(modelId, modelTexturesId) {
-		localStorage.setItem("modelId", modelId);
-		if (modelTexturesId === undefined) modelTexturesId = 0;
-		localStorage.setItem("modelTexturesId", modelTexturesId);
-		loadlive2d("live2d", `${apiPath}/get/?id=${modelId}-${modelTexturesId}`, null);
-		console.log("live2d", `模型 ${modelId}-${modelTexturesId} 加载完成`);
-		setTimeout(() => {
-			coverPosition("80%");
-			state = 2;
-		}, 2000);
-	}
-
-	function loadRandModel() {
-		var modelId = localStorage.getItem("modelId"),
-			modelTexturesId = localStorage.getItem("modelTexturesId");
-		fetch(`${apiPath}/rand_textures/?id=${modelId}-${modelTexturesId}`)
-			.then(response => response.json())
-			.then(result => {
-				loadModel(modelId, result.textures.id);
-				setTimeout(() => {
-					state = 2;
-					coverPosition("80%");
-					document.getElementById("refresh").setAttribute("href", "javascript:refresh()");
-				}, 1000);
-			});
-	}
-
-	function loadOtherModel() {
-		var modelId = localStorage.getItem("modelId");
-		fetch(`${apiPath}/switch/?id=${modelId}`)
-			.then(response => response.json())
-			.then(result => {
-				loadModel(result.model.id);
-			});
-	}
-
-	function coverPosition(pos) {
-		document.getElementById("cover").style.bottom = pos;
-	}
-
-	window.info = function() {
-		fetch("https://v1.hitokoto.cn")
-			.then(response => response.json())
-			.then(result => {
-				alert("「" + result.hitokoto + "」——" + result.from);
-			});
-	}
-
-	window.refresh = function() {
-		state = 0;
-		coverPosition("10%");
-		document.getElementById("refresh").setAttribute("href", "javascript:void(0)");
-		setTimeout(loadRandModel, 1000);
-	}
-
-	document.getElementById("handle").addEventListener("click", () => {
-		if (state === 1) {
-			state = 2;
-			coverPosition("80%");
-		}
-		else if (state === 2) {
-			state = 1;
-			coverPosition("20%");
-		}
-	});
-
-	document.querySelector("input[type=password]").addEventListener("focus", () => {
-		if (state === 2) {
-			state = 1;
-			coverPosition("20%");
-		}
-	});
-	document.querySelector("input[type=password]").addEventListener("blur", () => {
-		if (state === 1) {
-			state = 2;
-			coverPosition("80%");
-		}
-	});
-});
-</script>
-</body>
-</html>
-
+          <h1 class="post-title" itemprop="name headline">算法日记(2) —— 进制转换</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-14T10:52:30+08:00">
+                2020-07-14
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-14T12:38:34+08:00">
+                2020-07-14
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%80%83%E7%A0%94/" itemprop="url" rel="index">
+                    <span itemprop="name">考研</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  553 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>对于一个 P 进制的数，如果要转换成 Q 进制，需要分为两步：</p>
+<ol>
+<li><strong>将 P 进制的数 x 转换成十进制数 y</strong></li>
+</ol>
+<p>若 P 进制数 x 为 $a_1a_2···a_n$，则 x 可以通过以下公式转换为十进制数 y：</p>
+<script type="math/tex; mode=display">
+y = a_1*P^{n-1}+a_2*P^{n-2}+···+a_n</script><p>而这个公式可以很容易用循环来实现：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> y = <span class="number">0</span>, product = <span class="number">1</span>;    <span class="comment">//product在循环中会不断乘P，得到1、p、p^2、P^3···</span></span><br><span class="line"><span class="keyword">while</span>(x != <span class="number">0</span>) &#123;</span><br><span class="line">    y = y + (x % <span class="number">10</span>) * product;    <span class="comment">//x % 10是为了每次获取x的个位数</span></span><br><span class="line">    x = x / <span class="number">10</span>;    <span class="comment">//去掉x的个位</span></span><br><span class="line">    product = product * P;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<ol>
+<li><strong>将十进制数 y 转换成 Q 进制数 z</strong></li>
+</ol>
+<p>采用“除基取余法”——所谓的“基”，是指将要转换成的进制 Q，因此除基取余的意思就是每次将待转换数除以 Q，然后将得到的余数作为低位存储，而商则继续除以 Q 并重复上面的操作，最后当商为 0 时，将所有位从高到低输出就可以得到 z。</p>
+<p>由此可以得到实现的代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> z[<span class="number">40</span>], num = <span class="number">0</span>;    <span class="comment">//数组z存放Q进制数y的每一位，num为位数</span></span><br><span class="line"><span class="keyword">do</span> &#123;    <span class="comment">//不使用while语句原因：如果十进制数y恰好等于0，使用while会直接跳出循环，导致结果出错</span></span><br><span class="line">    z[num++] = y % Q;</span><br><span class="line">    y = y / Q;</span><br><span class="line">&#125; <span class="keyword">while</span>(y != <span class="number">0</span>);    <span class="comment">//当商不为0时进行循环</span></span><br></pre></td></tr></table></figure>
+<p>这样 z 数组从高位 z[num - 1] 到低位 z[0] 即为 Q 进制 z，进制转换完成。</p>
+<div align='center'>【PAT B1022】D 进制的 A+B</div>
+
+
+<p>题目描述</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">输入两个非负十进制整数A和B以及D（进制数），输出A+B的D（1&lt;D&lt;11）进制数。</span><br></pre></td></tr></table></figure>
+<p>输入格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在一行中依次给出三个整数A、B和D（进制数）。</span><br></pre></td></tr></table></figure>
+<p>输出格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A+B的D进制数。</span><br></pre></td></tr></table></figure>
+<p>输入样例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">123 456 8</span><br></pre></td></tr></table></figure>
+<p>输出样例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1103</span><br></pre></td></tr></table></figure>
+<p>参考代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a, b, d;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;a, &amp;b, &amp;d);</span><br><span class="line">    <span class="keyword">int</span> sum = a + b;</span><br><span class="line">    <span class="keyword">int</span> ans[<span class="number">31</span>], num = <span class="number">0</span>;    <span class="comment">//ans存放D进制数的每一位</span></span><br><span class="line">    <span class="keyword">do</span> &#123;    <span class="comment">//进制转换</span></span><br><span class="line">        ans[num++] = sum % d;</span><br><span class="line">        sum /= d;</span><br><span class="line">    &#125; <span class="keyword">while</span>(sum != <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = num - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;    <span class="comment">//从高位到低位进行输出</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d"</span>, ans[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
     
     
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文已经结束 ~\(≧▽≦)/~ 感谢您的阅读-------------</div>
+    
+</div>
+
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%AE%97%E6%B3%95%E4%B9%A0%E9%A2%98/" rel="tag"># 算法习题</a>
+          
+            <a href="/tags/PAT/" rel="tag"># PAT</a>
+          
+            <a href="/tags/C-C/" rel="tag"># C/C++</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/13/%E7%AE%97%E6%B3%95%E6%97%A5%E8%AE%B0(1)%20%E2%80%94%E2%80%94%20%E6%97%A5%E6%9C%9F%E5%B7%AE%E5%80%BC/" rel="next" title="算法日记(1) —— 日期差值">
+                <i class="fa fa-chevron-left"></i> 算法日记(1) —— 日期差值
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -649,17 +630,8 @@ window.addEventListener("load", () => {
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -733,22 +705,6 @@ window.addEventListener("load", () => {
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-text">看板娘登陆平台</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -1307,6 +1263,26 @@ setInterval("createtime()",250);
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
